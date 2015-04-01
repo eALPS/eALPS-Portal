@@ -1,0 +1,15 @@
+<Context path="/eALPS-Portal" reloadable="false">
+	<Resource name="jdbc/adb2"
+		auth="Container"
+		type="javax.sql.DataSource"
+		driverClassName="net.sf.log4jdbc.DriverSpy"
+		url="jdbc:log4jdbc:mysql://moodle2.cm1psxga0tvs.ap-northeast-1.rds.amazonaws.com:3306/AcademicDB2"
+		username=""
+		password=""
+		maxActive="240"
+		maxIdle="180"
+		maxWait="60000"
+		removeAbandoned="true"
+		removeAbandonedTimeout="300"
+		logAbandoned="true" />
+</Context>

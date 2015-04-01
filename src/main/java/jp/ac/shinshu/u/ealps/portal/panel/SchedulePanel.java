@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package jp.ac.shinshu.u.ealps.portal.panel;
 
@@ -35,10 +35,10 @@ import com.google.inject.Inject;
 public class SchedulePanel extends Panel {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = -1855016323405526904L;
-	
+
 	@Inject
 	private IRelationCourseService relationCourseService;
 
@@ -58,24 +58,24 @@ public class SchedulePanel extends Panel {
 		super(id, model);
 		drow(initYear, userId);
 	}
-	
+
 	private void drow(int initYear, final String userId) {
-		
+
 //		final IModel<Integer> hogehoge = new Model<Integer>(0) {
-//			
+//
 //		};
 		final IModel<Integer> choicedYearModel = new Model<Integer>(initYear);
 		final IModel<String> scheduleHeadingLabelModel = new Model<String>(choicedYearModel.getObject() + "年度 時間割");;
 		final Label scheduleHeadingLabel = new Label("scheduleHeadingLabel", scheduleHeadingLabelModel) {
 			private static final long serialVersionUID = -8328354210595730594L;
-			
+
 			@Override
 			protected void onInitialize() {
 				super.onInitialize();
 				//setDefaultModelObject(choicedYearModel.getObject() + "年度 時間割");
 				setOutputMarkupId(true);
 			}
-			
+
 			@Override
 			protected void onConfigure() {
 				super.onConfigure();
@@ -83,19 +83,19 @@ public class SchedulePanel extends Panel {
 			}
 		};
 		add(scheduleHeadingLabel);
-		
-		
-		
+
+
+
 		add(new WebMarkupContainer("viewOption") {
 			private static final long serialVersionUID = -6449004618767005205L;
 
 			@Override
 			protected void onInitialize() {
-				
+
 				IModel<List<Integer>> dropDownYearListModel = new ListModel<Integer>(Arrays.asList(2015));
 				Form<Void> selectYearForm = new Form<Void>("selectYearForm");
 				add(selectYearForm);
-				
+
 				selectYearForm.add(new DropDownChoice<Integer>("dropDownChoice", choicedYearModel,dropDownYearListModel) {
 					private static final long serialVersionUID = 186950013127653794L;
 
@@ -109,12 +109,12 @@ public class SchedulePanel extends Panel {
 							protected void onUpdate(AjaxRequestTarget target) {
 								target.add(scheduleHeadingLabel);
 							}
-							
+
 						});
 					}
 				});
-				
-				
+
+
 				add(new AjaxLink<Void>("courseScheduleRadio") {
 					private static final long serialVersionUID = -2821499865808963847L;
 
@@ -130,7 +130,7 @@ public class SchedulePanel extends Panel {
 					}
 
 				});
-				
+
 				add(new AjaxLink<Void>("courseListRadio") {
 					private static final long serialVersionUID = -7872585462069409304L;
 
@@ -146,7 +146,7 @@ public class SchedulePanel extends Panel {
 					}
 
 				});
-				
+
 				add(new AjaxLink<Void>("eALPSListRadio") {
 					private static final long serialVersionUID = 4974661936044397031L;
 
@@ -163,7 +163,7 @@ public class SchedulePanel extends Panel {
 					}
 
 				});
-				
+
 				add(new AjaxLink<Void>("courseScheduleButton") {
 					private static final long serialVersionUID = 904855932483517020L;
 
@@ -180,7 +180,7 @@ public class SchedulePanel extends Panel {
 					}
 
 				});
-				
+
 				add(new AjaxLink<Void>("eALPSListButton") {
 					private static final long serialVersionUID = -4117936053570493147L;
 
@@ -196,11 +196,11 @@ public class SchedulePanel extends Panel {
 					}
 
 				});
-				
+
 				super.onInitialize();
 			}
 		});
-		
+
 		add(new WebMarkupContainer("courseSchedule") {
 			private static final long serialVersionUID = -4414769783048460641L;
 
@@ -209,7 +209,7 @@ public class SchedulePanel extends Panel {
 				super.onInitialize();
 			}
 		});
-		
+
 		add(new WebMarkupContainer("nonScheduleCourseList") {
 			private static final long serialVersionUID = 6244941068825497509L;
 
@@ -218,7 +218,7 @@ public class SchedulePanel extends Panel {
 				super.onInitialize();
 			}
 		});
-		
+
 		final IModel<List<RelationCourseBean>> relationCourseBeanListModel = new LoadableDetachableModel<List<RelationCourseBean>>() {
 			private static final long serialVersionUID = 8993056010257360948L;
 			@Override
@@ -232,19 +232,19 @@ public class SchedulePanel extends Panel {
 			protected void onInitialize() {
 				this.add(new AttributeModifier("style", Model.of("display:none")));
 				super.onInitialize();
-			
+
 				PropertyListView<RelationCourseBean> courseListView = new PropertyListView<RelationCourseBean>("courseListView", relationCourseBeanListModel) {
 					private static final long serialVersionUID = -4452224939836409982L;
 					@Override
 					protected void populateItem(final ListItem<RelationCourseBean> listitem) {
-						listitem.add(new ExternalLink("courseURL", listitem.getModelObject().getCourseURL(), listitem.getModelObject().getCourseTitleName()));
-						listitem.add(new Label("teacherName"));
+						listitem.add(new ExternalLink("courseData.url", listitem.getModelObject().getCourseData().getUrl(), listitem.getModelObject().getCourseData().getTitleName()));
+						listitem.add(new Label("courseData.titleCode"));
 					}
 				};
 				this.add(courseListView);
 			}
 		});
-		
+
 		add(new WebMarkupContainer("eALPSList") {
 			private static final long serialVersionUID = -4414769783048460641L;
 
@@ -254,7 +254,7 @@ public class SchedulePanel extends Panel {
 				super.onInitialize();
 			}
 		});
-		
+
 	}
 
 }

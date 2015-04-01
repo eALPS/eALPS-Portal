@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package jp.ac.shinshu.u.ealps.portal.service;
 
@@ -22,10 +22,10 @@ public class RelationCourseService implements IRelationCourseService {
 	}
 
 	@Override
-	public List<RelationCourseBean> getRelationCourseBeanList(String userId) {
-		List<RelationCourseBean> relationCourseBeanList; 
+	public List<RelationCourseBean> getRelationCourseBeanList(String uid) {
+		List<RelationCourseBean> relationCourseBeanList;
 		RelationDAO relationCourseDAO = new RelationDAO();
-		relationCourseBeanList = relationCourseDAO.selectRelationCourseBeanList(userId);
+		relationCourseBeanList = relationCourseDAO.selectRelationCourseBeanList(uid);
 		return relationCourseBeanList;
 	}
 

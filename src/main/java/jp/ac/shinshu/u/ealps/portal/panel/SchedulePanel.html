@@ -6,7 +6,7 @@
 </head>
 <body>
 	<wicket:panel>
-	
+
 		<div class="panel panel-success">
 			<div class="panel-heading lead"><span wicket:id="scheduleHeadingLabel">2015年度 時間割</span></div>
 			<div class="panel-body" wicket:id="viewOption">
@@ -35,7 +35,7 @@
 						</dd>
 					</dl>
 				</div>
-				
+
 				<div class="btn-toolbar" role="toolbar" aria-label="...">
 					<!-- <div class="btn-group dropdown">
 						<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="true">
@@ -66,7 +66,7 @@
 					</div>
 				</div>
 			</div>
-			
+
 			<div class="table-responsive courseSchedule" wicket:id="courseSchedule">
 				<table class="table table-striped table-bordered table-condensed schedule">
 					<thead>
@@ -298,7 +298,7 @@
 					</tbody>
 				</table>
 			</div>
-			
+
 			<div class="panel-body courseSchedule" wicket:id="nonScheduleCourseList">
 				<ul class="list-unstyled">
 					<li>
@@ -317,17 +317,17 @@
 					</li>
 				</ul>
 			</div>
-			
+
 			<!-- コース リスト表示 -->
 			<div class="panel-body courseList" wicket:id="courseList">
 				<ul class="list-unstyled">
 					<li wicket:id="courseListView">
 						<span class="glyphicon glyphicon-book"></span>
-						<a href="#" wicket:id="courseURL" target="_blank">
+						<a href="#" wicket:id="courseData.url" target="_blank">
 						</a>
 						&nbsp;&nbsp;
-						<span class="glyphicon glyphicon-user"></span>&nbsp;<span class="toolTip" wicket:id="teacherName" data-toggle="tooltip" title="主担当教員">主担当教員</span>&nbsp;&nbsp;
-						<span class="glyphicon glyphicon-time"></span>&nbsp;2015
+						<!-- <span class="glyphicon glyphicon-user"></span>&nbsp;<span class="toolTip" wicket:id="courseData.titleCode" data-toggle="tooltip" title="主担当教員">主担当教員</span>&nbsp;&nbsp; -->
+						<span class="glyphicon glyphicon-time"></span>&nbsp;<span wicket:id="courseData.opYear">開講年度</span>
 						<!-- <span class="glyphicon glyphicon-info-sign"></span> -->
 						<!-- <a href="/ealps-portal/redirectMoodleCourseInfo/2014/t/T0217534" target="_blank">
 							&nbsp;コース情報
@@ -336,7 +336,7 @@
 					</li>
 				</ul>
 			</div>
-			
+
 			<!-- <div class="panel-body courseList" wicket:id="courseList">
 				<ul class="list-unstyled">
 					<li>
@@ -355,7 +355,7 @@
 					</li>
 				</ul>
 			</div> -->
-			
+
 			<ul class="list-group eALPSList" wicket:id="eALPSList">
 				<li class="list-group-item"><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span><a href="https://moodle-cloud.ealps.shinshu-u.ac.jp/2015/g/" target="_blank">&nbsp;共通教育</a></li>
 				<li class="list-group-item"><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span><a href="https://moodle-cloud.ealps.shinshu-u.ac.jp/2015/l/" target="_blank">&nbsp;人文学部・人文科学研究科</a></li>
@@ -369,31 +369,31 @@
 				<li class="list-group-item"><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span><a href="https://moodle-cloud.ealps.shinshu-u.ac.jp/2015/st/" target="_blank">&nbsp;総合工学系研究科</a></li>
 				<li class="list-group-item"><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span><a href="https://moodle-cloud.ealps.shinshu-u.ac.jp/common/" target="_blank">&nbsp;学部・研究科共通</a></li>
 			</ul>
-			
+
 		</div>
 		<script type="text/javascript" charset="utf-8">
 			$(document).ready(function() {
 				// 表示オプション非表示
 				$('#viewOption').hide();
 			});
-			
+
 			// 表示オプションボタン制御
 			$('.viewOptionCheck').click(function () {
 				$('.viewOptionCheck').toggleClass('active');
 				$('#viewOption').fadeToggle();
 				//viewTypeHideCheck();
 			});
-			
+
 			// 時間割ボタン
 			$('.courseScheduleButton').click(function() {
 				$('.courseScheduleRadio').click();
 			});
-			
+
 			// 学部一覧ボタン
 			$('.eALPSListButton').click(function() {
 				$('.eALPSListRadio').click();
 			});
-			
+
 			$('.courseScheduleRadio').click(function() {
 				//$.cookie('viewType', null);
 				//$.cookie('viewType', 'courseSchedule', {expire: 365});
@@ -405,7 +405,7 @@
 				$('.courseSchedule').fadeIn();
 				$('.eALPSListButton').fadeIn();
 			});
-			
+
 			$('.courseListRadio').click(function() {
 				//$.cookie('viewType', null);
 				//$.cookie('viewType', 'courseList', {expire: 365});
@@ -417,7 +417,7 @@
 				$('.courseScheduleButton').fadeIn();
 				$('.eALPSListButton').fadeIn();
 			});
-			
+
 			$('.eALPSListRadio').click(function() {
 				//$.cookie('viewType', null);
 				//$.cookie('viewType', 'ealpsList', {expire: 365});
