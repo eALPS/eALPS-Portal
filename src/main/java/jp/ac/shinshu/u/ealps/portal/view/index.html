@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org/" lang="ja">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="Content-Style-Type" content="text/css">
+		<meta http-equiv="Content-Script-Type" content="text/javascript">
+		<meta http-equiv="Pragma" content="no-cache">
+		<meta http-equiv="Cache-Control" content="no-cache, max-age=0, must-revalidate, no-store">
+		<meta http-equiv="cleartype" content="on">
+		<meta http-equiv="Expires" content="Thu, 01 Jan 1970 00:00:00 GMT" />
+		<meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+		<meta name="Author" content="Osamu HASEGAWA">
+		<meta name="generator" content="eclipse">
+		<meta name="description" content="信州大学 eALPSポータル">
+		<meta name="Keywords" content="eALPS, eラーニング, e-Learning, 信州大学, Shinshu University">
+		<meta name="Robots" content="index, follow">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<!-- <link rel="shortcut icon" href="http://www.chitose.ac.jp/favicon.ico">
+		<link rel="icon" href="http://www.chitose.ac.jp/favicon.ico" type="image/vnd.microsoft.icon"> -->
+
+		<!-- <title wicket:id="title"></title> -->
+		<title>eALPSポータル</title>
+		<!-- Bootstrap -->
+		<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<!-- <link href="bootstrap/css/bootstrap-theme.min.css" rel="stylesheet"> -->
+
+		<link href="css/dataTables.bootstrap.css" rel="stylesheet">
+
+		<link href="css/common.css" rel="stylesheet">
+
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+	</head>
+	<body>
+		<div class="container">
+			<header class="page-header">
+				<h1>信州大学 eALPSポータル</h1>
+				<div class="alert alert-danger hidden-xs" role="alert">
+					<section>
+						<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+						eALPSシステムの保守は万全を期しておりますが，万が一，人手が必要な障害が発生した場合，その対応は平日の9:00~17:00となります．何卒よろしくお願いいたします．
+					</section>
+				</div>
+			</header>
+			<!-- <wicket:child></wicket:child> -->
+
+			<div class="panel panel-success">
+				<div class="panel-heading">e-Learningセンターからのお知らせ</div>
+				<div class="panel-body">
+					<div class="table-responsive">
+						<table class="table table-striped" id="information-list">
+							<thead>
+								<tr>
+									<th>&nbsp;</th>
+									<th>&nbsp;</th>
+									<th>更新日</th>
+									<th>内容</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="info-label">
+										<span class="label label-danger">重&nbsp;要</span>
+									</td>
+									<td class="info-label">
+										<span class="label label-default">全&nbsp;体</span>
+									</td>
+									<td class="info-date">
+										<time>2014.09.22</time>
+									</td>
+									<td>
+										<span class="info-tab"><a>【後期】時間割表示</a></span>
+										<div class="info-detail">
+											<p>
+												＜時間割画面が　【後期】　に切り替わりました＞<br />前期コースをご利用の場合には、年度タブの横にある　<strong>[表示オプション]</strong>　から前期を選択してご利用ください。<br /><br /><strong>＊＊教員の方へ＊＊<br /></strong><span style="line-height: 1.231;">下記の場合には、<a href="mailto:elearning@shinshu-u.ac.jp?subject=[%E3%83%98%E3%83%AB%E3%83%97%EF%BC%86%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88%E3%82%B5%E3%82%A4%E3%83%88]">e-Learningセンター</a>までお知らせ下さい。<br /></span><span style="color: #ff0000; line-height: 1.231;">・後期に開講するコースが時間割に表示されない<br />・開講時限・曜日がおかしい<br />・旧カリキュラム等で、不要なコースが表示されている</span><br /><br /><strong>＊＊学生の方へ＊＊<br /></strong>後期の履修登録を行いますと、時間割に履修コースが表示されます。<br />一部のコースは時間割に表示されている場合がありますが、履修登録は行ってください。（共通教育の英語コースの一部、他）<br /><span style="color: #339966; line-height: 1.231;">履修登録後、2日以上経っても時間割に表示されない場合は、履修コースコードと学籍番号を<a href="mailto:elearning@shinshu-u.ac.jp?subject=[%E3%83%98%E3%83%AB%E3%83%97%EF%BC%86%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88%E3%82%B5%E3%82%A4%E3%83%88]">e-Learningセンター</a>までお知らせ下さい。　</span>
+											</p>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td class="info-label">
+										<span class="label label-danger">重&nbsp;要</span>
+									</td>
+									<td class="info-label">
+										<span class="label label-default">教&nbsp;員</span>
+									</td>
+									<td class="info-date">
+										<time>2014.03.20</time>
+									</td>
+									<td>
+										<span class="info-tab" ><a>2014年度のeALPSがスタートしました</a></span>
+										<div class="info-detail">
+											<p>
+												以下の点にご注意ください。<br />1.現在、シラバスが決定しておりません、<strong>教育学部、医学部のコースは表示されておりません</strong>。<br />　各学務係がデータを確定いたしましたら順次コースをeALPSに投入いたしますので、　それまでしばらくお待ちください。</p><br /><p>2.<b>教員による、コースの移行ができません。</b>過年度のコースからコピーして利用したい場合には、<span style="font-weight: bold; color: #0000ff;" color="#0000ff"><a style="font-weight: bold;" href="mailto:elearning@shinshu-u.ac.jp?subject=[%E3%83%98%E3%83%AB%E3%83%97%EF%BC%86%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88%E3%82%B5%E3%82%A4%E3%83%88]">e-Learningセンター</a></span>まで御依頼連絡ください。<br /><br /> 3.学生は、キャンパス情報に履修登録を行うと、自動的にコースに登録されます。<b>そのほかの学生、教員、TA等の登録は</b><b><span style="font-weight: bold; color: #0000ff;" color="#0000ff"><a style="font-weight: bold;" href="mailto:elearning@shinshu-u.ac.jp?subject=[%E3%83%98%E3%83%AB%E3%83%97%EF%BC%86%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88%E3%82%B5%E3%82%A4%E3%83%88]">e-Learningセンター</a></span>まで御依頼連絡ください。</b></p><br /><p>各種依頼には、<a href="http://moodle.ealps.shinshu-u.ac.jp/support/mod/resource/view.php?id=424">こちら</a>に書式がありますので必要に応じて御利用ください。</p><br /><p>4.担当コースが表示されない、時間割が正しく表示されない等お困りのことがございましたら、<b><span style="font-weight: bold; color: #0000ff;" color="#0000ff"><a style="font-weight: bold;" href="mailto:elearning@shinshu-u.ac.jp?subject=[%E3%83%98%E3%83%AB%E3%83%97%EF%BC%86%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88%E3%82%B5%E3%82%A4%E3%83%88]">e-Learningセンター</a></span>まで御依頼連絡ください。</b>
+											</p>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+
+			<div class="panel panel-success">
+				<div class="panel-heading">時間割</div>
+				<div class="panel-body">
+					<div class="btn-toolbar" role="toolbar" aria-label="...">
+						<div class="btn-group dropdown">
+							<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+								<span class="glyphicon glyphicon-tag"></span>&nbsp;年度選択&nbsp;<span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+								<li role="presentation"><a role="menuitem" tabindex="-1" href="#">2015年度</a></li>
+								<li role="presentation"><a role="menuitem" tabindex="-1" href="#">2014年度</a></li>
+								<li role="presentation"><a role="menuitem" tabindex="-1" href="#">2013年度</a></li>
+								<li role="presentation"><a role="menuitem" tabindex="-1" href="#">2012年度</a></li>
+							</ul>
+						</div>
+						<div class="btn-group"><button class="btn btn-success ealpsListButton toolTip" data-toggle="tooltip" data-placement="top" data-html="true" data-title="このボタンをクリックすると以前のバージョンと同様の学部毎eALPS一覧を表示することができます．<br />クリック後，再び時間割表示に戻すには，左の表示オプションボタンをクリックして設定を変更してください．"><i class="icon-white icon-backward"></i>&nbsp;学部一覧</button></div>
+
+					</div>
+				</div>
+				<div class="table-responsive">
+					<table class="table table-striped table-bordered table-condensed">
+						<thead>
+							<tr>
+								<th>&nbsp;</th>
+								<th class="text-center">月曜日</th>
+								<th class="text-center">火曜日</th>
+								<th class="text-center">水曜日</th>
+								<th class="text-center">木曜日</th>
+								<th class="text-center">金曜日</th>
+								<th class="text-center">土曜日</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td class="text-center">
+									<span>1時限</span>
+								</td>
+								<td>
+									<span></span>
+								</td>
+								<td>
+									<span></span>
+								</td>
+								<td>
+									<span></span>
+								</td>
+								<td>
+									<span></span>
+								</td>
+								<td>
+									<span></span>
+								</td>
+								<td>
+									<span></span>
+								</td>
+							</tr>
+							<tr>
+								<td class="text-center">
+									<span>2時限</span>
+								</td>
+								<td>
+									<span></span>
+								</td>
+								<td>
+									<span></span>
+								</td>
+								<td>
+									<span></span>
+								</td>
+								<td>
+									<span></span>
+								</td>
+								<td>
+									<span></span>
+								</td>
+								<td>
+									<span></span>
+								</td>
+							</tr>
+							<tr>
+								<td class="text-center">
+									<span>3時限</span>
+								</td>
+								<td>
+									<span></span>
+								</td>
+								<td>
+									<span></span>
+								</td>
+								<td>
+									<span></span>
+								</td>
+								<td>
+									<dl class="dl-horizontal">
+										<dt><i class="glyphicon glyphicon-book"></i>&nbsp;</dt>
+										<dd><a href="/ealps-portal/redirectMoodleCourse/2014/g/02004099" target="_blank" class="toolTip" title="主担当教員">映像記録制作ゼミ</a></dd>
+										<dt><i class="glyphicon glyphicon-user"></i>&nbsp;</dt>
+										<dd>長谷川 理</dd>
+										<dt><i class="glyphicon glyphicon-user"></i>&nbsp;</dt>
+										<dd><span class="toolTip" data-toggle="tooltip" title="飯岡 詩朗">...</span></dd>
+										<dt><i class="glyphicon glyphicon-info-sign"></i>&nbsp;</dt>
+										<dd><a href="/ealps-portal/redirectMoodleCourseInfo/2014/g/02004099" target="_blank">コース情報</a></dd>
+										<dt><i class="glyphicon glyphicon-info-sign"></i>&nbsp;</dt>
+										<dd><a href="/ealps-portal/redirectMoodleCourseInfo/2014/g/02004099" target="_blank">関連ファイル</a></dd>
+									</dl>
+								</td>
+								<td>
+									<span></span>
+								</td>
+								<td>
+									<span></span>
+								</td>
+							</tr>
+							<tr>
+								<td class="text-center">
+									<span>4時限</span>
+								</td>
+								<td>
+									<span></span>
+								</td>
+								<td>
+									<span></span>
+								</td>
+								<td>
+									<span></span>
+								</td>
+								<td>
+									<span></span>
+								</td>
+								<td>
+									<span></span>
+								</td>
+								<td>
+									<span></span>
+								</td>
+							</tr>
+							<tr>
+								<td class="text-center">
+									<span>5時限</span>
+								</td>
+								<td>
+									<span></span>
+								</td>
+								<td>
+									<span></span>
+								</td>
+								<td>
+									<span></span>
+								</td>
+								<td>
+									<span></span>
+								</td>
+								<td>
+									<span></span>
+								</td>
+								<td>
+									<span></span>
+								</td>
+							</tr>
+							<tr>
+								<td class="text-center">
+									<span>6時限</span>
+								</td>
+								<td>
+									<span></span>
+								</td>
+								<td>
+									<span></span>
+								</td>
+								<td>
+									<span></span>
+								</td>
+								<td>
+									<span></span>
+								</td>
+								<td>
+									<span></span>
+								</td>
+								<td>
+									<span></span>
+								</td>
+							</tr>
+							<tr>
+								<td class="text-center">
+									<span>7時限</span>
+								</td>
+								<td>
+									<span></span>
+								</td>
+								<td>
+									<span></span>
+								</td>
+								<td>
+									<span></span>
+								</td>
+								<td>
+									<span></span>
+								</td>
+								<td>
+									<span></span>
+								</td>
+								<td>
+									<span></span>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+			<div class="panel panel-success">
+				<div class="panel-heading">年度共通サイト</div>
+				<ul class="list-group">
+					<li class="list-group-item"><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span><a href="https://moodle-cloud.ealps.shinshu-u.ac.jp/hospital/" target="_blank">&nbsp;附属病院</a></li>
+					<li class="list-group-item"><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span><a href="https://moodle-cloud.ealps.shinshu-u.ac.jp/facility/" target="_blank">&nbsp;大学施設</a></li>
+					<li class="list-group-item"><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span><a href="https://moodle-cloud.ealps.shinshu-u.ac.jp/other/" target="_blank">&nbsp;学外連携・その他</a></li>
+					<li class="list-group-item"><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span><a href="https://moodle-cloud.ealps.shinshu-u.ac.jp/2014/eChes/" target="_blank">&nbsp;高等教育コンソーシアム信州 eChes</a></li>
+				</ul>
+			</div>
+
+			<div class="panel panel-danger" id="ealps-attention">
+				<div class="panel-heading">eALPSを利用する上での注意事項</div>
+				<ul class="list-group">
+					<li class="list-group-item">
+						<span class="info-tab list-group-item-heading"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span><a>&nbsp;教員の皆様へ</a></span>
+						<ul>
+							<li>下記コース一覧に，ご自身の担当するコースが表示されない場合は，<a href="mailto:elearning@shinshu-u.ac.jp?subject=[%E3%83%98%E3%83%AB%E3%83%97%EF%BC%86%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88%E3%82%B5%E3%82%A4%E3%83%88]">e-Learningセンター</a>まで御連絡ください．</li>
+							<li>同一内容のコースを複数運用する場合には，便利な運用方法があります．コース作成前に<a href="mailto:elearning@shinshu-u.ac.jp?subject=[%E3%83%98%E3%83%AB%E3%83%97%EF%BC%86%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88%E3%82%B5%E3%82%A4%E3%83%88]">e-Learningセンター</a>まで御連絡ください．詳しくは<a href="https://moodle.ealps.shinshu-u.ac.jp/support/file.php/1/%E6%95%99%E5%93%A1%E5%90%91%E3%81%91%E3%83%9E%E3%83%8B%E3%83%A5%E3%82%A2%E3%83%AB%EF%BC%88Ver.1.9%EF%BC%89/meta/metacourse.htm" target="_blank">こちら</a>をご覧ください．</li>
+							<li>教員，TA，CP をコースに追加登録する場合は<a href="mailto:elearning@shinshu-u.ac.jp?subject=[%E3%83%98%E3%83%AB%E3%83%97%EF%BC%86%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88%E3%82%B5%E3%82%A4%E3%83%88]">e-Learningセンター</a>まで御連絡ください．（御連絡のないユーザは，コース内の一部コンテンツの利用ができない場合があります）</li>
+							<li>学生は履修登録により自動的にコースに登録されますので，削除が必要な場合には<a href="mailto:elearning@shinshu-u.ac.jp?subject=[%E3%83%98%E3%83%AB%E3%83%97%EF%BC%86%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88%E3%82%B5%E3%82%A4%E3%83%88]">e-Learningセンター</a>まで御連絡ください．（御連絡のない場合は，再登録されることがあります）</li>
+						</ul>
+					</li>
+					<li class="list-group-item">
+						<span class="info-tab list-group-item-heading"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span><a>&nbsp;教員及び学生の皆様</a></span>
+						<p>現段階で，日本語を含む名前のつけられたファイルをeALPS上にアップロードすると，そのファイルをダウンロードできないブラウザがあります．このため，各コースサイトにアップロードするファイル名は，半角英数字を使用してください．</p>
+					</li>
+					<li class="list-group-item">
+						<span class="info-tab list-group-item-heading"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span><a>&nbsp;教材等の無断転用は禁止されています</a></span>
+						<p>教材やデータは著作物であり，教員等その著作権者の許可を得ずに転用することは禁止されています．にもかかわらず，eALPS等で提供している教材コンテンツ等を無断で外部サーバ等に転用しているケースが見られました．そのような行為が見られた場合には，著作権者は転用者に対して対処をする場合もあります．</p>
+					</li>
+				</ul>
+			</div>
+
+			<footer>
+				<span>
+					Copyright&nbsp;&copy;&nbsp;2015&nbsp;e-Learning&nbsp;Center,&nbsp;Shinshu&nbsp;University.&nbsp;All&nbsp;Rights&nbsp;Reserved.
+				</span>
+				<!-- <span>Copyright&nbsp;&copy;&nbsp;<span wicket:id="writeYear">nowYear</span>&nbsp;Chitose&nbsp;Institute&nbsp;of&nbsp;Science&nbsp;and&nbsp;Technology<span
+					wicket:id="uelaCopyright">&nbsp;&amp;&nbsp;University e-Learning Association</span>, Powered by
+					CIST-Solomon
+				</span> <a href="#" wicket:id="legalInformation"><span class="legalInformation">利用規約</span></a> <a
+					href="#" wicket:id="privacyPolicy"><span class="privacyPolicy">プライバシーポリシー</span></a> -->
+			</footer>
+
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+			<!-- Include all compiled plugins (below), or include individual files as needed -->
+			<script src="bootstrap/js/bootstrap.min.js"></script>
+			<script src="js/jquery.dataTables.min.js"></script>
+			<script src="js/dataTables.bootstrap.js"></script>
+			<script type="text/javascript" charset="utf-8">
+				$(document).ready(function() {
+					// お知らせテーブルにdataTableを適用
+					$('#information-list').DataTable({
+						aaSorting : [[ 2, 'desc']],
+						aLengthMenu : [ 1, 2, 3, 5, 8, 13, 21, 34, 55, 89 ],
+						iDisplayLength : 5,
+						//sPaginationType : 'bootstrap',
+						oLanguage : {
+							sSearch : 'お知らせを検索：',
+							sNext : '次へ',
+							sPrevious : '前へ',
+							sLengthMenu : '_MENU_ 件表示',
+							sZeroRecords : '該当するレコードがありません',
+							sInfo : '_TOTAL_ 件中 _START_ 〜 _END_ を表示しています．',
+							sInfoEmpty : '0件',
+							sInfoFiltered : "（全 _MAX_ 件のレコードからフィルタリングされました．）"
+						}
+					});
+
+					// お知らせ内容非表示
+					$('.info-tab').next().hide();
+
+					// ToolTips
+					$('[data-toggle="tooltip"]').tooltip({container: 'body'});
+
+				});
+
+				// お知らせ開閉
+				$('.info-tab').click(function () {
+					$(this).next().slideToggle('fast');
+				});
+		</script>
+		</div>
+	</body>
+</html>

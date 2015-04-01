@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org/" lang="ja">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="Content-Style-Type" content="text/css">
+		<meta http-equiv="Content-Script-Type" content="text/javascript">
+		<meta http-equiv="Pragma" content="no-cache">
+		<meta http-equiv="Cache-Control" content="no-cache, max-age=0, must-revalidate, no-store">
+		<meta http-equiv="cleartype" content="on">
+		<meta http-equiv="Expires" content="Thu, 01 Jan 1970 00:00:00 GMT" />
+		<meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+		<meta name="Author" content="Osamu HASEGAWA">
+		<meta name="generator" content="eclipse">
+		<meta name="description" content="信州大学 eALPSポータル">
+		<meta name="Keywords" content="eALPS, eラーニング, e-Learning, 信州大学, Shinshu University">
+		<meta name="Robots" content="index, follow">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<link rel="shortcut icon" href="favicon.ico">
+		<link rel="icon" href="favicon.ico" type="image/vnd.microsoft.icon">
+
+		<!-- <link rel="shortcut icon" href="http://www.chitose.ac.jp/favicon.ico">
+		<link rel="icon" href="http://www.chitose.ac.jp/favicon.ico" type="image/vnd.microsoft.icon"> -->
+
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+		<title wicket:id="title"></title>
+
+	</head>
+	<body>
+		<div class="container">
+			<header class="page-header">
+				<h1>信州大学 eALPSポータル</h1>
+				<div class="alert alert-danger hidden-xs" role="alert">
+					<section>
+						<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+						eALPSシステムの保守は万全を期しておりますが，万が一，人手が必要な障害が発生した場合，その対応は平日の9:00~17:00となります．何卒よろしくお願いいたします．
+					</section>
+				</div>
+			</header>
+
+			<wicket:child></wicket:child>
+
+			<hr />
+
+			<footer>
+				<span>
+					Copyright&nbsp;&copy;&nbsp;2009-<span wicket:id="currentYear">currentYear</span>&nbsp;e-Learning&nbsp;Center,&nbsp;Shinshu&nbsp;University.&nbsp;All&nbsp;Rights&nbsp;Reserved.
+				</span>
+			</footer>
+
+		</div>
+	</body>
+</html>

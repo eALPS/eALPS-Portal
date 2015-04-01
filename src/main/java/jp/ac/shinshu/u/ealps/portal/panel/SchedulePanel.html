@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org/" lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<wicket:panel>
+	
+		<div class="panel panel-success">
+			<div class="panel-heading lead"><span wicket:id="scheduleHeadingLabel">2015年度 時間割</span></div>
+			<div class="panel-body" wicket:id="viewOption">
+				<div id="viewOption" class="well">
+					<dl>
+						<dt>表示形式</dt>
+						<dd class="btn-group" data-toggle="buttons">
+							<label class="btn btn-success courseScheduleRadio active">
+								<input wicket:id="courseScheduleRadio" type="radio" name="options" autocomplete="off" checked><span class="glyphicon glyphicon-th"></span>&nbsp;時間割
+							</label>
+							<label class="btn btn-success courseListRadio">
+								<input wicket:id="courseListRadio" type="radio" name="options" autocomplete="off"><span class="glyphicon glyphicon-th-list"></span>&nbsp;履修コースリスト
+							</label>
+							<label class="btn btn-success eALPSListRadio" >
+								<input wicket:id="eALPSListRadio" type="radio" name="options" autocomplete="off"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;学部リスト
+							</label>
+						</dd>
+					</dl>
+					<dl class="control-group last">
+						<dt class="control-label">期間</dt>
+						<dd class="btn-group" data-toggle="buttons-checkbox">
+							<button class="btn btn-success firstSemesterCheck "><span class="glyphicon glyphicon-check"></span>&nbsp;前期&nbsp;</button>
+							<button class="btn btn-success secondSemesterCheck"><span class="glyphicon glyphicon-check"></span>&nbsp;後期&nbsp;</button>
+							<button class="btn btn-success throughSemesterCheck"><span class="glyphicon glyphicon-check"></span>&nbsp;通年&nbsp;</button>
+							<button class="btn btn-success irregularSemesterCheck"><span class="glyphicon glyphicon-check"></span>&nbsp;不定期&nbsp;</button>
+						</dd>
+					</dl>
+				</div>
+				
+				<div class="btn-toolbar" role="toolbar" aria-label="...">
+					<!-- <div class="btn-group dropdown">
+						<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="true">
+							<span class="glyphicon glyphicon-tag"></span>&nbsp;年度選択&nbsp;<span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+							<li role="presentation"><a role="menuitem" tabindex="-1" href="#">2015年度</a></li>
+							<li role="presentation"><a role="menuitem" tabindex="-1" href="#">2014年度</a></li>
+							<li role="presentation"><a role="menuitem" tabindex="-1" href="#">2013年度</a></li>
+						</ul>
+					</div> -->
+					<div class="pull-left">
+						<form class="form-inline" wicket:id="selectYearForm">
+							<div class="form-group">
+								<label>
+									<span class="glyphicon glyphicon-tag"></span>
+									<span>&nbsp;年度選択：</span>
+								</label>
+								<select class="form-control" wicket:id="dropDownChoice"></select>
+							</div>
+						</form>
+					</div>
+					<div class="pull-right">
+						<button class="btn btn-success eALPSListButton toolTip" wicket:id="eALPSListButton" data-toggle="tooltip" data-placement="top" data-html="true" data-title="このボタンをクリックすると学部毎eALPS一覧を表示することができます．<br />クリック後，再び時間割表示に戻すには，左の表示オプションボタンをクリックして設定を変更してください．"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;<span wicket:id="eALPSListButtonLabel">学部一覧</span></button>
+						<button class="btn btn-success courseScheduleButton" wicket:id="courseScheduleButton"><i class="glyphicon glyphicon-th"></i>&nbsp;<span wicket:id="courseScheduleButtonLabel">時間割</span></button>
+						<button class="btn btn-success viewOptionCheck"><i class="glyphicon glyphicon-cog"></i>&nbsp;表示オプション</button>
+						<a href="mailto:elearning@shinshu-u.ac.jp?subject=[%E3%83%98%E3%83%AB%E3%83%97%EF%BC%86%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88%E3%82%B5%E3%82%A4%E3%83%88]"><button class="btn btn-warning"><i class="glyphicon glyphicon-envelope"></i>&nbsp;お問い合わせ</button></a>
+					</div>
+				</div>
+			</div>
+			
+			<div class="table-responsive courseSchedule" wicket:id="courseSchedule">
+				<table class="table table-striped table-bordered table-condensed schedule">
+					<thead>
+						<tr>
+							<th class="courseHour">&nbsp;</th>
+							<th class="text-center courseWeek">月曜日</th>
+							<th class="text-center courseWeek">火曜日</th>
+							<th class="text-center courseWeek">水曜日</th>
+							<th class="text-center courseWeek">木曜日</th>
+							<th class="text-center courseWeek">金曜日</th>
+							<th class="text-center courseWeek">土曜日</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="text-center">
+								<span>1時限</span>
+							</td>
+							<td>
+								<dl class="dl-horizontal">
+									<dt><i class="glyphicon glyphicon-book"></i>&nbsp;</dt>
+									<dd><a href="/ealps-portal/redirectMoodleCourse/2014/g/02004099" target="_blank" class="toolTip" title="主担当教員">リスニング＆リーディングⅡ(初級）</a></dd>
+									<dt><i class="glyphicon glyphicon-user"></i>&nbsp;</dt>
+									<dd>大島 春子</dd>
+									<dt><i class="glyphicon glyphicon-info-sign"></i>&nbsp;</dt>
+									<dd><a href="/ealps-portal/redirectMoodleCourseInfo/2014/g/02004099" target="_blank">コース情報</a></dd>
+								</dl>
+							</td>
+							<td>
+								<span></span>
+							</td>
+							<td>
+								<span></span>
+							</td>
+							<td>
+								<span></span>
+							</td>
+							<td>
+								<dl class="dl-horizontal">
+									<dt><i class="glyphicon glyphicon-book"></i>&nbsp;</dt>
+									<dd><a href="/ealps-portal/redirectMoodleCourse/2014/g/02004099" target="_blank" class="toolTip" title="主担当教員">生物科学I</a></dd>
+									<dt><i class="glyphicon glyphicon-user"></i>&nbsp;</dt>
+									<dd>伊藤 靖夫</dd>
+									<dt><i class="glyphicon glyphicon-info-sign"></i>&nbsp;</dt>
+									<dd><a href="/ealps-portal/redirectMoodleCourseInfo/2014/g/02004099" target="_blank">コース情報</a></dd>
+								</dl>
+							</td>
+							<td>
+								<span></span>
+							</td>
+						</tr>
+						<tr>
+							<td class="text-center">
+								<span>2時限</span>
+							</td>
+							<td>
+								<dl class="dl-horizontal">
+									<dt><i class="glyphicon glyphicon-book"></i>&nbsp;</dt>
+									<dd><a href="/ealps-portal/redirectMoodleCourse/2014/g/02004099" target="_blank" class="toolTip" title="主担当教員">ネットワーク社会における情報科学</a></dd>
+									<dt><i class="glyphicon glyphicon-user"></i>&nbsp;</dt>
+									<dd>湯田 彰夫</dd>
+									<dt><i class="glyphicon glyphicon-info-sign"></i>&nbsp;</dt>
+									<dd><a href="/ealps-portal/redirectMoodleCourseInfo/2014/g/02004099" target="_blank">コース情報</a></dd>
+								</dl>
+							</td>
+							<td>
+								<dl class="dl-horizontal">
+									<dt><i class="glyphicon glyphicon-book"></i>&nbsp;</dt>
+									<dd><a href="/ealps-portal/redirectMoodleCourse/2014/g/02004099" target="_blank" class="toolTip" title="主担当教員">微分積分学Ⅱ</a></dd>
+									<dt><i class="glyphicon glyphicon-user"></i>&nbsp;</dt>
+									<dd>片長 敦子</dd>
+									<dt><i class="glyphicon glyphicon-info-sign"></i>&nbsp;</dt>
+									<dd><a href="/ealps-portal/redirectMoodleCourseInfo/2014/g/02004099" target="_blank">コース情報</a></dd>
+								</dl>
+							</td>
+							<td>
+								<dl class="dl-horizontal">
+									<dt><i class="glyphicon glyphicon-book"></i>&nbsp;</dt>
+									<dd><a href="/ealps-portal/redirectMoodleCourse/2014/g/02004099" target="_blank" class="toolTip" title="主担当教員">新入生ゼミナールⅡ</a></dd>
+									<dt><i class="glyphicon glyphicon-user"></i>&nbsp;</dt>
+									<dd>西山 巨章</dd>
+									<dt><i class="glyphicon glyphicon-info-sign"></i>&nbsp;</dt>
+									<dd><a href="/ealps-portal/redirectMoodleCourseInfo/2014/g/02004099" target="_blank">コース情報</a></dd>
+								</dl>
+							</td>
+							<td>
+								<dl class="dl-horizontal">
+									<dt><i class="glyphicon glyphicon-book"></i>&nbsp;</dt>
+									<dd><a href="/ealps-portal/redirectMoodleCourse/2014/g/02004099" target="_blank" class="toolTip" title="主担当教員">ＦＡＥⅡ(初級)</a></dd>
+									<dt><i class="glyphicon glyphicon-user"></i>&nbsp;</dt>
+									<dd>BRIERLEY MARK ALAN</dd>
+									<dt><i class="glyphicon glyphicon-info-sign"></i>&nbsp;</dt>
+									<dd><a href="/ealps-portal/redirectMoodleCourseInfo/2014/g/02004099" target="_blank">コース情報</a></dd>
+									<dt><i class="glyphicon glyphicon-link"></i>&nbsp;</dt>
+									<dd><a href="/ealps-portal/redirectMoodleCourseInfo/2014/g/02004099" target="_blank">関連ファイル</a></dd>
+								</dl>
+							</td>
+							<td>
+								<span></span>
+							</td>
+							<td>
+								<span></span>
+							</td>
+						</tr>
+						<tr>
+							<td class="text-center">
+								<span>3時限</span>
+							</td>
+							<td>
+								<dl class="dl-horizontal">
+									<dt><i class="glyphicon glyphicon-book"></i>&nbsp;</dt>
+									<dd><a href="/ealps-portal/redirectMoodleCourse/2014/g/02004099" target="_blank" class="toolTip" title="主担当教員">健康科学・理論と実践</a></dd>
+									<dt><i class="glyphicon glyphicon-user"></i>&nbsp;</dt>
+									<dd>川 茂幸</dd>
+									<dt><i class="glyphicon glyphicon-user"></i>&nbsp;</dt>
+									<dd><span class="toolTip" data-toggle="tooltip" title="廣野 準一">...</span></dd>
+									<dt><i class="glyphicon glyphicon-info-sign"></i>&nbsp;</dt>
+									<dd><a href="/ealps-portal/redirectMoodleCourseInfo/2014/g/02004099" target="_blank">コース情報</a></dd>
+								</dl>
+							</td>
+							<td>
+								<span></span>
+							</td>
+							<td>
+								<span></span>
+							</td>
+							<td>
+								<span></span>
+							</td>
+							<td>
+								<span></span>
+							</td>
+							<td>
+								<span></span>
+							</td>
+						</tr>
+						<tr>
+							<td class="text-center">
+								<span>4時限</span>
+							</td>
+							<td>
+								<span></span>
+							</td>
+							<td>
+								<span></span>
+							</td>
+							<td>
+								<span></span>
+							</td>
+							<td>
+								<span></span>
+							</td>
+							<td>
+								<span></span>
+							</td>
+							<td>
+								<span></span>
+							</td>
+						</tr>
+						<tr>
+							<td class="text-center">
+								<span>5時限</span>
+							</td>
+							<td>
+								<span></span>
+							</td>
+							<td>
+								<span></span>
+							</td>
+							<td>
+								<span></span>
+							</td>
+							<td>
+								<span></span>
+							</td>
+							<td>
+								<span></span>
+							</td>
+							<td>
+								<span></span>
+							</td>
+						</tr>
+						<tr>
+							<td class="text-center">
+								<span>6時限</span>
+							</td>
+							<td>
+								<span></span>
+							</td>
+							<td>
+								<span></span>
+							</td>
+							<td>
+								<span></span>
+							</td>
+							<td>
+								<span></span>
+							</td>
+							<td>
+								<span></span>
+							</td>
+							<td>
+								<span></span>
+							</td>
+						</tr>
+						<tr>
+							<td class="text-center">
+								<span>7時限</span>
+							</td>
+							<td>
+								<span></span>
+							</td>
+							<td>
+								<span></span>
+							</td>
+							<td>
+								<span></span>
+							</td>
+							<td>
+								<span></span>
+							</td>
+							<td>
+								<span></span>
+							</td>
+							<td>
+								<span></span>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			
+			<div class="panel-body courseSchedule" wicket:id="nonScheduleCourseList">
+				<ul class="list-unstyled">
+					<li>
+						<span class="glyphicon glyphicon-book"></span>
+						<a href="/ealps-portal/redirectMoodleCourse/2014/t/T0217534" target="_blank" class="toolTip" data-toggle="tooltip" title="主担当教員">
+							&nbsp;健康科学・理論と実践（共通利用コース）
+						</a>
+						&nbsp;&nbsp;
+						<span class="glyphicon glyphicon-user"></span>&nbsp;川 茂幸&nbsp;&nbsp;
+						<span class="glyphicon glyphicon-time"></span>&nbsp;2014&nbsp;通年&nbsp;集中&nbsp;不定期&nbsp;&nbsp;
+						<span class="glyphicon glyphicon-info-sign"></span>
+						<a href="/ealps-portal/redirectMoodleCourseInfo/2014/t/T0217534" target="_blank">
+							&nbsp;コース情報
+						</a>
+						&nbsp;&nbsp;
+					</li>
+				</ul>
+			</div>
+			
+			<!-- コース リスト表示 -->
+			<div class="panel-body courseList" wicket:id="courseList">
+				<ul class="list-unstyled">
+					<li wicket:id="courseListView">
+						<span class="glyphicon glyphicon-book"></span>
+						<a href="#" wicket:id="courseURL" target="_blank">
+						</a>
+						&nbsp;&nbsp;
+						<span class="glyphicon glyphicon-user"></span>&nbsp;<span class="toolTip" wicket:id="teacherName" data-toggle="tooltip" title="主担当教員">主担当教員</span>&nbsp;&nbsp;
+						<span class="glyphicon glyphicon-time"></span>&nbsp;2015
+						<!-- <span class="glyphicon glyphicon-info-sign"></span> -->
+						<!-- <a href="/ealps-portal/redirectMoodleCourseInfo/2014/t/T0217534" target="_blank">
+							&nbsp;コース情報
+						</a> -->
+						&nbsp;&nbsp;
+					</li>
+				</ul>
+			</div>
+			
+			<!-- <div class="panel-body courseList" wicket:id="courseList">
+				<ul class="list-unstyled">
+					<li>
+						<span class="glyphicon glyphicon-book"></span>
+						<a href="/ealps-portal/redirectMoodleCourse/2014/t/T0217534" target="_blank" class="toolTip" data-toggle="tooltip" title="主担当教員">
+							&nbsp;ボランティア特別実習Ⅱ(情報)
+						</a>
+						&nbsp;&nbsp;
+						<span class="glyphicon glyphicon-user"></span>&nbsp;新村 正明&nbsp;&nbsp;
+						<span class="glyphicon glyphicon-time"></span>&nbsp;2014&nbsp;不定期&nbsp;集中&nbsp;不定期&nbsp;&nbsp;
+						<span class="glyphicon glyphicon-info-sign"></span>
+						<a href="/ealps-portal/redirectMoodleCourseInfo/2014/t/T0217534" target="_blank">
+							&nbsp;コース情報
+						</a>
+						&nbsp;&nbsp;
+					</li>
+				</ul>
+			</div> -->
+			
+			<ul class="list-group eALPSList" wicket:id="eALPSList">
+				<li class="list-group-item"><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span><a href="https://moodle-cloud.ealps.shinshu-u.ac.jp/2015/g/" target="_blank">&nbsp;共通教育</a></li>
+				<li class="list-group-item"><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span><a href="https://moodle-cloud.ealps.shinshu-u.ac.jp/2015/l/" target="_blank">&nbsp;人文学部・人文科学研究科</a></li>
+				<li class="list-group-item"><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span><a href="https://moodle-cloud.ealps.shinshu-u.ac.jp/2015/e/" target="_blank">&nbsp;教育学部・教育学研究科</a></li>
+				<li class="list-group-item"><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span><a href="https://moodle-cloud.ealps.shinshu-u.ac.jp/2015/k/" target="_blank">&nbsp;経済学部・経済社会政策科学研究科</a></li>
+				<li class="list-group-item"><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span><a href="https://moodle-cloud.ealps.shinshu-u.ac.jp/2015/s/" target="_blank">&nbsp;理学部・理工学研究科【理学】</a></li>
+				<li class="list-group-item"><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span><a href="https://moodle-cloud.ealps.shinshu-u.ac.jp/2015/m/" target="_blank">&nbsp;医学部・医学研究科</a></li>
+				<li class="list-group-item"><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span><a href="https://moodle-cloud.ealps.shinshu-u.ac.jp/2015/t/" target="_blank">&nbsp;工学部・理工学研究科【工学】</a></li>
+				<li class="list-group-item"><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span><a href="https://moodle-cloud.ealps.shinshu-u.ac.jp/2015/a/" target="_blank">&nbsp;農学部・農学研究科</a></li>
+				<li class="list-group-item"><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span><a href="https://moodle-cloud.ealps.shinshu-u.ac.jp/2015/f/" target="_blank">&nbsp;繊維学部・理工学研究科【繊維】</a></li>
+				<li class="list-group-item"><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span><a href="https://moodle-cloud.ealps.shinshu-u.ac.jp/2015/st/" target="_blank">&nbsp;総合工学系研究科</a></li>
+				<li class="list-group-item"><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span><a href="https://moodle-cloud.ealps.shinshu-u.ac.jp/common/" target="_blank">&nbsp;学部・研究科共通</a></li>
+			</ul>
+			
+		</div>
+		<script type="text/javascript" charset="utf-8">
+			$(document).ready(function() {
+				// 表示オプション非表示
+				$('#viewOption').hide();
+			});
+			
+			// 表示オプションボタン制御
+			$('.viewOptionCheck').click(function () {
+				$('.viewOptionCheck').toggleClass('active');
+				$('#viewOption').fadeToggle();
+				//viewTypeHideCheck();
+			});
+			
+			// 時間割ボタン
+			$('.courseScheduleButton').click(function() {
+				$('.courseScheduleRadio').click();
+			});
+			
+			// 学部一覧ボタン
+			$('.eALPSListButton').click(function() {
+				$('.eALPSListRadio').click();
+			});
+			
+			$('.courseScheduleRadio').click(function() {
+				//$.cookie('viewType', null);
+				//$.cookie('viewType', 'courseSchedule', {expire: 365});
+				//semesterHideCheck();
+				$(this).children('input').click();
+				$('.courseList').hide();
+				$('.eALPSList').hide();
+				$('.courseScheduleButton').hide();
+				$('.courseSchedule').fadeIn();
+				$('.eALPSListButton').fadeIn();
+			});
+			
+			$('.courseListRadio').click(function() {
+				//$.cookie('viewType', null);
+				//$.cookie('viewType', 'courseList', {expire: 365});
+				//semesterHideCheck();
+				$(this).children('input').click();
+				$('.courseSchedule').hide();
+				$('.eALPSList').hide();
+				$('.courseList').fadeIn();
+				$('.courseScheduleButton').fadeIn();
+				$('.eALPSListButton').fadeIn();
+			});
+			
+			$('.eALPSListRadio').click(function() {
+				//$.cookie('viewType', null);
+				//$.cookie('viewType', 'ealpsList', {expire: 365});
+				//semesterHideCheck();
+				$(this).children('input').click();
+				$('.courseSchedule').hide();
+				$('.courseList').hide();
+				$('.eALPSListButton').hide();
+				$('.eALPSList').fadeIn();
+				$('.courseScheduleButton').fadeIn();
+			});
+		</script>
+	</wicket:panel>
+</body>
+</html>

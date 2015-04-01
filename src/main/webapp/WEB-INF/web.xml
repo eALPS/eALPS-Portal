@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
+
+	<display-name>eALPS-Portal</display-name>
+
+	<icon>
+		<small-icon>favicon.ico</small-icon>
+		<large-icon>favicon.ico</large-icon>
+	</icon>
+	<display-name>eALPS-Portal</display-name>
+	<description>
+		This is a eALPS Portal System ver 1.0.0
+		Copyright © e-Learning Center, Shinshu University, all rights reserved.
+	</description>
+	<jsp-config>
+		<jsp-property-group>
+			<url-pattern>*.jsp</url-pattern>
+			<page-encoding>UTF-8</page-encoding>
+		</jsp-property-group>
+	</jsp-config>
+
+	<!--
+		There are three means to configure Wickets configuration mode and they
+		are tested in the order given.
+
+		1) A system property: -Dwicket.configuration
+		2) servlet specific <init-param>
+		3) context specific <context-param>
+
+		The value might be either "development" (reloading when templates change) or
+		"deployment". If no configuration is found, "development" is the default. -->
+
+	<!-- TransactionFilter用設定 start -->
+	<filter>
+		<filter-name>TransactionFilter</filter-name>
+		<filter-class>jp.ac.shinshu.u.common.filter.TransactionFilter</filter-class>
+	</filter>
+	<!-- TransactionFilter用設定 end -->
+
+	<filter>
+		<filter-name>eALPS-Portal</filter-name>
+		<filter-class>org.apache.wicket.protocol.http.WicketFilter</filter-class>
+		<init-param>
+			<param-name>applicationClassName</param-name>
+			<param-value>jp.ac.shinshu.u.ealps.portal.EALPSPortalApplication</param-value>
+		</init-param>
+		<init-param>
+			<param-name>configuration</param-name>
+			<!--
+			<param-value>deployment</param-value>
+			 -->
+			<param-value>development</param-value>
+		</init-param>
+	</filter>
+
+	<!-- TransactionFilter用設定 start -->
+	<filter-mapping>
+		<filter-name>TransactionFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<!-- TransactionFilter用設定 end -->
+
+	<filter-mapping>
+		<filter-name>eALPS-Portal</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<session-config>
+		<session-timeout>90</session-timeout>
+	</session-config>
+
+</web-app>

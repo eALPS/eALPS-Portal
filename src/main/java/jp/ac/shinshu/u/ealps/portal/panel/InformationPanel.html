@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org/" lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<wicket:panel>
+		<div class="panel panel-success">
+			<div class="panel-heading lead">e-Learningセンターからのお知らせ</div>
+			<div class="panel-body">
+				<!-- <div class="table-responsive"> -->
+				<div>
+					<table class="table table-striped informaiton-list" id="information-list">
+						<thead>
+							<tr>
+								<th class="importance">&nbsp;</th>
+								<th class="address">&nbsp;</th>
+								<th class="open-date">公開日</th>
+								<th>内容</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr wicket:id="PortalInformationBeanListView">
+								<td><span class="label" wicket:id="importanceText">重要度</span></td>
+								<td><span class="label" wicket:id="addressText">対象</span></td>
+								<td><time wicket:id="open">open</time></td>
+								<td wicket:id="titleLink">
+									<a href="#"><span wicket:id="title">title</span></a>
+									<div wicket:id="bodyContainer">
+										<div wicket:id="body">body</div>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" charset="utf-8">
+			$(document).ready(function() {
+				// お知らせテーブルにdataTableを適用
+				$('#information-list').DataTable({
+					aaSorting : [[ 2, 'desc']],
+					aLengthMenu : [ 1, 2, 3, 5, 8, 13, 21, 34, 55, 89 ],
+					iDisplayLength : 5,
+					//sPaginationType : 'bootstrap',
+					oLanguage : {
+						oPaginate: {
+							sFirst: "最初",
+							sLast: "最後",
+							sNext : '次へ',
+							sPrevious : '前へ',
+						},
+						sSearch : 'お知らせを検索：',
+						sLengthMenu : '_MENU_ 件表示',
+						sZeroRecords : '該当するレコードがありません',
+						sInfo : '_TOTAL_ 件中 _START_ 〜 _END_ を表示しています．',
+						sInfoEmpty : '0件',
+						sInfoFiltered : "（全 _MAX_ 件のレコードからフィルタリングされました．）"
+					}
+				});
+				
+				// ToolTips
+				$('[data-toggle="tooltip"]').tooltip({container: 'body'});
+			});
+		</script>
+	</wicket:panel>
+</body>
+</html>
