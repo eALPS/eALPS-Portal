@@ -6,6 +6,7 @@ package jp.ac.shinshu.u.ealps.portal.panel;
 import java.util.Arrays;
 import java.util.List;
 
+import jp.ac.shinshu.u.common.LecCode;
 import jp.ac.shinshu.u.ealps.portal.bean.RelationCourseBean;
 import jp.ac.shinshu.u.ealps.portal.service.IRelationCourseService;
 
@@ -13,6 +14,7 @@ import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
+import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.DropDownChoice;
@@ -163,6 +165,22 @@ public class SchedulePanel extends Panel {
 					}
 
 				});
+				
+//				add(new AjaxLink<Void>("firstSemesterCheckButton") {
+//					private static final long serialVersionUID = 7969319085789917881L;
+//
+//					@Override
+//					public void onClick(AjaxRequestTarget target) {
+//						//target.appendJavaScript("semesterHideCheck();");
+//					}
+//
+//					@Override
+//					protected void onInitialize() {
+//						this.add(new Label("firstSemesterCheckButtonLabel", " 前期 "));
+//						super.onInitialize();
+//					}
+//
+//				});
 
 				add(new AjaxLink<Void>("courseScheduleButton") {
 					private static final long serialVersionUID = 904855932483517020L;
@@ -200,6 +218,24 @@ public class SchedulePanel extends Panel {
 				super.onInitialize();
 			}
 		});
+		
+		// 履修情報から取得するコースリスト
+		final IModel<List<RelationCourseBean>> relationCourseBeanListModel = new LoadableDetachableModel<List<RelationCourseBean>>() {
+			private static final long serialVersionUID = 8993056010257360948L;
+			@Override
+			protected List<RelationCourseBean> load() {
+				return relationCourseService.getRelationCourseBeanList(userId);
+			}
+		};
+		
+		// 履修情報コースリストを基に時間割用のModelを生成
+		final IModel<List<List<List<RelationCourseBean>>>> courseScheduleListModel = new LoadableDetachableModel<List<List<List<RelationCourseBean>>>>() {
+			private static final long serialVersionUID = -2403192669728340428L;
+			@Override
+			protected List<List<List<RelationCourseBean>>> load() {
+				return relationCourseService.getCourseScheduleList(relationCourseBeanListModel.getObject());
+			}
+		};
 
 		add(new WebMarkupContainer("courseSchedule") {
 			private static final long serialVersionUID = -4414769783048460641L;
@@ -207,6 +243,45 @@ public class SchedulePanel extends Panel {
 			@Override
 			protected void onInitialize() {
 				super.onInitialize();
+				
+				PropertyListView<List<List<RelationCourseBean>>> courseSchedulePeriodListView = new PropertyListView<List<List<RelationCourseBean>>>("courseSchedulePeriodListView", courseScheduleListModel) {
+					private static final long serialVersionUID = 2927156290884480612L;
+					@Override
+					protected void populateItem(ListItem<List<List<RelationCourseBean>>> listItem) {
+						listItem.add(new Label("period", listItem.getIndex()+1+"時限"));
+						
+						PropertyListView<List<RelationCourseBean>> courseScheduleWeekDayListView = new PropertyListView<List<RelationCourseBean>>("courseScheduleWeekDayListView", listItem.getModel()) {
+							private static final long serialVersionUID = -6532971349026986813L;
+							@Override
+							protected void populateItem(ListItem<List<RelationCourseBean>> listItem) {
+								
+								PropertyListView<RelationCourseBean> courseScheduleListView = new PropertyListView<RelationCourseBean>("courseScheduleListView", listItem.getModel()) {
+									private static final long serialVersionUID = -8275367648185376988L;
+									@Override
+									protected void populateItem(ListItem<RelationCourseBean> listItem) {
+										listItem.add(new ExternalLink("courseData.url", listItem.getModelObject().getCourseData().getUrl(), listItem.getModelObject().getCourseData().getTitleName()));
+//										listItem.add(new Label("courseData.titleCode"));
+										listItem.add(new Label("teacherName", listItem.getModelObject().getTeacherList().isEmpty() ? "" : listItem.getModelObject().getTeacherList().get(0).getFirstName() + " " + listItem.getModelObject().getTeacherList().get(0).getLastName()));
+										listItem.add(new Label("subTeacherName", listItem.getModelObject().getSubTeacherList().size() == 1 ? listItem.getModelObject().getSubTeacherList().get(0).getFirstName() + " " + listItem.getModelObject().getTeacherList().get(0).getLastName() : "...").add(new AttributeAppender("title", Model.of(listItem.getModelObject().getSubTeacherList().size() == 1 ? "副担当教員" : listItem.getModelObject().getSubTeacherNameList()))));
+										listItem.add(new AttributeAppender("class", Model.of(listItem.getModelObject().getLecClass())," "));
+									}
+								};
+								listItem.add(courseScheduleListView);
+								
+							}
+						};
+						listItem.add(courseScheduleWeekDayListView);
+					}
+					@Override
+					protected void onInitialize() {
+//						setVisible(false);
+						setOutputMarkupId(true);
+						setOutputMarkupPlaceholderTag(true);
+						setReuseItems(true);
+						super.onInitialize();
+					}
+				};
+				this.add(courseSchedulePeriodListView);
 			}
 		});
 
@@ -216,16 +291,25 @@ public class SchedulePanel extends Panel {
 			@Override
 			protected void onInitialize() {
 				super.onInitialize();
+				
+				PropertyListView<RelationCourseBean> nonScheduleCourseListView = new PropertyListView<RelationCourseBean>("nonScheduleCourseListView", relationCourseBeanListModel) {
+					private static final long serialVersionUID = -4452224939836409982L;
+					@Override
+					protected void populateItem(final ListItem<RelationCourseBean> listItem) {
+						listItem.add(new ExternalLink("courseData.url", listItem.getModelObject().getCourseData().getUrl(), listItem.getModelObject().getCourseData().getTitleName()));
+						listItem.add(new Label("courseData.titleCode"));
+						listItem.add(new Label("teacherName", listItem.getModelObject().getTeacherList().isEmpty() ? "" : listItem.getModelObject().getTeacherList().get(0).getFirstName() + " " + listItem.getModelObject().getTeacherList().get(0).getLastName()));
+						listItem.add(new Label("subTeacherName", listItem.getModelObject().getSubTeacherList().size() == 1 ? listItem.getModelObject().getSubTeacherList().get(0).getFirstName() + " " + listItem.getModelObject().getTeacherList().get(0).getLastName() : "...").add(new AttributeAppender("title", Model.of(listItem.getModelObject().getSubTeacherList().size() == 1 ? "副担当教員" : listItem.getModelObject().getSubTeacherNameList()))));
+						listItem.add(new Label("courseData.opYear"));
+						listItem.add(new Label("opInfoValue"));
+						listItem.add(new AttributeAppender("class", Model.of(LecCode.valueOf("LEC" + listItem.getModelObject().getCourseData().getOpLec()).getLecClass())," "));
+						listItem.setVisible(!listItem.getModelObject().isScheduleCourse());
+					}
+				};
+				this.add(nonScheduleCourseListView);
 			}
 		});
 
-		final IModel<List<RelationCourseBean>> relationCourseBeanListModel = new LoadableDetachableModel<List<RelationCourseBean>>() {
-			private static final long serialVersionUID = 8993056010257360948L;
-			@Override
-			protected List<RelationCourseBean> load() {
-				return relationCourseService.getRelationCourseBeanList(userId);
-			}
-		};
 		add(new WebMarkupContainer("courseList") {
 			private static final long serialVersionUID = -2280591673089064874L;
 			@Override
@@ -235,10 +319,16 @@ public class SchedulePanel extends Panel {
 
 				PropertyListView<RelationCourseBean> courseListView = new PropertyListView<RelationCourseBean>("courseListView", relationCourseBeanListModel) {
 					private static final long serialVersionUID = -4452224939836409982L;
+
 					@Override
-					protected void populateItem(final ListItem<RelationCourseBean> listitem) {
-						listitem.add(new ExternalLink("courseData.url", listitem.getModelObject().getCourseData().getUrl(), listitem.getModelObject().getCourseData().getTitleName()));
-						listitem.add(new Label("courseData.titleCode"));
+					protected void populateItem(final ListItem<RelationCourseBean> listItem) {
+						listItem.add(new ExternalLink("courseData.url", listItem.getModelObject().getCourseData().getUrl(), listItem.getModelObject().getCourseData().getTitleName()));
+						listItem.add(new Label("courseData.titleCode"));
+						listItem.add(new Label("teacherName", listItem.getModelObject().getTeacherList().isEmpty() ? "" : listItem.getModelObject().getTeacherList().get(0).getFirstName() + " " + listItem.getModelObject().getTeacherList().get(0).getLastName()));
+						listItem.add(new Label("subTeacherName", listItem.getModelObject().getSubTeacherList().size() == 1 ? listItem.getModelObject().getSubTeacherList().get(0).getFirstName() + " " + listItem.getModelObject().getTeacherList().get(0).getLastName() : "...").add(new AttributeAppender("title", Model.of(listItem.getModelObject().getSubTeacherList().size() == 1 ? "副担当教員" : listItem.getModelObject().getSubTeacherNameList()))));
+						listItem.add(new Label("courseData.opYear"));
+						listItem.add(new Label("opInfoValue"));
+						listItem.add(new AttributeAppender("class", Model.of(LecCode.valueOf("LEC" + listItem.getModelObject().getCourseData().getOpLec()).getLecClass())," "));
 					}
 				};
 				this.add(courseListView);

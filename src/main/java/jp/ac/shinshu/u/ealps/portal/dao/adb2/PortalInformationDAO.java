@@ -3,6 +3,7 @@
  */
 package jp.ac.shinshu.u.ealps.portal.dao.adb2;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +42,7 @@ public class PortalInformationDAO extends ADB2AbstractDAO {
 		sql.append("WHERE a.availability ");
 //		sql.append("AND CURRENT_TIMESTAMP BETWEEN a.open AND a.close ");
 //		sql.append("ORDER BY sorttime DESC ");
-		resultSet = find(sql.toString());
+		ResultSet resultSet = find(sql.toString());
 
 		try {
 			PortalInformation portalInformation = null;
@@ -82,7 +83,7 @@ public class PortalInformationDAO extends ADB2AbstractDAO {
 		sql.append("AND a.addressTypeID = c.id ");
 //		sql.append("AND CURRENT_TIMESTAMP BETWEEN a.open AND a.close ");
 //		sql.append("ORDER BY sorttime DESC ");
-		resultSet = find(sql.toString());
+		ResultSet resultSet = find(sql.toString());
 
 		try {
 			PortalInformationBean portalInformationBean = null;

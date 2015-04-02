@@ -28,18 +28,6 @@ public class PersonalSchedulePage extends EALPSPortalWebPage {
 			userId = "niimura225";
 		}
 
-//		WebRequestCycle cycle = getWebRequestCycle();
-//    	String userSt = cycle.getRequest().getParameter("user");
-//    	if(userSt == null){
-//    		userSt ="";
-//    	}
-//    	String passSt = cycle.getRequest().getParameter("pass");
-//    	if(passSt == null){
-//    		passSt = "";
-//    	}
-//        add(new Label("user", userSt));
-//        add(new Label("pass", passSt));
-
 		add(new InformationPanel("informationPanel"));
 
 		add(new SchedulePanel("schedulePanel", UtilityService.getScheduleInitYear(), userId));

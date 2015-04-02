@@ -30,7 +30,7 @@ public abstract class AbstractDAO {
 	private String dataSource;
 	private Connection connection = null;
 	protected PreparedStatement statement = null;
-	protected ResultSet resultSet = null;
+	//protected ResultSet resultSet = null;
 
 	/**
 	 * コンストラクタ
@@ -103,7 +103,7 @@ public abstract class AbstractDAO {
 //		statement = connection.prepareStatement(sql);
 		statement = connection.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 		fillStatement(params);
-		resultSet = statement.executeQuery();
+		ResultSet resultSet = statement.executeQuery();
 
 		if (logger.isDebugEnabled()) {
 			int row = 0;
