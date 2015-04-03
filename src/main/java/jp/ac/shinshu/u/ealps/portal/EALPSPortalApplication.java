@@ -3,9 +3,10 @@ package jp.ac.shinshu.u.ealps.portal;
 import jp.ac.shinshu.u.common.definition.SystemDefinition;
 import jp.ac.shinshu.u.ealps.portal.view.PersonalSchedulePage;
 
+import org.apache.wicket.authroles.authentication.AbstractAuthenticatedWebSession;
+import org.apache.wicket.authroles.authentication.AuthenticatedWebApplication;
 import org.apache.wicket.guice.GuiceComponentInjector;
 import org.apache.wicket.markup.html.WebPage;
-import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.settings.IExceptionSettings;
 
 /**
@@ -14,7 +15,7 @@ import org.apache.wicket.settings.IExceptionSettings;
  *
  * @see jp.ac.shinshu.u.ealps.portal.Start#main(String[])
  */
-public class EALPSPortalApplication extends WebApplication
+public class EALPSPortalApplication extends AuthenticatedWebApplication
 {
 	/**
 	 * @see org.apache.wicket.Application#getHomePage()
@@ -50,5 +51,17 @@ public class EALPSPortalApplication extends WebApplication
 
 		// URLマッピング
 //		mountPages();
+	}
+
+	@Override
+	protected Class<? extends WebPage> getSignInPageClass() {
+		// TODO 自動生成されたメソッド・スタブ
+		return null;
+	}
+
+	@Override
+	protected Class<? extends AbstractAuthenticatedWebSession> getWebSessionClass() {
+		// TODO 自動生成されたメソッド・スタブ
+		return null;
 	}
 }
