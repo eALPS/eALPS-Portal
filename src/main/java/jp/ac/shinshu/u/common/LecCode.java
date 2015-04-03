@@ -9,6 +9,7 @@ package jp.ac.shinshu.u.common;
  */
 public enum LecCode {
 
+	LEC("", "不明", 99),
 	LEC00("00", "通年", 0),
 	LEC01("01", "通年（集中）", 0),
 	LEC10("10", "前期", 1),
@@ -52,11 +53,11 @@ public enum LecCode {
 	public String getTitle() {
 		return title;
 	}
-	
+
 	public int getLec() {
 		return lec;
 	}
-	
+
 	public String getLecClass() {
 		if(lec == 0) {
 			return "throughSemester";

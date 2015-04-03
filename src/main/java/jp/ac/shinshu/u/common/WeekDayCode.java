@@ -9,6 +9,7 @@ package jp.ac.shinshu.u.common;
  */
 public enum WeekDayCode {
 
+	WEEKDAY("", "不明", 99),
 	WEEKDAY1("1", "月曜", 0),
 	WEEKDAY2("2", "火曜", 1),
 	WEEKDAY3("3", "水曜", 2),
@@ -37,7 +38,7 @@ public enum WeekDayCode {
 	public String getTitle() {
 		return title;
 	}
-	
+
 	public int getWeekDay() {
 		return weekDay;
 	}

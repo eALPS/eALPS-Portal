@@ -9,6 +9,7 @@ package jp.ac.shinshu.u.common;
  */
 public enum HourCode {
 
+	HOUR("", "不明", 99),
 	HOUR1("1", "1時限", 0),
 	HOUR11("11", "1時限～2時限前半", 0),
 	HOUR12("12", "1時限後半〜2時限", 0),
@@ -55,7 +56,7 @@ public enum HourCode {
 	public String getTitle() {
 		return title;
 	}
-	
+
 	public int getHour() {
 		return hour;
 	}
