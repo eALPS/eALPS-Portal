@@ -25,7 +25,7 @@ public class PersonalSchedulePage extends EALPSPortalWebPage {
 		String userId = getRequest().getRequestParameters().getParameterValue("j_username").toString();
 
 		if(StringUtils.isEmpty(userId)) {
-			userId = "niimura225";
+			userId = "";
 		}
 
 		add(new InformationPanel("informationPanel"));
