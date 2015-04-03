@@ -107,7 +107,7 @@ public class InformationPanel extends Panel {
 							@Override
 							protected void onInitialize() {
 								this.add(new AttributeModifier("style", Model.of("display:none")));
-								this.add(new MultiLineLabel("body"));
+								this.add(new MultiLineLabel("body").setEscapeModelStrings(false));
 								super.onInitialize();
 							}
 						});
