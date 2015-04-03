@@ -6,9 +6,9 @@ package jp.ac.shinshu.u.ealps.portal.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import jp.ac.shinshu.u.common.HourCode;
-import jp.ac.shinshu.u.common.LecCode;
-import jp.ac.shinshu.u.common.WeekDayCode;
+import jp.ac.shinshu.u.common.definition.HourCode;
+import jp.ac.shinshu.u.common.definition.LecCode;
+import jp.ac.shinshu.u.common.definition.WeekDayCode;
 import jp.ac.shinshu.u.ealps.portal.bean.RelationCourseBean;
 import jp.ac.shinshu.u.ealps.portal.dao.adb2.RelationDAO;
 import jp.ac.shinshu.u.ealps.portal.entity.OpInfo;

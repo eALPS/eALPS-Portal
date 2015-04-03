@@ -5,6 +5,8 @@ package jp.ac.shinshu.u.common;
 
 import java.sql.Connection;
 
+import jp.ac.shinshu.u.common.definition.SystemDefinition;
+
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

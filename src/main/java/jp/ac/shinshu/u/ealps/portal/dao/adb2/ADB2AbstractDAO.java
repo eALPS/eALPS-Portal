@@ -3,8 +3,8 @@
  */
 package jp.ac.shinshu.u.ealps.portal.dao.adb2;
 
-import jp.ac.shinshu.u.common.SystemDefinition;
 import jp.ac.shinshu.u.common.dao.AbstractDAO;
+import jp.ac.shinshu.u.common.definition.SystemDefinition;
 
 /**
  * <p>ADB2にアクセスするDAOの基底クラスです</p>

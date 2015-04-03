@@ -1,7 +1,7 @@
 /**
  *
  */
-package jp.ac.shinshu.u.common;
+package jp.ac.shinshu.u.common.definition;
 
 /**
  * @author Osamu HASEGAWA

@@ -6,7 +6,7 @@ package jp.ac.shinshu.u.ealps.portal.panel;
 import java.util.Arrays;
 import java.util.List;
 
-import jp.ac.shinshu.u.common.LecCode;
+import jp.ac.shinshu.u.common.definition.LecCode;
 import jp.ac.shinshu.u.ealps.portal.bean.RelationCourseBean;
 import jp.ac.shinshu.u.ealps.portal.service.IRelationCourseService;
 

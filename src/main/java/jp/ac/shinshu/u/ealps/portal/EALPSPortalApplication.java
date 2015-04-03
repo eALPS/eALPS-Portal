@@ -1,6 +1,6 @@
 package jp.ac.shinshu.u.ealps.portal;
 
-import jp.ac.shinshu.u.common.SystemDefinition;
+import jp.ac.shinshu.u.common.definition.SystemDefinition;
 import jp.ac.shinshu.u.ealps.portal.view.PersonalSchedulePage;
 
 import org.apache.wicket.guice.GuiceComponentInjector;
