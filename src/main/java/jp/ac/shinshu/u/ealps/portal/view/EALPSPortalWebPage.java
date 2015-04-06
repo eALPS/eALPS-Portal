@@ -13,8 +13,6 @@ import org.apache.wicket.markup.html.IHeaderContributor;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.model.Model;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * @author osamu
@@ -26,11 +24,14 @@ public class EALPSPortalWebPage extends WebPage implements IHeaderContributor {
 	 */
 	private static final long serialVersionUID = -6229591982136332793L;
 
-	private Logger logger = LoggerFactory.getLogger(this.getClass());
+	protected Model<String> titleModel = new Model<String>();
+
+//	private Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	public EALPSPortalWebPage() {
 
-		this.add(new Label("title", new Model<String>("時間割｜eALPSポータル")));
+		titleModel.setObject("eALPSポータル");
+		this.add(new Label("title", titleModel));
 
 		Calendar calendar = new GregorianCalendar();
 		this.add(new Label("currentYear", new Model<Integer>(calendar.get(Calendar.YEAR))));

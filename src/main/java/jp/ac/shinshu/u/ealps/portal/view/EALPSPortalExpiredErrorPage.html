@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org/" lang="ja">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	</head>
+	<body>
+	<wicket:extend>
+		<div class="panel panel-success">
+			<div class="panel-heading lead"><wicket:message key="expiredError">Page Expired</wicket:message></div>
+			<div class="panel-body">
+				<div class="table-responsive">
+					<p><wicket:message key="expiredMessage">リクエストしたページの有効期限が切れています．</wicket:message></p>
+					<p><wicket:message key="logInAgain">再度ACSUからログインして下さい．</wicket:message></p>
+					<p><button class="btn btn-success" wicket:id="acsuLink"><span class="glyphicon glyphicon glyphicon-home"></span><wicket:message key="acsuLink">&nbsp;ACSUへ戻る&nbsp;</wicket:message></button></p>
+				</div>
+			</div>
+		</div>
+	</wicket:extend>
+	</body>
+</html>

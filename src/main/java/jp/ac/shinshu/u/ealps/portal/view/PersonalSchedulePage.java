@@ -22,6 +22,11 @@ public class PersonalSchedulePage extends EALPSPortalWebPage {
 
 //		super(parameters);
 
+		titleModel.setObject("時間割｜eALPSポータル");
+
+		// POSTされたuserIdを取得する
+		// WebRequestCycle cycle = getWebRequestCycle();
+		// String email = cycle.getRequest().getParameter("email");
 		String userId = getRequest().getRequestParameters().getParameterValue("j_username").toString();
 
 		if(StringUtils.isEmpty(userId)) {
