@@ -48,7 +48,11 @@ public List<RelationCourseBean> selectRelationCourseBeanList(String uid) {
 		sql.append("FROM ");
 		sql.append("relation a, courseData b ");
 		sql.append("WHERE a.uid = ? ");
+		sql.append("AND a.enable = 1 ");
 		sql.append("AND b.dataFrom = 0 ");
+		sql.append("AND NOT b.toLMS = 0 ");
+		sql.append("AND b.delFlag = 0 ");
+//		sql.append("AND b.opFlag = 0 ");
 		sql.append("AND a.listId = b.listId ");
 //		sql.append("AND b.rowId = c.courseId ");
 		sql.append("ORDER BY b.titleCode, b.opLec ");
@@ -62,8 +66,10 @@ public List<RelationCourseBean> selectRelationCourseBeanList(String uid) {
 		sql2.append("relation a, accountData b ");
 		sql2.append("WHERE a.listId = ? ");
 		sql2.append("AND a.roleId = ? ");
+		sql2.append("AND a.enable = 1 ");
 		sql2.append("AND a.uid = b.uid ");
-		sql2.append("AND b.dataFrom = 0");
+		sql2.append("AND b.dataFrom = 0 ");
+		sql2.append("AND b.enable = 1 ");
 		
 		StringBuilder sql3 = new StringBuilder();
 		sql3.append("SELECT ");
