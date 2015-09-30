@@ -14,8 +14,6 @@ import jp.ac.shinshu.u.ealps.portal.entity.CourseData;
 import jp.ac.shinshu.u.ealps.portal.entity.OpInfo;
 import jp.ac.shinshu.u.ealps.portal.entity.Relation;
 
-import org.apache.commons.lang3.builder.HashCodeBuilder;
-
 /**
  * @author Osamu HASEGAWA
  *
