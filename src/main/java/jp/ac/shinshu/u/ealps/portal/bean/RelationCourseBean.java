@@ -14,6 +14,9 @@ import jp.ac.shinshu.u.ealps.portal.entity.CourseData;
 import jp.ac.shinshu.u.ealps.portal.entity.OpInfo;
 import jp.ac.shinshu.u.ealps.portal.entity.Relation;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 
 /**
  * @author Osamu HASEGAWA
@@ -80,7 +83,7 @@ public class RelationCourseBean implements Serializable {
 	public void setVisible(boolean visible) {
 		this.visible = visible;
 	}
-	
+
 	public String getSubTeacherNameList() {
 		StringBuilder subTeacherNameList = new StringBuilder();
 		for (AccountData accountData : subTeacherList) {
@@ -94,7 +97,7 @@ public class RelationCourseBean implements Serializable {
 		}
 		return subTeacherNameList.toString();
 	}
-	
+
 	public String getOpInfoValue() {
 		StringBuilder opInfoValue = new StringBuilder();
 		for (OpInfo opInfo : opInfoList) {
@@ -110,5 +113,15 @@ public class RelationCourseBean implements Serializable {
 		}
 		return opInfoValue.toString();
 	}
+
+	@Override
+    public int hashCode() {
+        return HashCodeBuilder.reflectionHashCode(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return EqualsBuilder.reflectionEquals(this, obj);
+    }
 
 }
