@@ -1,10 +1,9 @@
 /**
- * 
+ *
  */
 package jp.ac.shinshu.u.ealps.portal.service;
 
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 /**
@@ -26,7 +25,7 @@ public class UtilityService implements IUtilityService {
 //		int year = gcal.get(GregorianCalendar.YEAR);
 //		int month = gcal.get(GregorianCalendar.MONTH);
 //		int day = gcal.get(GregorianCalendar.DAY_OF_MONTH);
-//		
+//
 //		if (month < 4) {
 //			if (month == 3 && day > 19) {
 //				return year;
@@ -38,7 +37,7 @@ public class UtilityService implements IUtilityService {
 //		}
 		return 2015;
 	}
-	
+
 	@Override
 	public List<Integer> getYearList(int year) {
 		List<Integer> yearList = new ArrayList<Integer>();
@@ -46,7 +45,7 @@ public class UtilityService implements IUtilityService {
 //		int year = gcal.get(GregorianCalendar.YEAR);
 //		int month = gcal.get(GregorianCalendar.MONTH);
 //		int day = gcal.get(GregorianCalendar.DAY_OF_MONTH);
-//		
+//
 //		if (month < 4) {
 //			if (month == 3 && day > 19) {
 //				return year;
@@ -56,11 +55,11 @@ public class UtilityService implements IUtilityService {
 //		} else {
 //			return year;
 //		}
-		
+
 		for (int i = 0; i < 5; i++) {
 			yearList.add(year-i);
 		}
-		
+
 		return yearList;
 	}
 

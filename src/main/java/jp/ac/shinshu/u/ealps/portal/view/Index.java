@@ -21,10 +21,10 @@ public class Index extends WebPage {
 	public Index(final PageParameters parameters) {
 		super(parameters);
 
-		String j_username = getRequest().getRequestParameters().getParameterValue("j_username").toString();
-		String userId = getRequest().getRequestParameters().getParameterValue("userId").toString();
-		String uid = getRequest().getRequestParameters().getParameterValue("uid").toString();
-		
+//		String j_username = getRequest().getRequestParameters().getParameterValue("j_username").toString();
+//		String userId = getRequest().getRequestParameters().getParameterValue("userId").toString();
+//		String uid = getRequest().getRequestParameters().getParameterValue("uid").toString();
+
 		add(new Label("version", getApplication().getFrameworkSettings().getVersion()));
 
 	}
