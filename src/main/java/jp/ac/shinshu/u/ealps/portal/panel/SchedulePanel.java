@@ -5,6 +5,7 @@ package jp.ac.shinshu.u.ealps.portal.panel;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -289,6 +290,8 @@ public class SchedulePanel extends Panel {
 			}
 		});
 
+		final Set<String> checkCourseRepitition = new HashSet<String>();
+
 		add(new WebMarkupContainer("nonScheduleCourseList") {
 			private static final long serialVersionUID = 6244941068825497509L;
 
@@ -307,7 +310,7 @@ public class SchedulePanel extends Panel {
 						listItem.add(new Label("courseData.opYear"));
 						listItem.add(new Label("opInfoValue"));
 						listItem.add(new AttributeAppender("class", Model.of(LecCode.valueOf("LEC" + listItem.getModelObject().getCourseData().getOpLec()).getLecClass())," "));
-						listItem.setVisible(!listItem.getModelObject().isScheduleCourse());
+						listItem.setVisible(!listItem.getModelObject().isScheduleCourse() && checkCourseRepitition.add(listItem.getModelObject().getCourseData().getUid()));
 					}
 				};
 				this.add(nonScheduleCourseListView);
