@@ -58,26 +58,24 @@ public class RelationCourseService implements IRelationCourseService {
 		int hour = 0;
 		int weekDay = 0;
 		for(RelationCourseBean relationCourseBean : relationCourseBeanList) {
-			relationCourseBean = SerializationUtils.clone(relationCourseBean);
 			for(OpInfo opInfo : relationCourseBean.getOpInfoList()) {
+				RelationCourseBean deepCopyrelationCourseBean = SerializationUtils.clone(relationCourseBean);
 				hour = HourCode.valueOf("HOUR" + opInfo.getOpHour()).getHour();
 				weekDay = WeekDayCode.valueOf("WEEKDAY" + opInfo.getOpWday()).getWeekDay();
-				relationCourseBean.setLecClass(LecCode.valueOf("LEC" + opInfo.getOpLec()).getLecClass());
+				deepCopyrelationCourseBean.setLecClass(LecCode.valueOf("LEC" + opInfo.getOpLec()).getLecClass());
 				if(hour == 100 || weekDay == 100) {
-					relationCourseBean.setVisible(false);
-					relationCourseBean.setScheduleCourse(false);
+					deepCopyrelationCourseBean.setVisible(false);
+					deepCopyrelationCourseBean.setScheduleCourse(false);
 				} else if (hour == 99 || weekDay == 99) {
-					relationCourseBean.setVisible(true);
-					relationCourseBean.setScheduleCourse(false);
+					deepCopyrelationCourseBean.setVisible(true);
+					deepCopyrelationCourseBean.setScheduleCourse(false);
 				} else {
-					relationCourseBean.setVisible(true);
-					relationCourseBean.setScheduleCourse(true);
-					courseSchedulePeriodList.get(hour).get(weekDay).add(relationCourseBean);
+					deepCopyrelationCourseBean.setVisible(true);
+					deepCopyrelationCourseBean.setScheduleCourse(true);
+					courseSchedulePeriodList.get(hour).get(weekDay).add(deepCopyrelationCourseBean);
 				}
 			}
-
 		}
-
 		return courseSchedulePeriodList;
 	}
 
