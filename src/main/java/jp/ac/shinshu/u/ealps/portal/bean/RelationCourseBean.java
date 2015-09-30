@@ -14,7 +14,6 @@ import jp.ac.shinshu.u.ealps.portal.entity.CourseData;
 import jp.ac.shinshu.u.ealps.portal.entity.OpInfo;
 import jp.ac.shinshu.u.ealps.portal.entity.Relation;
 
-import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
@@ -130,12 +129,29 @@ public class RelationCourseBean implements Serializable {
 
 	@Override
 	public int hashCode() {
-		return HashCodeBuilder.reflectionHashCode(this);
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((courseData.getUid() == null) ? 0 : courseData.getUid().hashCode());
+		return result;
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		return EqualsBuilder.reflectionEquals(this, obj);
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+
+		RelationCourseBean other = (RelationCourseBean) obj;
+		if (courseData.getUid() == null) {
+			if (other.getCourseData().getUid() != null)
+				return false;
+		} else if (!courseData.getUid().equals(other.getCourseData().getUid()))
+			return false;
+
+		return true;
 	}
 
 }

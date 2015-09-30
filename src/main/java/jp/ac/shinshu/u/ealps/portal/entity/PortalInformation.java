@@ -13,7 +13,7 @@ import java.sql.Timestamp;
 public class PortalInformation implements Serializable {
 
 	private static final long serialVersionUID = 3389321900267544266L;
-	
+
 	private int id;
 	private String title;
 	private String body;
@@ -25,7 +25,7 @@ public class PortalInformation implements Serializable {
 	private Timestamp update;
 	private Timestamp delete;
 	private boolean availability;
-	
+
 	public int getId() {
 		return id;
 	}
