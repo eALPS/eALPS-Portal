@@ -107,8 +107,7 @@ public class RelationCourseBean implements Serializable {
 			subTeacherNameList.append(", ");
 		}
 		if (!subTeacherList.isEmpty()) {
-			subTeacherNameList.delete(subTeacherNameList.lastIndexOf(","),
-					subTeacherNameList.length());
+			subTeacherNameList.delete(subTeacherNameList.lastIndexOf(","), subTeacherNameList.length());
 		}
 		return subTeacherNameList.toString();
 	}
@@ -116,19 +115,15 @@ public class RelationCourseBean implements Serializable {
 	public String getOpInfoValue() {
 		StringBuilder opInfoValue = new StringBuilder();
 		for (OpInfo opInfo : opInfoList) {
-			opInfoValue.append(LecCode.valueOf("LEC" + opInfo.getOpLec())
-					.getTitle());
+			opInfoValue.append(LecCode.valueOf("LEC" + opInfo.getOpLec()).getTitle());
 			opInfoValue.append(" ");
-			opInfoValue.append(WeekDayCode.valueOf(
-					"WEEKDAY" + opInfo.getOpWday()).getTitle());
+			opInfoValue.append(WeekDayCode.valueOf("WEEKDAY" + opInfo.getOpWday()).getTitle());
 			opInfoValue.append(" ");
-			opInfoValue.append(HourCode.valueOf("HOUR" + opInfo.getOpHour())
-					.getTitle());
+			opInfoValue.append(HourCode.valueOf("HOUR" + opInfo.getOpHour()).getTitle());
 			opInfoValue.append(", ");
 		}
 		if (!opInfoList.isEmpty()) {
-			opInfoValue.delete(opInfoValue.lastIndexOf(","),
-					opInfoValue.length());
+			opInfoValue.delete(opInfoValue.lastIndexOf(","), opInfoValue.length());
 		}
 		return opInfoValue.toString();
 	}
