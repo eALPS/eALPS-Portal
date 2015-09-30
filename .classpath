@@ -38,14 +38,10 @@
 	<classpathentry kind="var" path="TOMCAT_HOME/lib/jsp-api.jar"/>
 	<classpathentry kind="var" path="TOMCAT_HOME/lib/el-api.jar"/>
 	<classpathentry kind="var" path="TOMCAT_HOME/lib/annotations-api.jar"/>
-<<<<<<< HEAD
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-=======
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7">
 		<attributes>
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
->>>>>>> branch 'master' of https://github.com/eALPS/eALPS-Portal
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
