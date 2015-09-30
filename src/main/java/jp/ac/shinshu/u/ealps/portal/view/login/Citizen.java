@@ -3,10 +3,7 @@
  */
 package jp.ac.shinshu.u.ealps.portal.view.login;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Enumeration;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
