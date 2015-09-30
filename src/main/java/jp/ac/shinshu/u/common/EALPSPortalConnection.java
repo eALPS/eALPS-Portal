@@ -343,12 +343,6 @@ public class EALPSPortalConnection implements Connection {
 	}
 
 	@Override
-	public void setSchema(String schema) throws SQLException {
-		// TODO 自動生成されたメソッド・スタブ
-
-	}
-
-	@Override
 	public String getSchema() throws SQLException {
 		// TODO 自動生成されたメソッド・スタブ
 		return null;
@@ -371,6 +365,12 @@ public class EALPSPortalConnection implements Connection {
 	public int getNetworkTimeout() throws SQLException {
 		// TODO 自動生成されたメソッド・スタブ
 		return 0;
+	}
+
+	@Override
+	public void setSchema(String schema) throws SQLException {
+		// TODO 自動生成されたメソッド・スタブ
+
 	}
 
 }
