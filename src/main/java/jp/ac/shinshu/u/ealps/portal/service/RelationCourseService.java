@@ -4,7 +4,9 @@
 package jp.ac.shinshu.u.ealps.portal.service;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import jp.ac.shinshu.u.common.definition.HourCode;
 import jp.ac.shinshu.u.common.definition.LecCode;
@@ -12,6 +14,8 @@ import jp.ac.shinshu.u.common.definition.WeekDayCode;
 import jp.ac.shinshu.u.ealps.portal.bean.RelationCourseBean;
 import jp.ac.shinshu.u.ealps.portal.dao.adb2.RelationDAO;
 import jp.ac.shinshu.u.ealps.portal.entity.OpInfo;
+
+import org.apache.commons.lang3.SerializationUtils;
 
 /**
  * @author Osamu HASEGAWA
@@ -35,25 +39,26 @@ public class RelationCourseService implements IRelationCourseService {
 	}
 
 	@Override
-	public List<List<List<RelationCourseBean>>> getCourseScheduleList(List<RelationCourseBean> relationCourseBeanList) {
-		
-		List<List<List<RelationCourseBean>>> courseSchedulePeriodList = null;
-		List<List<RelationCourseBean>> courseScheduleWeekDayList = null;
-		List<RelationCourseBean> courseScheduleList = null;
-		
-		courseSchedulePeriodList = new ArrayList<List<List<RelationCourseBean>>>();
+	public List<List<Set<RelationCourseBean>>> getCourseScheduleList(List<RelationCourseBean> relationCourseBeanList) {
+
+		List<List<Set<RelationCourseBean>>> courseSchedulePeriodList = null;
+		List<Set<RelationCourseBean>> courseScheduleWeekDayList = null;
+		Set<RelationCourseBean> courseScheduleSet = null;
+
+		courseSchedulePeriodList = new ArrayList<List<Set<RelationCourseBean>>>();
 		for (int i = 0; i < 7; i++) {
-			courseScheduleWeekDayList = new ArrayList<List<RelationCourseBean>>();
+			courseScheduleWeekDayList = new ArrayList<Set<RelationCourseBean>>();
 			for (int j = 0; j < 6; j++) {
-				courseScheduleList = new ArrayList<RelationCourseBean>();
-				courseScheduleWeekDayList.add(courseScheduleList);
+				courseScheduleSet = new HashSet<RelationCourseBean>();
+				courseScheduleWeekDayList.add(courseScheduleSet);
 			}
 			courseSchedulePeriodList.add(courseScheduleWeekDayList);
 		}
-		
+
 		int hour = 0;
 		int weekDay = 0;
 		for(RelationCourseBean relationCourseBean : relationCourseBeanList) {
+			relationCourseBean = SerializationUtils.clone(relationCourseBean);
 			for(OpInfo opInfo : relationCourseBean.getOpInfoList()) {
 				hour = HourCode.valueOf("HOUR" + opInfo.getOpHour()).getHour();
 				weekDay = WeekDayCode.valueOf("WEEKDAY" + opInfo.getOpWday()).getWeekDay();
@@ -70,9 +75,9 @@ public class RelationCourseService implements IRelationCourseService {
 					courseSchedulePeriodList.get(hour).get(weekDay).add(relationCourseBean);
 				}
 			}
-			
+
 		}
-		
+
 		return courseSchedulePeriodList;
 	}
 

@@ -28,8 +28,8 @@
 					<dl class="control-group last">
 						<dt class="control-label">期間</dt>
 						<dd class="btn-group" data-toggle="buttons-checkbox">
-							<button class="btn btn-success firstSemesterCheck active"><span class="glyphicon glyphicon-check"></span>&nbsp;前期&nbsp;</button>
-							<button class="btn btn-success secondSemesterCheck"><span class="glyphicon"></span>&nbsp;後期&nbsp;</button>
+							<button class="btn btn-success firstSemesterCheck"><span class="glyphicon"></span>&nbsp;前期&nbsp;</button>
+							<button class="btn btn-success secondSemesterCheck active"><span class="glyphicon glyphicon-check"></span>&nbsp;後期&nbsp;</button>
 							<button class="btn btn-success throughSemesterCheck active"><span class="glyphicon glyphicon-check"></span>&nbsp;通年&nbsp;</button>
 							<button class="btn btn-success irregularSemesterCheck active"><span class="glyphicon glyphicon-check"></span>&nbsp;不定期&nbsp;</button>
 						</dd>
@@ -209,34 +209,34 @@
 				$('.eALPSList').fadeIn();
 				$('.courseScheduleButton').fadeIn();
 			});
-			
+
 			$('.firstSemesterCheck').click(function () {
 				$(this).children().toggleClass('glyphicon-check');
 				//viewTypeHideCheck();
 				$('.firstSemester').fadeToggle();
 			});
-			
+
 			$('.secondSemesterCheck').click(function () {
 				$(this).children().toggleClass('glyphicon-check');
 				//viewTypeHideCheck();
 				$('.secondSemester').fadeToggle();
 			});
-			
+
 			$('.throughSemesterCheck').click(function () {
 				$(this).children().toggleClass('glyphicon-check');
 				//viewTypeHideCheck();
 				$('.throughSemester').fadeToggle();
 			});
-			
+
 			$('.irregularSemesterCheck').click(function () {
 				$(this).children().toggleClass('glyphicon-check');
 				//viewTypeHideCheck();
 				$('.irregularSemester').fadeToggle();
 			});
-			
+
 			function semesterHideCheck() {
 				//var semesterCookie = '';
-				
+
 				if(!$('.firstSemesterCheck').hasClass('active')) {
 					$('.firstSemester').hide();
 					//semesterCookie += '0';
@@ -244,7 +244,7 @@
 					$('.firstSemester').fadeIn();
 					//semesterCookie += '1';
 				}
-				
+
 				if(!$('.secondSemesterCheck').hasClass('active')) {
 					$('.secondSemester').hide();
 					//semesterCookie += '0';
@@ -252,7 +252,7 @@
 					$('.secondSemester').fadeIn();
 					//semesterCookie += '1';
 				}
-				
+
 				if(!$('.throughSemesterCheck').hasClass('active')) {
 					$('.throughSemester').hide();
 					//semesterCookie += '0';
@@ -260,7 +260,7 @@
 					$('.throughSemester').fadeIn();
 					//semesterCookie += '1';
 				}
-				
+
 				if(!$('.irregularSemesterCheck').hasClass('active')) {
 					$('.irregularSemester').hide();
 					//semesterCookie += '0';

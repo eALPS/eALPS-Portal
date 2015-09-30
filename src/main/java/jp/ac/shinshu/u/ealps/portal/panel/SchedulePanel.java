@@ -3,8 +3,10 @@
  */
 package jp.ac.shinshu.u.ealps.portal.panel;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 
 import jp.ac.shinshu.u.common.definition.LecCode;
 import jp.ac.shinshu.u.ealps.portal.bean.RelationCourseBean;
@@ -229,10 +231,10 @@ public class SchedulePanel extends Panel {
 		};
 
 		// 履修情報コースリストを基に時間割用のModelを生成
-		final IModel<List<List<List<RelationCourseBean>>>> courseScheduleListModel = new LoadableDetachableModel<List<List<List<RelationCourseBean>>>>() {
+		final IModel<List<List<Set<RelationCourseBean>>>> courseScheduleListModel = new LoadableDetachableModel<List<List<Set<RelationCourseBean>>>>() {
 			private static final long serialVersionUID = -2403192669728340428L;
 			@Override
-			protected List<List<List<RelationCourseBean>>> load() {
+			protected List<List<Set<RelationCourseBean>>> load() {
 				return relationCourseService.getCourseScheduleList(relationCourseBeanListModel.getObject());
 			}
 		};
@@ -244,18 +246,20 @@ public class SchedulePanel extends Panel {
 			protected void onInitialize() {
 				super.onInitialize();
 
-				PropertyListView<List<List<RelationCourseBean>>> courseSchedulePeriodListView = new PropertyListView<List<List<RelationCourseBean>>>("courseSchedulePeriodListView", courseScheduleListModel) {
+				PropertyListView<List<Set<RelationCourseBean>>> courseSchedulePeriodListView = new PropertyListView<List<Set<RelationCourseBean>>>("courseSchedulePeriodListView", courseScheduleListModel) {
 					private static final long serialVersionUID = 2927156290884480612L;
 					@Override
-					protected void populateItem(ListItem<List<List<RelationCourseBean>>> listItem) {
+					protected void populateItem(ListItem<List<Set<RelationCourseBean>>> listItem) {
 						listItem.add(new Label("period", listItem.getIndex()+1+"時限"));
 
-						PropertyListView<List<RelationCourseBean>> courseScheduleWeekDayListView = new PropertyListView<List<RelationCourseBean>>("courseScheduleWeekDayListView", listItem.getModel()) {
+						PropertyListView<Set<RelationCourseBean>> courseScheduleWeekDayListView = new PropertyListView<Set<RelationCourseBean>>("courseScheduleWeekDayListView", listItem.getModel()) {
 							private static final long serialVersionUID = -6532971349026986813L;
 							@Override
-							protected void populateItem(ListItem<List<RelationCourseBean>> listItem) {
+							protected void populateItem(ListItem<Set<RelationCourseBean>> listItem) {
 
-								PropertyListView<RelationCourseBean> courseScheduleListView = new PropertyListView<RelationCourseBean>("courseScheduleListView", listItem.getModel()) {
+								List<RelationCourseBean> listItemToList = new ArrayList<RelationCourseBean>(listItem.getModelObject());
+
+								PropertyListView<RelationCourseBean> courseScheduleListView = new PropertyListView<RelationCourseBean>("courseScheduleListView", listItemToList) {
 									private static final long serialVersionUID = -8275367648185376988L;
 									@Override
 									protected void populateItem(ListItem<RelationCourseBean> listItem) {

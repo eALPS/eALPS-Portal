@@ -14,6 +14,8 @@ import jp.ac.shinshu.u.ealps.portal.entity.CourseData;
 import jp.ac.shinshu.u.ealps.portal.entity.OpInfo;
 import jp.ac.shinshu.u.ealps.portal.entity.Relation;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
  * @author Osamu HASEGAWA
@@ -35,52 +37,67 @@ public class RelationCourseBean implements Serializable {
 	public Relation getRelation() {
 		return relation;
 	}
+
 	public void setRelation(Relation relation) {
 		this.relation = relation;
 	}
+
 	public CourseData getCourseData() {
 		return courseData;
 	}
+
 	public void setCourseData(CourseData courseData) {
 		this.courseData = courseData;
 	}
+
 	public List<AccountData> getTeacherList() {
 		return teacherList;
 	}
+
 	public void setTeacherList(List<AccountData> teacherList) {
 		this.teacherList = teacherList;
 	}
+
 	public List<AccountData> getSubTeacherList() {
 		return subTeacherList;
 	}
+
 	public void setSubTeacherList(List<AccountData> subTeacherList) {
 		this.subTeacherList = subTeacherList;
 	}
+
 	public List<OpInfo> getOpInfoList() {
 		return opInfoList;
 	}
+
 	public void setOpInfoList(List<OpInfo> opInfoList) {
 		this.opInfoList = opInfoList;
 	}
+
 	public String getLecClass() {
 		return lecClass;
 	}
+
 	public void setLecClass(String lecClass) {
 		this.lecClass = lecClass;
 	}
+
 	public boolean isScheduleCourse() {
 		return scheduleCourse;
 	}
+
 	public void setScheduleCourse(boolean scheduleCourse) {
 		this.scheduleCourse = scheduleCourse;
 	}
+
 	public boolean isVisible() {
 		return visible;
 	}
+
 	public void setVisible(boolean visible) {
 		this.visible = visible;
 	}
-	
+
 	public String getSubTeacherNameList() {
 		StringBuilder subTeacherNameList = new StringBuilder();
 		for (AccountData accountData : subTeacherList) {
@@ -89,26 +106,41 @@ public class RelationCourseBean implements Serializable {
 			subTeacherNameList.append(accountData.getLastName());
 			subTeacherNameList.append(", ");
 		}
-		if(!subTeacherList.isEmpty()) {
-			subTeacherNameList.delete(subTeacherNameList.lastIndexOf(","), subTeacherNameList.length());
+		if (!subTeacherList.isEmpty()) {
+			subTeacherNameList.delete(subTeacherNameList.lastIndexOf(","),
+					subTeacherNameList.length());
 		}
 		return subTeacherNameList.toString();
 	}
-	
+
 	public String getOpInfoValue() {
 		StringBuilder opInfoValue = new StringBuilder();
 		for (OpInfo opInfo : opInfoList) {
-			opInfoValue.append(LecCode.valueOf("LEC" + opInfo.getOpLec()).getTitle());
+			opInfoValue.append(LecCode.valueOf("LEC" + opInfo.getOpLec())
+					.getTitle());
 			opInfoValue.append(" ");
-			opInfoValue.append(WeekDayCode.valueOf("WEEKDAY" + opInfo.getOpWday()).getTitle());
+			opInfoValue.append(WeekDayCode.valueOf(
+					"WEEKDAY" + opInfo.getOpWday()).getTitle());
 			opInfoValue.append(" ");
-			opInfoValue.append(HourCode.valueOf("HOUR" + opInfo.getOpHour()).getTitle());
+			opInfoValue.append(HourCode.valueOf("HOUR" + opInfo.getOpHour())
+					.getTitle());
 			opInfoValue.append(", ");
 		}
-		if(!opInfoList.isEmpty()) {
-			opInfoValue.delete(opInfoValue.lastIndexOf(","), opInfoValue.length());
+		if (!opInfoList.isEmpty()) {
+			opInfoValue.delete(opInfoValue.lastIndexOf(","),
+					opInfoValue.length());
 		}
 		return opInfoValue.toString();
+	}
+
+	@Override
+	public int hashCode() {
+		return HashCodeBuilder.reflectionHashCode(this);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		return EqualsBuilder.reflectionEquals(this, obj);
 	}
 
 }

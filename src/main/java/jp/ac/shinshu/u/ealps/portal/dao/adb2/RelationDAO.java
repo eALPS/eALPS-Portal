@@ -57,7 +57,7 @@ public List<RelationCourseBean> selectRelationCourseBeanList(String uid) {
 //		sql.append("AND b.rowId = c.courseId ");
 		sql.append("ORDER BY b.titleCode, b.opLec ");
 //		sql.append("ORDER BY b.titleCode, c.opLec, c.opWday, c.opHour ");
-		
+
 		StringBuilder sql2 = new StringBuilder();
 		sql2.append("SELECT ");
 		sql2.append("a.relId, a.listId, a.chain, a.uid, a.roleId, a.enable, a.updateAt, ");
@@ -70,7 +70,7 @@ public List<RelationCourseBean> selectRelationCourseBeanList(String uid) {
 		sql2.append("AND a.uid = b.uid ");
 		sql2.append("AND b.dataFrom = 0 ");
 		sql2.append("AND b.enable = 1 ");
-		
+
 		StringBuilder sql3 = new StringBuilder();
 		sql3.append("SELECT ");
 		sql3.append("a.opinfoId, a.courseId, a.opLec, a.opWday, a.opHour, a.campus ");
@@ -80,12 +80,12 @@ public List<RelationCourseBean> selectRelationCourseBeanList(String uid) {
 
 		ResultSet resultSet = null;
 		ResultSet resultSet2 = null;
-		
+
 		List<AccountData> teacherList = null;
 		AccountData accountData = null;
 		List<OpInfo> opInfoList = null;
 		OpInfo opInfo = null;
-		
+
 		resultSet = find(sql.toString(), uid);
 		try {
 			RelationCourseBean relationCourseBean = null;
@@ -114,7 +114,7 @@ public List<RelationCourseBean> selectRelationCourseBeanList(String uid) {
 				courseData.setListId(resultSet.getInt("b.listId"));
 				courseData.setUrl(resultSet.getString("b.url"));
 				relationCourseBean.setCourseData(courseData);
-				
+
 				// 主担当取得
 				resultSet2 = find(sql2.toString(), courseData.getListId(), 1);
 				teacherList = new ArrayList<AccountData>();
@@ -128,7 +128,7 @@ public List<RelationCourseBean> selectRelationCourseBeanList(String uid) {
 					teacherList.add(accountData);
 				}
 				relationCourseBean.setTeacherList(teacherList);
-				
+
 				// 副担当取得
 				resultSet2 = find(sql2.toString(), courseData.getListId(), 2);
 				teacherList = new ArrayList<AccountData>();
@@ -142,7 +142,7 @@ public List<RelationCourseBean> selectRelationCourseBeanList(String uid) {
 					teacherList.add(accountData);
 				}
 				relationCourseBean.setSubTeacherList(teacherList);
-				
+
 				// 開講曜日・時限
 				resultSet2 = find(sql3.toString(), courseData.getRowId());
 				opInfoList = new ArrayList<OpInfo>();

@@ -3,9 +3,7 @@
  */
 package jp.ac.shinshu.u.ealps.portal.view.login;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.Enumeration;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -30,27 +28,32 @@ import com.google.inject.Inject;
 public class Citizen extends EALPSPortalWebPage {
 
 	private static final long serialVersionUID = 5205056644436015115L;
-	
+
 	@Inject
 	private IUtilityService UtilityService;
 
 	public Citizen(final PageParameters parameters) {
-		
-		titleModel.setObject("市民開放講座 時間割｜eALPSポータル");
-		
-//		((ServletWebRequest) RequestCycle.get().getRequest()).getContainerRequest().getRemoteHost();
+
+
+titleModel.setObject("市民開放講座 時間割｜eALPSポータル");
+
 		HttpServletRequest httpServletRequest = ((ServletWebRequest) RequestCycle.get().getRequest()).getContainerRequest();
-		
-		List<String> headerNamesList = httpServletRequest.getHeaderNames() == null ? new ArrayList<String>() : Collections.list(httpServletRequest.getHeaderNames());
-		StringBuilder headerNames = new StringBuilder("");
-		for(String headerName : headerNamesList) {
-			headerNames.append(headerName);
-			headerNames.append(", ");
+
+		// ヘッダー確認用
+		@SuppressWarnings("unchecked")
+		Enumeration<String> headerNames = httpServletRequest.getHeaderNames();
+		StringBuilder headerName = new StringBuilder("");
+		if(headerNames != null) {
+			while( headerNames.hasMoreElements()) {
+				headerName.append(headerNames.nextElement());
+				headerName.append(", ");
+			}
 		}
+
 		String uid = httpServletRequest.getHeader("uid") == null ? "" : httpServletRequest.getHeader("uid").toString();
 		String j_username = httpServletRequest.getHeader("j_username") == null ? "" : httpServletRequest.getHeader("j_username").toString();
 		String userId = httpServletRequest.getHeader("userId") == null ? "" : httpServletRequest.getHeader("userId").toString();
-		
+
 //		String uid = httpServletRequest.getAttribute("uid") == null ? "" : httpServletRequest.getAttribute("uid").toString();
 //		String j_username = httpServletRequest.getAttribute("j_username") == null ? "" : httpServletRequest.getAttribute("j_username").toString();
 //		String userId = httpServletRequest.getAttribute("userId") == null ? "" : httpServletRequest.getAttribute("userId").toString();
@@ -58,12 +61,14 @@ public class Citizen extends EALPSPortalWebPage {
 //		String uid = getRequest().getRequestParameters().getParameterValue("uid").toString();
 //		String j_username = getRequest().getRequestParameters().getParameterValue("j_username").toString();
 //		String userId = getRequest().getRequestParameters().getParameterValue("userId").toString();
-		
+
+		// ヘッダー確認用
 		this.add(new Label("headerNames", Model.of(headerNames.toString())));
+
 		this.add(new Label("j_username", Model.of(j_username)));
 		this.add(new Label("userId", Model.of(userId)));
 		this.add(new Label("uid", Model.of(uid)));
-		
+
 		if(StringUtils.isEmpty(uid)) {
 			uid = "";
 		}
