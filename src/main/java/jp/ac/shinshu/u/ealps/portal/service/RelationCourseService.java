@@ -62,6 +62,7 @@ public class RelationCourseService implements IRelationCourseService {
 				RelationCourseBean deepCopyRelationCourseBean = SerializationUtils.clone(relationCourseBean);
 				hour = HourCode.valueOf("HOUR" + opInfo.getOpHour()).getHour();
 				weekDay = WeekDayCode.valueOf("WEEKDAY" + opInfo.getOpWday()).getWeekDay();
+				relationCourseBean.setLecClass(LecCode.valueOf("LEC" + opInfo.getOpLec()).getLecClass());
 				deepCopyRelationCourseBean.setLecClass(LecCode.valueOf("LEC" + opInfo.getOpLec()).getLecClass());
 				if(hour == 100 || weekDay == 100) {
 					relationCourseBean.setVisible(false);

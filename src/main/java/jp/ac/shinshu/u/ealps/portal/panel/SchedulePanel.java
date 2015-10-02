@@ -9,7 +9,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import jp.ac.shinshu.u.common.definition.LecCode;
 import jp.ac.shinshu.u.ealps.portal.bean.RelationCourseBean;
 import jp.ac.shinshu.u.ealps.portal.service.IRelationCourseService;
 
@@ -309,7 +308,7 @@ public class SchedulePanel extends Panel {
 						listItem.add(new Label("subTeacherName", listItem.getModelObject().getSubTeacherList().size() == 1 ? listItem.getModelObject().getSubTeacherList().get(0).getFirstName() + " " + listItem.getModelObject().getSubTeacherList().get(0).getLastName() : "...").add(new AttributeAppender("title", Model.of(listItem.getModelObject().getSubTeacherList().size() == 1 ? "副担当教員" : listItem.getModelObject().getSubTeacherNameList()))));
 						listItem.add(new Label("courseData.opYear"));
 						listItem.add(new Label("opInfoValue"));
-						listItem.add(new AttributeAppender("class", Model.of(LecCode.valueOf("LEC" + listItem.getModelObject().getCourseData().getOpLec()).getLecClass())," "));
+						listItem.add(new AttributeAppender("class", Model.of(listItem.getModelObject().getLecClass())," "));
 						listItem.setVisible(!listItem.getModelObject().isScheduleCourse() && checkCourseRepitition.add(listItem.getModelObject().getCourseData().getUid()));
 					}
 				};
@@ -335,7 +334,7 @@ public class SchedulePanel extends Panel {
 						listItem.add(new Label("subTeacherName", listItem.getModelObject().getSubTeacherList().size() == 1 ? listItem.getModelObject().getSubTeacherList().get(0).getFirstName() + " " + listItem.getModelObject().getSubTeacherList().get(0).getLastName() : "...").add(new AttributeAppender("title", Model.of(listItem.getModelObject().getSubTeacherList().size() == 1 ? "副担当教員" : listItem.getModelObject().getSubTeacherNameList()))));
 						listItem.add(new Label("courseData.opYear"));
 						listItem.add(new Label("opInfoValue"));
-						listItem.add(new AttributeAppender("class", Model.of(LecCode.valueOf("LEC" + listItem.getModelObject().getCourseData().getOpLec()).getLecClass())," "));
+						listItem.add(new AttributeAppender("class", Model.of(listItem.getModelObject().getLecClass())," "));
 					}
 				};
 				this.add(courseListView);
