@@ -12,8 +12,8 @@ import jp.ac.shinshu.u.ealps.portal.panel.SchedulePanel;
 import jp.ac.shinshu.u.ealps.portal.service.IUtilityService;
 import jp.ac.shinshu.u.ealps.portal.view.EALPSPortalWebPage;
 
-import org.apache.commons.lang3.StringUtils;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.protocol.http.servlet.ServletWebRequest;
 import org.apache.wicket.request.cycle.RequestCycle;
@@ -35,7 +35,7 @@ public class Citizen extends EALPSPortalWebPage {
 	public Citizen(final PageParameters parameters) {
 
 
-titleModel.setObject("市民開放講座 時間割｜eALPSポータル");
+		titleModel.setObject("市民開放講座 時間割｜eALPSポータル");
 
 		HttpServletRequest httpServletRequest = ((ServletWebRequest) RequestCycle.get().getRequest()).getContainerRequest();
 
@@ -50,9 +50,9 @@ titleModel.setObject("市民開放講座 時間割｜eALPSポータル");
 			}
 		}
 
-		String uid = httpServletRequest.getHeader("uid") == null ? "" : httpServletRequest.getHeader("uid").toString();
-		String j_username = httpServletRequest.getHeader("j_username") == null ? "" : httpServletRequest.getHeader("j_username").toString();
-		String userId = httpServletRequest.getHeader("userId") == null ? "" : httpServletRequest.getHeader("userId").toString();
+		IModel<String> uidModel = new Model<String>(httpServletRequest.getHeader("uid") == null ? "" : httpServletRequest.getHeader("uid").toString());
+		IModel<String> jUserNameModel = new Model<String>(httpServletRequest.getHeader("j_username") == null ? "" : httpServletRequest.getHeader("j_username").toString());
+		IModel<String> userIdModel = new Model<String>(httpServletRequest.getHeader("userId") == null ? "" : httpServletRequest.getHeader("userId").toString());
 
 //		String uid = httpServletRequest.getAttribute("uid") == null ? "" : httpServletRequest.getAttribute("uid").toString();
 //		String j_username = httpServletRequest.getAttribute("j_username") == null ? "" : httpServletRequest.getAttribute("j_username").toString();
@@ -65,17 +65,13 @@ titleModel.setObject("市民開放講座 時間割｜eALPSポータル");
 		// ヘッダー確認用
 		this.add(new Label("headerNames", Model.of(headerNames.toString())));
 
-		this.add(new Label("j_username", Model.of(j_username)));
-		this.add(new Label("userId", Model.of(userId)));
-		this.add(new Label("uid", Model.of(uid)));
-
-		if(StringUtils.isEmpty(uid)) {
-			uid = "";
-		}
+		this.add(new Label("uid", uidModel));
+		this.add(new Label("j_username", jUserNameModel));
+		this.add(new Label("userId", userIdModel));
 
 		add(new InformationPanel("informationPanel"));
 
-		add(new SchedulePanel("schedulePanel", UtilityService.getScheduleInitYear(), uid));
+		add(new SchedulePanel("schedulePanel", UtilityService.getScheduleInitYear(), uidModel));
 	}
 
 }
