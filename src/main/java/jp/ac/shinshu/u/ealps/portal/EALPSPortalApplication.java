@@ -4,6 +4,7 @@ import jp.ac.shinshu.u.common.definition.SystemDefinition;
 import jp.ac.shinshu.u.ealps.portal.view.EALPSPortalExpiredErrorPage;
 import jp.ac.shinshu.u.ealps.portal.view.PersonalSchedulePage;
 import jp.ac.shinshu.u.ealps.portal.view.login.Citizen;
+import jp.ac.shinshu.u.ealps.portal.view.logout.GlobalLogout;
 
 import org.apache.wicket.authroles.authentication.AbstractAuthenticatedWebSession;
 import org.apache.wicket.authroles.authentication.AuthenticatedWebApplication;
@@ -75,6 +76,7 @@ public class EALPSPortalApplication extends AuthenticatedWebApplication
 		// URLマッピング
 //		mountPages();
 		mountPage("/login/citizen", Citizen.class);
+		mountPage("/logout/ealps", GlobalLogout.class);
 	}
 
 	@Override
