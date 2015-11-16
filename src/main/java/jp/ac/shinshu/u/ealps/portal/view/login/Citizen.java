@@ -35,7 +35,7 @@ public class Citizen extends EALPSPortalWebPage {
 	public Citizen(final PageParameters parameters) {
 
 
-titleModel.setObject("市民開放講座 時間割｜eALPSポータル");
+		titleModel.setObject("市民開放講座 時間割｜eALPSポータル");
 
 		HttpServletRequest httpServletRequest = ((ServletWebRequest) RequestCycle.get().getRequest()).getContainerRequest();
 
