@@ -49,18 +49,18 @@ public class SchedulePanel extends Panel {
 	/**
 	 * @param id
 	 */
-	public SchedulePanel(String id, int initYear, String userId) {
+	public SchedulePanel(String id, int initYear, IModel<String> userIdModel) {
 		super(id);
-		drow(initYear, userId);
+		drow(initYear, userIdModel.getObject());
 	}
 
 	/**
 	 * @param id
 	 * @param model
 	 */
-	public SchedulePanel(String id, IModel<?> model, int initYear, String userId) {
+	public SchedulePanel(String id, IModel<?> model, int initYear, IModel<String> userIdModel) {
 		super(id, model);
-		drow(initYear, userId);
+		drow(initYear, userIdModel.getObject());
 	}
 
 	private void drow(int initYear, final String userId) {
