@@ -144,11 +144,13 @@ public class RelationCourseBean implements Serializable {
 
 		RelationCourseBean other = (RelationCourseBean) obj;
 		if (courseData.getUid() == null) {
-			if (other.getCourseData().getUid() != null)
+			if (other.getCourseData().getUid() != null) {
 				return false;
-		} else if (!courseData.getUid().equals(other.getCourseData().getUid()))
+			}
+		} else if (!(courseData.getUid().equals(other.getCourseData().getUid()) && lecClass.equals(other.getLecClass()))) {
+			// uidと開講時期が等しかった場合同一とみなす
 			return false;
-
+		}
 		return true;
 	}
 
