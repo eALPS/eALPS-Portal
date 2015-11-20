@@ -48,13 +48,15 @@ public class PersonalSchedulePage extends EALPSPortalWebPage {
 			}
 		});
 
-		add(new AjaxLazyLoadPanel("schedulePanel") {
-			private static final long serialVersionUID = -9047759161966347185L;
-			@Override
-			public Component getLazyLoadComponent(String id) {
-				return new SchedulePanel(id, UtilityService.getScheduleInitYear(), userIdModel);
-			}
-		});
+		add(new SchedulePanel("schedulePanel", UtilityService.getScheduleInitYear(), userIdModel));
+
+//		add(new AjaxLazyLoadPanel("schedulePanel") {
+//			private static final long serialVersionUID = -9047759161966347185L;
+//			@Override
+//			public Component getLazyLoadComponent(String id) {
+//				return new SchedulePanel(id, UtilityService.getScheduleInitYear(), userIdModel);
+//			}
+//		});
 
 //		add(new Label("version", getApplication().getFrameworkSettings().getVersion()));
 
