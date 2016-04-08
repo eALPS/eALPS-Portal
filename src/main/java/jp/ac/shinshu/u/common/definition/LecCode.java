@@ -10,6 +10,7 @@ package jp.ac.shinshu.u.common.definition;
 public enum LecCode {
 
 	LEC("", "不明", 99),
+	LEC0("0", "通年", 0),
 	LEC00("00", "通年", 0),
 	LEC01("01", "通年（集中）", 0),
 	LEC10("10", "前期", 1),
