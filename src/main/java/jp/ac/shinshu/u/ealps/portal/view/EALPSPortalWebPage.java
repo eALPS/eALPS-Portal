@@ -49,7 +49,7 @@ public class EALPSPortalWebPage extends WebPage implements IHeaderContributor {
 		response.render(CssHeaderItem.forUrl("css/dataTables.bootstrap.css"));
 		response.render(CssHeaderItem.forUrl("css/common.css"));
 
-		response.render(JavaScriptHeaderItem.forUrl("https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"));
+		response.render(JavaScriptHeaderItem.forUrl("https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"));
 		response.render(JavaScriptHeaderItem.forUrl("bootstrap/js/bootstrap.min.js"));
 		response.render(JavaScriptHeaderItem.forUrl("js/jquery.dataTables.min.js"));
 		response.render(JavaScriptHeaderItem.forUrl("js/dataTables.bootstrap.js"));
