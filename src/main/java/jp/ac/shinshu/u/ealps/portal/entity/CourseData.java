@@ -36,6 +36,7 @@ public class CourseData implements Serializable {
 	private String url;
 	private String optUrl;
 	private int dataFrom;
+	private String fileUrl;
 
 	public int getRowId() {
 		return rowId;
@@ -168,6 +169,12 @@ public class CourseData implements Serializable {
 	}
 	public void setDataFrom(int dataFrom) {
 		this.dataFrom = dataFrom;
+	}
+	public String getFileUrl() {
+		return fileUrl;
+	}
+	public void setFileUrl(String fileUrl) {
+		this.fileUrl = fileUrl;
 	}
 
 }
