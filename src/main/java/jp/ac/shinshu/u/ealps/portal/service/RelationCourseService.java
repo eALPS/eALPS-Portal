@@ -31,10 +31,10 @@ public class RelationCourseService implements IRelationCourseService {
 	}
 
 	@Override
-	public List<RelationCourseBean> getRelationCourseBeanList(String uid) {
+	public List<RelationCourseBean> getRelationCourseBeanList(String uid, int year) {
 		List<RelationCourseBean> relationCourseBeanList;
 		RelationDAO relationCourseDAO = new RelationDAO();
-		relationCourseBeanList = relationCourseDAO.selectRelationCourseBeanList(uid);
+		relationCourseBeanList = relationCourseDAO.selectRelationCourseBeanList(uid, year);
 		return relationCourseBeanList;
 	}
 

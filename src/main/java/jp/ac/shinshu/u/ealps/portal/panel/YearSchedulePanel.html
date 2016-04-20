@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org/" lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<wicket:panel>
+		<div class="table-responsive courseSchedule" wicket:id="courseSchedule">
+			<table class="table table-striped table-bordered table-condensed schedule">
+				<thead>
+					<tr>
+						<th class="courseHour">&nbsp;</th>
+						<th class="text-center courseWeek">月曜日</th>
+						<th class="text-center courseWeek">火曜日</th>
+						<th class="text-center courseWeek">水曜日</th>
+						<th class="text-center courseWeek">木曜日</th>
+						<th class="text-center courseWeek">金曜日</th>
+						<th class="text-center courseWeek">土曜日</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr wicket:id="courseSchedulePeriodListView">
+						<td class="text-center">
+							<span wicket:id="period">時限</span>
+						</td>
+						<td wicket:id="courseScheduleWeekDayListView">
+							<dl class="dl-horizontal" wicket:id="courseScheduleListView">
+								<dt><i class="glyphicon glyphicon-book"></i>&nbsp;</dt>
+								<dd><a href="#" wicket:id="courseData.url" target="_blank">Moodleリンク</a></dd>
+								<dt><i class="glyphicon glyphicon-user"></i>&nbsp;</dt>
+								<dd><span class="toolTip" wicket:id="teacherName" data-toggle="tooltip" title="主担当教員">主担当教員</span></dd>
+								<dt><i class="glyphicon glyphicon-user"></i>&nbsp;</dt>
+								<dd><span class="toolTip" wicket:id="subTeacherName" data-toggle="tooltip">副担当教員</span></dd>
+								<wicket:enclosure chile="courseData.fileUrl">
+								<dt><i class="glyphicon glyphicon-paperclip"></i>&nbsp;</dt>
+								<dd><a href="#" wicket:id="courseData.fileUrl" target="_blank">関連ファイル</a></dd>
+								</wicket:enclosure>
+								<!-- <dt><i class="glyphicon glyphicon-info-sign"></i>&nbsp;</dt>
+								<dd><a href="/ealps-portal/redirectMoodleCourseInfo/2014/g/02004099" target="_blank">コース情報</a></dd> -->
+							</dl>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<!-- 時間割外のコース リスト表示 -->
+		<div class="panel-body courseSchedule" wicket:id="nonScheduleCourseList">
+			<ul class="list-unstyled">
+				<li wicket:id="nonScheduleCourseListView">
+					<span class="glyphicon glyphicon-book"></span>
+					<a href="#" wicket:id="courseData.url" target="_blank">Moodleリンク</a>（<span wicket:id="courseData.titleCode"></span>）&nbsp;&nbsp;
+					<span class="glyphicon glyphicon-user"></span>&nbsp;<span class="toolTip" wicket:id="teacherName" data-toggle="tooltip" title="主担当教員">主担当教員</span>&nbsp;&nbsp;
+					<span class="glyphicon glyphicon-user"></span>&nbsp;<span class="toolTip" wicket:id="subTeacherName" data-toggle="tooltip">副担当教員</span>&nbsp;&nbsp;
+					<span class="glyphicon glyphicon-time"></span>&nbsp;<span wicket:id="courseData.opYear">開講年度</span>&nbsp;<span wicket:id="opInfoValue">開講時期</span>
+					<!-- <span class="glyphicon glyphicon-info-sign"></span> -->
+					<!-- <a href="/ealps-portal/redirectMoodleCourseInfo/2014/t/T0217534" target="_blank">
+						&nbsp;コース情報
+					</a> -->
+				</li>
+			</ul>
+		</div>
+
+		<!-- コース リスト表示 -->
+		<div class="panel-body courseList" wicket:id="courseList">
+			<ul class="list-unstyled">
+				<li wicket:id="courseListView">
+					<span class="glyphicon glyphicon-book"></span>
+					<a href="#" wicket:id="courseData.url" target="_blank">Moodleリンク</a>（<span wicket:id="courseData.titleCode"></span>）&nbsp;&nbsp;
+					<span class="glyphicon glyphicon-user"></span>&nbsp;<span class="toolTip" wicket:id="teacherName" data-toggle="tooltip" title="主担当教員">主担当教員</span>&nbsp;&nbsp;
+					<span class="glyphicon glyphicon-user"></span>&nbsp;<span class="toolTip" wicket:id="subTeacherName" data-toggle="tooltip">副担当教員</span>&nbsp;&nbsp;
+					<span class="glyphicon glyphicon-time"></span>&nbsp;<span wicket:id="courseData.opYear">開講年度</span>&nbsp;<span wicket:id="opInfoValue">開講時期</span>
+					<!-- <span class="glyphicon glyphicon-info-sign"></span> -->
+					<!-- <a href="/ealps-portal/redirectMoodleCourseInfo/2014/t/T0217534" target="_blank">
+						&nbsp;コース情報
+					</a> -->
+				</li>
+			</ul>
+		</div>
+
+		<!-- 学部リスト -->
+		<ul class="list-group eALPSList" wicket:id="eALPSList">
+			<li class="list-group-item" wicket:id="eALPSListView">
+				<span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span>&nbsp;<a href="#" wicket:id="site" target="_blank">学部サイト</a>
+			</li>
+		</ul>
+
+		<script type="text/javascript" charset="utf-8">
+		$(document).ready(function() {
+			// 表示オプション非表示
+			semesterHideCheck();
+			$('.courseScheduleRadio').click();
+			$('[data-toggle="tooltip"]').tooltip({container: 'body'});
+		});
+		</script>
+
+	</wicket:panel>
+</body>
+</html>

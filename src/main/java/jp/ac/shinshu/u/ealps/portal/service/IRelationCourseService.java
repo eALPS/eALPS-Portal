@@ -17,7 +17,7 @@ import com.google.inject.ImplementedBy;
 @ImplementedBy(RelationCourseService.class)
 public interface IRelationCourseService {
 
-	public List<RelationCourseBean> getRelationCourseBeanList(String userId);
+	public List<RelationCourseBean> getRelationCourseBeanList(String userId, int year);
 
 	public List<List<Set<RelationCourseBean>>> getCourseScheduleList(List<RelationCourseBean> relationCourseBeanList);
 

@@ -28,8 +28,8 @@
 					<dl class="control-group last">
 						<dt class="control-label">期間</dt>
 						<dd class="btn-group" data-toggle="buttons-checkbox">
-							<button class="btn btn-success firstSemesterCheck"><span class="glyphicon"></span>&nbsp;前期&nbsp;</button>
-							<button class="btn btn-success secondSemesterCheck active"><span class="glyphicon glyphicon-check"></span>&nbsp;後期&nbsp;</button>
+							<button class="btn btn-success firstSemesterCheck active"><span class="glyphicon glyphicon-check"></span>&nbsp;前期&nbsp;</button>
+							<button class="btn btn-success secondSemesterCheck"><span class="glyphicon"></span>&nbsp;後期&nbsp;</button>
 							<button class="btn btn-success throughSemesterCheck active"><span class="glyphicon glyphicon-check"></span>&nbsp;通年&nbsp;</button>
 							<button class="btn btn-success irregularSemesterCheck active"><span class="glyphicon glyphicon-check"></span>&nbsp;不定期&nbsp;</button>
 						</dd>
@@ -67,211 +67,131 @@
 				</div>
 			</div>
 
-			<div class="table-responsive courseSchedule" wicket:id="courseSchedule">
-				<table class="table table-striped table-bordered table-condensed schedule">
-					<thead>
-						<tr>
-							<th class="courseHour">&nbsp;</th>
-							<th class="text-center courseWeek">月曜日</th>
-							<th class="text-center courseWeek">火曜日</th>
-							<th class="text-center courseWeek">水曜日</th>
-							<th class="text-center courseWeek">木曜日</th>
-							<th class="text-center courseWeek">金曜日</th>
-							<th class="text-center courseWeek">土曜日</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr wicket:id="courseSchedulePeriodListView">
-							<td class="text-center">
-								<span wicket:id="period">時限</span>
-							</td>
-							<td wicket:id="courseScheduleWeekDayListView">
-								<dl class="dl-horizontal" wicket:id="courseScheduleListView">
-									<dt><i class="glyphicon glyphicon-book"></i>&nbsp;</dt>
-									<dd><a href="#" wicket:id="courseData.url" target="_blank">Moodleリンク</a></dd>
-									<dt><i class="glyphicon glyphicon-user"></i>&nbsp;</dt>
-									<dd><span class="toolTip" wicket:id="teacherName" data-toggle="tooltip" title="主担当教員">主担当教員</span></dd>
-									<dt><i class="glyphicon glyphicon-user"></i>&nbsp;</dt>
-									<dd><span class="toolTip" wicket:id="subTeacherName" data-toggle="tooltip">副担当教員</span></dd>
-									<!-- <dt><i class="glyphicon glyphicon-info-sign"></i>&nbsp;</dt>
-									<dd><a href="/ealps-portal/redirectMoodleCourseInfo/2014/g/02004099" target="_blank">コース情報</a></dd> -->
-								</dl>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-
-			<div class="panel-body courseSchedule" wicket:id="nonScheduleCourseList">
-				<ul class="list-unstyled">
-					<li wicket:id="nonScheduleCourseListView">
-						<span class="glyphicon glyphicon-book"></span>
-						<a href="#" wicket:id="courseData.url" target="_blank">Moodleリンク</a>（<span wicket:id="courseData.titleCode"></span>）&nbsp;&nbsp;
-						<span class="glyphicon glyphicon-user"></span>&nbsp;<span class="toolTip" wicket:id="teacherName" data-toggle="tooltip" title="主担当教員">主担当教員</span>&nbsp;&nbsp;
-						<span class="glyphicon glyphicon-user"></span>&nbsp;<span class="toolTip" wicket:id="subTeacherName" data-toggle="tooltip">副担当教員</span>&nbsp;&nbsp;
-						<span class="glyphicon glyphicon-time"></span>&nbsp;<span wicket:id="courseData.opYear">開講年度</span>&nbsp;<span wicket:id="opInfoValue">開講時期</span>
-						<!-- <span class="glyphicon glyphicon-info-sign"></span> -->
-						<!-- <a href="/ealps-portal/redirectMoodleCourseInfo/2014/t/T0217534" target="_blank">
-							&nbsp;コース情報
-						</a> -->
-					</li>
-				</ul>
-			</div>
-
-			<!-- コース リスト表示 -->
-			<div class="panel-body courseList" wicket:id="courseList">
-				<ul class="list-unstyled">
-					<li wicket:id="courseListView">
-						<span class="glyphicon glyphicon-book"></span>
-						<a href="#" wicket:id="courseData.url" target="_blank">Moodleリンク</a>（<span wicket:id="courseData.titleCode"></span>）&nbsp;&nbsp;
-						<span class="glyphicon glyphicon-user"></span>&nbsp;<span class="toolTip" wicket:id="teacherName" data-toggle="tooltip" title="主担当教員">主担当教員</span>&nbsp;&nbsp;
-						<span class="glyphicon glyphicon-user"></span>&nbsp;<span class="toolTip" wicket:id="subTeacherName" data-toggle="tooltip">副担当教員</span>&nbsp;&nbsp;
-						<span class="glyphicon glyphicon-time"></span>&nbsp;<span wicket:id="courseData.opYear">開講年度</span>&nbsp;<span wicket:id="opInfoValue">開講時期</span>
-						<!-- <span class="glyphicon glyphicon-info-sign"></span> -->
-						<!-- <a href="/ealps-portal/redirectMoodleCourseInfo/2014/t/T0217534" target="_blank">
-							&nbsp;コース情報
-						</a> -->
-					</li>
-				</ul>
-			</div>
-
-			<ul class="list-group eALPSList" wicket:id="eALPSList">
-				<li class="list-group-item"><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span><a href="https://moodle-cloud.ealps.shinshu-u.ac.jp/2015/g/" target="_blank">&nbsp;共通教育</a></li>
-				<li class="list-group-item"><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span><a href="https://moodle-cloud.ealps.shinshu-u.ac.jp/2015/l/" target="_blank">&nbsp;人文学部・人文科学研究科</a></li>
-				<li class="list-group-item"><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span><a href="https://moodle-cloud.ealps.shinshu-u.ac.jp/2015/e/" target="_blank">&nbsp;教育学部・教育学研究科</a></li>
-				<li class="list-group-item"><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span><a href="https://moodle-cloud.ealps.shinshu-u.ac.jp/2015/k/" target="_blank">&nbsp;経済学部・経済社会政策科学研究科</a></li>
-				<li class="list-group-item"><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span><a href="https://moodle-cloud.ealps.shinshu-u.ac.jp/2015/s/" target="_blank">&nbsp;理学部・理工学研究科【理学】</a></li>
-				<li class="list-group-item"><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span><a href="https://moodle-cloud.ealps.shinshu-u.ac.jp/2015/m/" target="_blank">&nbsp;医学部・医学研究科</a></li>
-				<li class="list-group-item"><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span><a href="https://moodle-cloud.ealps.shinshu-u.ac.jp/2015/t/" target="_blank">&nbsp;工学部・理工学研究科【工学】</a></li>
-				<li class="list-group-item"><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span><a href="https://moodle-cloud.ealps.shinshu-u.ac.jp/2015/a/" target="_blank">&nbsp;農学部・農学研究科</a></li>
-				<li class="list-group-item"><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span><a href="https://moodle-cloud.ealps.shinshu-u.ac.jp/2015/f/" target="_blank">&nbsp;繊維学部・理工学研究科【繊維】</a></li>
-				<li class="list-group-item"><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span><a href="https://moodle-cloud.ealps.shinshu-u.ac.jp/2015/st/" target="_blank">&nbsp;総合工学系研究科</a></li>
-				<li class="list-group-item"><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span><a href="https://moodle-cloud.ealps.shinshu-u.ac.jp/common/" target="_blank">&nbsp;学部・研究科共通</a></li>
-			</ul>
+			<div wicket:id="yearSchedule"></div>
+<!-- 			<wicket:container wicket:id="yearSchedule"></wicket:container> -->
 
 		</div>
 		<script type="text/javascript" charset="utf-8">
-			$(document).ready(function() {
-				// 表示オプション非表示
-				$('#viewOption').hide();
-				semesterHideCheck();
-			});
+		$(document).ready(function() {
+			// 表示オプション非表示
+			$('#viewOption').hide();
+		});
 
-			// 表示オプションボタン制御
-			$('.viewOptionCheck').click(function () {
-				$('.viewOptionCheck').toggleClass('active');
-				$('#viewOption').fadeToggle();
-				//viewTypeHideCheck();
-			});
+		// 表示オプションボタン制御
+		$('.viewOptionCheck').click(function () {
+			$('.viewOptionCheck').toggleClass('active');
+			$('#viewOption').fadeToggle();
+			//viewTypeHideCheck();
+		});
 
-			// 時間割ボタン
-			$('.courseScheduleButton').click(function() {
-				$('.courseScheduleRadio').click();
-			});
+		// 時間割ボタン
+		$('.courseScheduleButton').click(function() {
+			$('.courseScheduleRadio').click();
+		});
 
-			// 学部一覧ボタン
-			$('.eALPSListButton').click(function() {
-				$('.eALPSListRadio').click();
-			});
+		// 学部一覧ボタン
+		$('.eALPSListButton').click(function() {
+			$('.eALPSListRadio').click();
+		});
 
-			$('.courseScheduleRadio').click(function() {
-				//$.cookie('viewType', null);
-				//$.cookie('viewType', 'courseSchedule', {expire: 365});
-				//semesterHideCheck();
-				$(this).children('input').click();
-				$('.courseList').hide();
-				$('.eALPSList').hide();
-				$('.courseScheduleButton').hide();
-				$('.courseSchedule').fadeIn();
-				$('.eALPSListButton').fadeIn();
-			});
+		$('.courseScheduleRadio').click(function() {
+			//$.cookie('viewType', null);
+			//$.cookie('viewType', 'courseSchedule', {expire: 365});
+			//semesterHideCheck();
+			$(this).children('input').click();
+			$('.courseList').hide();
+			$('.eALPSList').hide();
+			$('.courseScheduleButton').hide();
+			$('.courseSchedule').fadeIn();
+			$('.eALPSListButton').fadeIn();
+		});
 
-			$('.courseListRadio').click(function() {
-				//$.cookie('viewType', null);
-				//$.cookie('viewType', 'courseList', {expire: 365});
-				//semesterHideCheck();
-				$(this).children('input').click();
-				$('.courseSchedule').hide();
-				$('.eALPSList').hide();
-				$('.courseList').fadeIn();
-				$('.courseScheduleButton').fadeIn();
-				$('.eALPSListButton').fadeIn();
-			});
+		$('.courseListRadio').click(function() {
+			//$.cookie('viewType', null);
+			//$.cookie('viewType', 'courseList', {expire: 365});
+			//semesterHideCheck();
+			$(this).children('input').click();
+			$('.courseSchedule').hide();
+			$('.eALPSList').hide();
+			$('.courseList').fadeIn();
+			$('.courseScheduleButton').fadeIn();
+			$('.eALPSListButton').fadeIn();
+		});
 
-			$('.eALPSListRadio').click(function() {
-				//$.cookie('viewType', null);
-				//$.cookie('viewType', 'ealpsList', {expire: 365});
-				//semesterHideCheck();
-				$(this).children('input').click();
-				$('.courseSchedule').hide();
-				$('.courseList').hide();
-				$('.eALPSListButton').hide();
-				$('.eALPSList').fadeIn();
-				$('.courseScheduleButton').fadeIn();
-			});
+		$('.eALPSListRadio').click(function() {
+			//$.cookie('viewType', null);
+			//$.cookie('viewType', 'ealpsList', {expire: 365});
+			//semesterHideCheck();
+			$(this).children('input').click();
+			$('.courseSchedule').hide();
+			$('.courseList').hide();
+			$('.eALPSListButton').hide();
+			$('.eALPSList').fadeIn();
+			$('.courseScheduleButton').fadeIn();
+		});
 
-			$('.firstSemesterCheck').click(function () {
-				$(this).children().toggleClass('glyphicon-check');
-				//viewTypeHideCheck();
-				$('.firstSemester').fadeToggle();
-			});
+		$('.firstSemesterCheck').click(function () {
+			$(this).children().toggleClass('glyphicon-check');
+			//viewTypeHideCheck();
+			$('.firstSemester').fadeToggle();
+		});
 
-			$('.secondSemesterCheck').click(function () {
-				$(this).children().toggleClass('glyphicon-check');
-				//viewTypeHideCheck();
-				$('.secondSemester').fadeToggle();
-			});
+		$('.secondSemesterCheck').click(function () {
+			$(this).children().toggleClass('glyphicon-check');
+			//viewTypeHideCheck();
+			$('.secondSemester').fadeToggle();
+		});
 
-			$('.throughSemesterCheck').click(function () {
-				$(this).children().toggleClass('glyphicon-check');
-				//viewTypeHideCheck();
-				$('.throughSemester').fadeToggle();
-			});
+		$('.throughSemesterCheck').click(function () {
+			$(this).children().toggleClass('glyphicon-check');
+			//viewTypeHideCheck();
+			$('.throughSemester').fadeToggle();
+		});
 
-			$('.irregularSemesterCheck').click(function () {
-				$(this).children().toggleClass('glyphicon-check');
-				//viewTypeHideCheck();
-				$('.irregularSemester').fadeToggle();
-			});
+		$('.irregularSemesterCheck').click(function () {
+			$(this).children().toggleClass('glyphicon-check');
+			//viewTypeHideCheck();
+			$('.irregularSemester').fadeToggle();
+		});
 
-			function semesterHideCheck() {
-				//var semesterCookie = '';
+		function semesterHideCheck() {
+			//var semesterCookie = '';
 
-				if(!$('.firstSemesterCheck').hasClass('active')) {
-					$('.firstSemester').hide();
-					//semesterCookie += '0';
-				} else {
-					$('.firstSemester').fadeIn();
-					//semesterCookie += '1';
-				}
-
-				if(!$('.secondSemesterCheck').hasClass('active')) {
-					$('.secondSemester').hide();
-					//semesterCookie += '0';
-				} else {
-					$('.secondSemester').fadeIn();
-					//semesterCookie += '1';
-				}
-
-				if(!$('.throughSemesterCheck').hasClass('active')) {
-					$('.throughSemester').hide();
-					//semesterCookie += '0';
-				} else {
-					$('.throughSemester').fadeIn();
-					//semesterCookie += '1';
-				}
-
-				if(!$('.irregularSemesterCheck').hasClass('active')) {
-					$('.irregularSemester').hide();
-					//semesterCookie += '0';
-				} else {
-					$('.irregularSemester').fadeIn();
-					//semesterCookie += '1';
-				}
-				//$.cookie('semester', null);
-				//$.cookie('semester', semesterCookie, {expire: 365});
-
+			if(!$('.firstSemesterCheck').hasClass('active')) {
+				$('.firstSemester').hide();
+				//semesterCookie += '0';
+			} else {
+				$('.firstSemester').fadeIn();
+				//semesterCookie += '1';
 			}
+
+			if(!$('.secondSemesterCheck').hasClass('active')) {
+				$('.secondSemester').hide();
+				//semesterCookie += '0';
+			} else {
+				$('.secondSemester').fadeIn();
+				//semesterCookie += '1';
+			}
+
+			if(!$('.throughSemesterCheck').hasClass('active')) {
+				$('.throughSemester').hide();
+				//semesterCookie += '0';
+			} else {
+				$('.throughSemester').fadeIn();
+				//semesterCookie += '1';
+			}
+
+			if(!$('.irregularSemesterCheck').hasClass('active')) {
+				$('.irregularSemester').hide();
+				//semesterCookie += '0';
+			} else {
+				$('.irregularSemester').fadeIn();
+				//semesterCookie += '1';
+			}
+			//$.cookie('semester', null);
+			//$.cookie('semester', semesterCookie, {expire: 365});
+
+		}
 		</script>
 	</wicket:panel>
 </body>
