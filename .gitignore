@@ -20,3 +20,6 @@ target/
 # eclipse settings
 .settings/
 /.classpath
+
+＃IntelliJ IDEA settings
+.idea/
