@@ -99,7 +99,7 @@ public class RelationCourseBean implements Serializable {
 		StringBuilder subTeacherNameList = new StringBuilder();
 		for (AccountData accountData : subTeacherList) {
 			subTeacherNameList.append(accountData.getFirstName());
-			subTeacherNameList.append("");
+			subTeacherNameList.append(" ");
 			subTeacherNameList.append(accountData.getLastName());
 			subTeacherNameList.append(", ");
 		}
@@ -123,6 +123,25 @@ public class RelationCourseBean implements Serializable {
 			opInfoValue.delete(opInfoValue.lastIndexOf(","), opInfoValue.length());
 		}
 		return opInfoValue.toString();
+	}
+
+	public String getCourseInformationHTMLCode() {
+		StringBuilder htmlCode = new StringBuilder();
+
+		htmlCode.append("<p><span class=\"glyphicon glyphicon-time\"></span>&nbsp;開講年度：");
+		htmlCode.append(courseData.getOpYear() == 9999 ? "年度共通" : courseData.getOpYear());
+		htmlCode.append("</p>");
+		htmlCode.append("<p><span class=\"glyphicon glyphicon-tag\"></span>&nbsp;題目コード：");
+		htmlCode.append(courseData.getTitleCode());
+		htmlCode.append("</p>");
+		htmlCode.append("<p><span class=\"glyphicon glyphicon-tag\"></span>&nbsp;登録コード：");
+		htmlCode.append(courseData.getRegCode());
+		htmlCode.append("</p>");
+		htmlCode.append("<p><span class=\"glyphicon glyphicon-time\"></span>&nbsp;開講情報：");
+		htmlCode.append(getOpInfoValue());
+		htmlCode.append("</p>");
+
+		return htmlCode.toString();
 	}
 
 	@Override

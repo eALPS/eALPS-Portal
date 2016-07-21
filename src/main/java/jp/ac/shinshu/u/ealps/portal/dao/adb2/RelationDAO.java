@@ -110,6 +110,8 @@ public List<RelationCourseBean> selectRelationCourseBeanList(String uid, int yea
 				courseData.setUid(resultSet.getString("b.uid"));
 				courseData.setTitleCode(resultSet.getString("b.titleCode"));
 				courseData.setTitleName(resultSet.getString("b.titleName"));
+				courseData.setRegCode(resultSet.getString("b.regCode"));
+				courseData.setDepCode(resultSet.getString("b.depCode"));
 				courseData.setOpYear(resultSet.getInt("b.opYear"));
 				courseData.setOpLec(resultSet.getString("b.opLec"));
 				courseData.setListId(resultSet.getInt("b.listId"));
