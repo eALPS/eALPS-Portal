@@ -56,7 +56,7 @@ table.schedule tbody tr td {
 }
 
 table.schedule dl {
-	margin-bottom: 0;
+	margin: 1rem 0.5rem;
 }
 
 table.schedule dl dt {

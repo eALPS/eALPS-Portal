@@ -4,7 +4,9 @@
 package jp.ac.shinshu.u.ealps.portal.bean;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import jp.ac.shinshu.u.common.definition.HourCode;
 import jp.ac.shinshu.u.common.definition.LecCode;
@@ -125,20 +127,49 @@ public class RelationCourseBean implements Serializable {
 		return opInfoValue.toString();
 	}
 
+	public String getOpLecValue() {
+		Set<String> opInfoValueHashSet = new HashSet<String>();
+		StringBuilder opInfoValue = new StringBuilder();
+		for (OpInfo opInfo : opInfoList) {
+			if(!opInfoValueHashSet.contains(LecCode.valueOf("LEC" + opInfo.getOpLec()).getTitle())) {
+				opInfoValueHashSet.add(LecCode.valueOf("LEC" + opInfo.getOpLec()).getTitle());
+				opInfoValue.append(LecCode.valueOf("LEC" + opInfo.getOpLec()).getTitle());
+				opInfoValue.append(", ");
+			}
+		}
+		if (!opInfoList.isEmpty()) {
+			opInfoValue.delete(opInfoValue.lastIndexOf(","), opInfoValue.length());
+		}
+		return opInfoValue.toString();
+	}
+
 	public String getCourseInformationHTMLCode() {
 		StringBuilder htmlCode = new StringBuilder();
 
 		htmlCode.append("<p><span class=\"glyphicon glyphicon-time\"></span>&nbsp;開講年度：");
 		htmlCode.append(courseData.getOpYear() == 9999 ? "年度共通" : courseData.getOpYear());
 		htmlCode.append("</p>");
+
+		htmlCode.append("<p><span class=\"glyphicon glyphicon-time\"></span>&nbsp;開講時期：");
+		htmlCode.append(getOpLecValue());
+		htmlCode.append("</p>");
+
 		htmlCode.append("<p><span class=\"glyphicon glyphicon-tag\"></span>&nbsp;題目コード：");
 		htmlCode.append(courseData.getTitleCode());
 		htmlCode.append("</p>");
+
 		htmlCode.append("<p><span class=\"glyphicon glyphicon-tag\"></span>&nbsp;登録コード：");
 		htmlCode.append(courseData.getRegCode());
 		htmlCode.append("</p>");
-		htmlCode.append("<p><span class=\"glyphicon glyphicon-time\"></span>&nbsp;開講情報：");
-		htmlCode.append(getOpInfoValue());
+
+		htmlCode.append("<p><span class=\"glyphicon glyphicon-user\"></span>&nbsp;主担当教員：");
+		htmlCode.append(getTeacherList().isEmpty() ? "" : getTeacherList().get(0).getFirstName() + " " + getTeacherList().get(0).getLastName());
+		htmlCode.append("</p>");
+
+		htmlCode.append("<p title=\"");
+		htmlCode.append(getSubTeacherList().size() == 1 ? "副担当教員" : "副担当教員：" + getSubTeacherNameList());
+		htmlCode.append("\"><span class=\"glyphicon glyphicon-user\"></span>&nbsp;副担当教員：");
+		htmlCode.append(getSubTeacherList().size() == 1 ? getSubTeacherList().get(0).getFirstName() + " " + getSubTeacherList().get(0).getLastName() : "...");
 		htmlCode.append("</p>");
 
 		return htmlCode.toString();
