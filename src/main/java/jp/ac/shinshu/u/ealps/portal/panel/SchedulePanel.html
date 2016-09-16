@@ -28,10 +28,10 @@
 					<dl class="control-group last">
 						<dt class="control-label">期間</dt>
 						<dd class="btn-group" data-toggle="buttons-checkbox">
-							<button class="btn btn-success firstSemesterCheck active"><span class="glyphicon glyphicon-check"></span>&nbsp;前期&nbsp;</button>
-							<button class="btn btn-success secondSemesterCheck"><span class="glyphicon"></span>&nbsp;後期&nbsp;</button>
-							<button class="btn btn-success throughSemesterCheck active"><span class="glyphicon glyphicon-check"></span>&nbsp;通年&nbsp;</button>
-							<button class="btn btn-success irregularSemesterCheck active"><span class="glyphicon glyphicon-check"></span>&nbsp;不定期&nbsp;</button>
+							<button id="firstSemesterCheckButton" wicket:id="firstSemesterCheckButton"><span wicket:id="firstSemesterCheckButtonIcon"></span>&nbsp;前期&nbsp;</button>
+							<button id="secondSemesterCheckButton" wicket:id="secondSemesterCheckButton"><span wicket:id="secondSemesterCheckButtonIcon"></span>&nbsp;後期&nbsp;</button>
+							<button id="throughSemesterCheckButton" wicket:id="throughSemesterCheckButton"><span wicket:id="throughSemesterCheckButtonIcon"></span>&nbsp;通年&nbsp;</button>
+							<button id="irregularSemesterCheckButton" wicket:id="irregularSemesterCheckButton"><span wicket:id="irregularSemesterCheckButtonIcon"></span>&nbsp;不定期&nbsp;</button>
 						</dd>
 					</dl>
 				</div>
@@ -62,7 +62,7 @@
 						<button class="btn btn-success eALPSListButton toolTip" wicket:id="eALPSListButton" data-toggle="tooltip" data-placement="top" data-html="true" data-title="このボタンをクリックすると学部毎eALPS一覧を表示することができます．<br />クリック後，再び時間割表示に戻すには，左の表示オプションボタンをクリックして設定を変更してください．"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;<span wicket:id="eALPSListButtonLabel">学部一覧</span></button>
 						<button class="btn btn-success courseScheduleButton" wicket:id="courseScheduleButton"><i class="glyphicon glyphicon-th"></i>&nbsp;<span wicket:id="courseScheduleButtonLabel">時間割</span></button>
 						<button class="btn btn-success viewOptionCheck"><i class="glyphicon glyphicon-cog"></i>&nbsp;表示オプション</button>
-						<a href="mailto:elearning@shinshu-u.ac.jp?subject=[%E3%83%98%E3%83%AB%E3%83%97%EF%BC%86%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88%E3%82%B5%E3%82%A4%E3%83%88]"><button class="btn btn-warning"><i class="glyphicon glyphicon-envelope"></i>&nbsp;お問い合わせ</button></a>
+						<a href="https://docs.google.com/forms/d/e/1FAIpQLSdnJaVW-GgY5dpNeFg0uDJMIRurtPyK-wCCWZuOa8L6fl9Njg/viewform" target="_blank"><button class="btn btn-warning"><span class="glyphicon glyphicon-envelope"></span>&nbsp;お問い合わせ</button></a>
 					</div>
 				</div>
 			</div>
@@ -130,63 +130,63 @@
 			$('.courseScheduleButton').fadeIn();
 		});
 
-		$('.firstSemesterCheck').click(function () {
-			$(this).children().toggleClass('glyphicon-check');
-			//viewTypeHideCheck();
-			$('.firstSemester').fadeToggle();
-		});
+//		$('.firstSemesterCheck').click(function () {
+//			$(this).children().toggleClass('glyphicon-check');
+//			//viewTypeHideCheck();
+//			$('.firstSemester').fadeToggle();
+//		});
 
-		$('.secondSemesterCheck').click(function () {
-			$(this).children().toggleClass('glyphicon-check');
-			//viewTypeHideCheck();
-			$('.secondSemester').fadeToggle();
-		});
-
-		$('.throughSemesterCheck').click(function () {
-			$(this).children().toggleClass('glyphicon-check');
-			//viewTypeHideCheck();
-			$('.throughSemester').fadeToggle();
-		});
-
-		$('.irregularSemesterCheck').click(function () {
-			$(this).children().toggleClass('glyphicon-check');
-			//viewTypeHideCheck();
-			$('.irregularSemester').fadeToggle();
-		});
+//		$('.secondSemesterCheck').click(function () {
+//			$(this).children().toggleClass('glyphicon-check');
+//			//viewTypeHideCheck();
+//			$('.secondSemester').fadeToggle();
+//		});
+//
+//		$('.throughSemesterCheck').click(function () {
+//			$(this).children().toggleClass('glyphicon-check');
+//			//viewTypeHideCheck();
+//			$('.throughSemester').fadeToggle();
+//		});
+//
+//		$('.irregularSemesterCheck').click(function () {
+//			$(this).children().toggleClass('glyphicon-check');
+//			//viewTypeHideCheck();
+//			$('.irregularSemester').fadeToggle();
+//		});
 
 		function semesterHideCheck() {
 			//var semesterCookie = '';
 
-			if(!$('.firstSemesterCheck').hasClass('active')) {
-				$('.firstSemester').hide();
-				//semesterCookie += '0';
-			} else {
+			if($('.firstSemesterCheck').hasClass('active')) {
 				$('.firstSemester').fadeIn();
 				//semesterCookie += '1';
+			} else {
+				$('.firstSemester').hide();
+				//semesterCookie += '0';
 			}
 
-			if(!$('.secondSemesterCheck').hasClass('active')) {
-				$('.secondSemester').hide();
-				//semesterCookie += '0';
-			} else {
+			if($('.secondSemesterCheck').hasClass('active')) {
 				$('.secondSemester').fadeIn();
 				//semesterCookie += '1';
+			} else {
+				$('.secondSemester').hide();
+				//semesterCookie += '0';
 			}
 
-			if(!$('.throughSemesterCheck').hasClass('active')) {
-				$('.throughSemester').hide();
-				//semesterCookie += '0';
-			} else {
+			if($('.throughSemesterCheck').hasClass('active')) {
 				$('.throughSemester').fadeIn();
 				//semesterCookie += '1';
+			} else {
+				$('.throughSemester').hide();
+				//semesterCookie += '0';
 			}
 
-			if(!$('.irregularSemesterCheck').hasClass('active')) {
-				$('.irregularSemester').hide();
-				//semesterCookie += '0';
-			} else {
+			if($('.irregularSemesterCheck').hasClass('active')) {
 				$('.irregularSemester').fadeIn();
 				//semesterCookie += '1';
+			} else {
+				$('.irregularSemester').hide();
+				//semesterCookie += '0';
 			}
 			//$.cookie('semester', null);
 			//$.cookie('semester', semesterCookie, {expire: 365});

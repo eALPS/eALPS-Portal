@@ -6,13 +6,16 @@ package jp.ac.shinshu.u.ealps.portal.panel;
 import java.util.List;
 
 import jp.ac.shinshu.u.common.expansion.IndicatingAjaxDropDownChoice;
+import jp.ac.shinshu.u.common.util.ChronoTrigger;
 import jp.ac.shinshu.u.ealps.portal.service.IUtilityService;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
+import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.extensions.ajax.markup.html.AjaxLazyLoadPanel;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
@@ -178,21 +181,95 @@ public class SchedulePanel extends Panel {
 
 				});
 
-//				add(new AjaxLink<Void>("firstSemesterCheckButton") {
-//					private static final long serialVersionUID = 7969319085789917881L;
-//
-//					@Override
-//					public void onClick(AjaxRequestTarget target) {
-//						//target.appendJavaScript("semesterHideCheck();");
-//					}
-//
-//					@Override
-//					protected void onInitialize() {
-//						this.add(new Label("firstSemesterCheckButtonLabel", " 前期 "));
-//						super.onInitialize();
-//					}
-//
-//				});
+				add(new AjaxLink<Void>("firstSemesterCheckButton") {
+					private static final long serialVersionUID = 8964835272682940598L;
+
+					@Override
+					public void onClick(AjaxRequestTarget target) {
+						target.appendJavaScript("$('#firstSemesterCheckButton').toggleClass('active');");
+						target.appendJavaScript("$('#firstSemesterCheckButton').children().toggleClass('glyphicon-check');");
+						target.appendJavaScript("$('.firstSemester').fadeToggle();");
+					}
+
+					@Override
+					protected void onInitialize() {
+						super.onInitialize();
+						Label firstSemesterCheckButtonIcon = new Label("firstSemesterCheckButtonIcon","");
+						firstSemesterCheckButtonIcon.add(new AttributeAppender("class", Model.of("glyphicon"), " "));
+						this.add(firstSemesterCheckButtonIcon);
+
+						this.add(new AttributeAppender("class", Model.of("btn btn-success firstSemesterCheck"), " "));
+						if(StringUtils.equals(ChronoTrigger.getSemester(), "firstSemester")) {
+							this.add(new AttributeAppender("class", Model.of("active"), " "));
+							firstSemesterCheckButtonIcon.add(new AttributeAppender("class", Model.of("glyphicon-check"), " "));
+						}
+					}
+				});
+
+				add(new AjaxLink<Void>("secondSemesterCheckButton") {
+					private static final long serialVersionUID = 669031140801566017L;
+
+					@Override
+					public void onClick(AjaxRequestTarget target) {
+						target.appendJavaScript("$('#secondSemesterCheckButton').toggleClass('active');");
+						target.appendJavaScript("$('#secondSemesterCheckButton').children().toggleClass('glyphicon-check');");
+						target.appendJavaScript("$('.secondSemester').fadeToggle();");
+					}
+
+					@Override
+					protected void onInitialize() {
+						super.onInitialize();
+						Label secondSemesterCheckButtonIcon = new Label("secondSemesterCheckButtonIcon","");
+						secondSemesterCheckButtonIcon.add(new AttributeAppender("class", Model.of("glyphicon"), " "));
+						this.add(secondSemesterCheckButtonIcon);
+
+						this.add(new AttributeAppender("class", Model.of("btn btn-success secondSemesterCheck"), " "));
+						if(StringUtils.equals(ChronoTrigger.getSemester(), "secondSemester")) {
+							this.add(new AttributeAppender("class", Model.of("active"), " "));
+							secondSemesterCheckButtonIcon.add(new AttributeAppender("class", Model.of("glyphicon-check"), " "));
+						}
+					}
+				});
+
+				add(new AjaxLink<Void>("throughSemesterCheckButton") {
+					private static final long serialVersionUID = -1851547906748746440L;
+
+					@Override
+					public void onClick(AjaxRequestTarget target) {
+						target.appendJavaScript("$('#throughSemesterCheckButton').toggleClass('active');");
+						target.appendJavaScript("$('#throughSemesterCheckButton').children().toggleClass('glyphicon-check');");
+						target.appendJavaScript("$('.throughSemester').fadeToggle();");
+					}
+
+					@Override
+					protected void onInitialize() {
+						super.onInitialize();
+						Label throughSemesterCheckButtonIcon = new Label("throughSemesterCheckButtonIcon","");
+						throughSemesterCheckButtonIcon.add(new AttributeAppender("class", Model.of("glyphicon glyphicon-check"), " "));
+						this.add(throughSemesterCheckButtonIcon);
+						this.add(new AttributeAppender("class", Model.of("btn btn-success throughSemesterCheck active"), " "));
+					}
+				});
+
+				add(new AjaxLink<Void>("irregularSemesterCheckButton") {
+					private static final long serialVersionUID = 3521967171284591732L;
+
+					@Override
+					public void onClick(AjaxRequestTarget target) {
+						target.appendJavaScript("$('#irregularSemesterCheckButton').toggleClass('active');");
+						target.appendJavaScript("$('#irregularSemesterCheckButton').children().toggleClass('glyphicon-check');");
+						target.appendJavaScript("$('.irregularSemester').fadeToggle();");
+					}
+
+					@Override
+					protected void onInitialize() {
+						super.onInitialize();
+						Label irregularSemesterCheckButtonIcon = new Label("irregularSemesterCheckButtonIcon","");
+						irregularSemesterCheckButtonIcon.add(new AttributeAppender("class", Model.of("glyphicon glyphicon-check"), " "));
+						this.add(irregularSemesterCheckButtonIcon);
+						this.add(new AttributeAppender("class", Model.of("btn btn-success irregularSemesterCheck active"), " "));
+					}
+				});
 
 				add(new AjaxLink<Void>("courseScheduleButton") {
 					private static final long serialVersionUID = 904855932483517020L;
