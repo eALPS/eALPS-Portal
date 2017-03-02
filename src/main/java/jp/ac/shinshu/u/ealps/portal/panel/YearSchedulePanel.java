@@ -102,7 +102,7 @@ public class YearSchedulePanel extends Panel {
 			private static final long serialVersionUID = -729636742110845049L;
 			@Override
 			protected List<SiteInfo> load() {
-				return ealpsListService.getEALPSList(yearModel.getObject());
+				return ealpsListService.getEALPSSiteInfoList(yearModel.getObject());
 			}
 		};
 

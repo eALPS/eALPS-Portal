@@ -1,5 +1,7 @@
 package jp.ac.shinshu.u.ealps.portal.view;
 
+import jp.ac.shinshu.u.ealps.portal.panel.AttentionPanel;
+import jp.ac.shinshu.u.ealps.portal.panel.CommonSitePanel;
 import jp.ac.shinshu.u.ealps.portal.panel.InformationPanel;
 import jp.ac.shinshu.u.ealps.portal.panel.SchedulePanel;
 import jp.ac.shinshu.u.ealps.portal.service.IUtilityService;
@@ -49,6 +51,10 @@ public class PersonalSchedulePage extends EALPSPortalWebPage {
 		});
 
 		add(new SchedulePanel("schedulePanel", UtilityService.getScheduleInitYear(), userIdModel));
+
+		add(new CommonSitePanel("commonSitePanel"));
+
+		add(new AttentionPanel("attentionPanel"));
 
 //		add(new AjaxLazyLoadPanel("schedulePanel") {
 //			private static final long serialVersionUID = -9047759161966347185L;
