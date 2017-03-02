@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd" lang="ja">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body>
+	<wicket:panel>
+		<div class="panel panel-success">
+			<div class="panel-heading lead">年度共通サイト</div>
+			<ul class="list-group" wicket:id="eALPSCommonSiteListContainer">
+				<li class="list-group-item" wicket:id="eALPSCommonSiteListView">
+					<span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span>&nbsp;<a href="#" wicket:id="site" target="_blank">学部サイト</a>
+				</li>
+			</ul>
+		</div>
+
+		<script type="text/javascript" charset="utf-8">
+			$(document).ready(function() {
+				// ToolTips
+				$('[data-toggle="tooltip"]').tooltip({container: 'body'});
+			});
+		</script>
+	</wicket:panel>
+</body>
+</html>

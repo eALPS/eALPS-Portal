@@ -19,8 +19,14 @@ public interface IEALPSListService {
 	/**
 	 * <p>該当年度の学部サイトリスト取得</p>
 	 * @param year
-	 * @return List<EALPSListBean>
+	 * @return List<SiteInfo>
 	 */
-	public List<SiteInfo> getEALPSList(int year);
+	public List<SiteInfo> getEALPSSiteInfoList(int year);
+
+	/**
+	 * <p>年度共通サイトリスト取得</p>
+	 * @return List<SiteInfo>
+	 */
+	public List<SiteInfo> getEALPSCommonSiteInfoList();
 
 }

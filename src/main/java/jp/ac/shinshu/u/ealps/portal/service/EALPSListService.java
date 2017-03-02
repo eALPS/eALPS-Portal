@@ -15,10 +15,18 @@ import jp.ac.shinshu.u.ealps.portal.entity.SiteInfo;
 public class EALPSListService implements IEALPSListService {
 
 	@Override
-	public List<SiteInfo> getEALPSList(int year) {
+	public List<SiteInfo> getEALPSSiteInfoList(int year) {
 		SiteInfoDAO siteInfoDAO = new SiteInfoDAO();
-		List<SiteInfo> eALPSListBean = siteInfoDAO.selectSiteInfoList(year);
-		return eALPSListBean;
+		List<SiteInfo> siteInfoList = siteInfoDAO.selectSiteInfoList(year);
+		return siteInfoList;
 	}
+
+	@Override
+	public List<SiteInfo> getEALPSCommonSiteInfoList() {
+		SiteInfoDAO siteInfoDAO = new SiteInfoDAO();
+		List<SiteInfo> siteInfoList = siteInfoDAO.selectCommonSiteInfoList();
+		return siteInfoList;
+	}
+
 
 }

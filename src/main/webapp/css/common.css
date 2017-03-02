@@ -23,6 +23,10 @@ header h1 {
 	padding: .3em .6em .3em .7em;
 }
 
+.panel .lead {
+	margin-bottom: 0px;
+}
+
 dl.last {
 	margin-bottom: 0;
 }

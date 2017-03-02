@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:wicket="http://wicket.apache.org/" lang="ja">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd" lang="ja">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta http-equiv="Content-Style-Type" content="text/css">
@@ -37,19 +37,21 @@
 		<div class="container">
 			<header class="page-header">
 				<h1>信州大学 eALPSポータル</h1>
-				<div class="alert alert-danger hidden-xs" role="alert">
-					<section>
-						<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-						eALPSシステムの保守は万全を期しておりますが，万が一，人手が必要な障害が発生した場合，その対応は平日の9:00~17:00となります．何卒よろしくお願いいたします．
-					</section>
-				</div>
 			</header>
 
 			<wicket:child></wicket:child>
 
+			<div class="alert alert-danger hidden-xs" role="alert">
+				<section>
+					<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+					eALPSシステムの保守は万全を期しておりますが，万が一，人手が必要な障害が発生した場合，その対応は平日の9:00~17:00となります．何卒よろしくお願いいたします．
+				</section>
+			</div>
+
 			<hr />
 
 			<footer>
+
 				<span>
 					Copyright&nbsp;&copy;&nbsp;2009-<span wicket:id="currentYear">currentYear</span>&nbsp;e-Learning&nbsp;Center,&nbsp;Shinshu&nbsp;University.&nbsp;All&nbsp;Rights&nbsp;Reserved.
 				</span>
