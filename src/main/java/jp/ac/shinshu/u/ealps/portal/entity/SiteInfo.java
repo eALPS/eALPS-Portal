@@ -20,6 +20,7 @@ public class SiteInfo implements Serializable {
 	private String caption;
 	private String domainName;
 	private String token;
+	private int commonSite;
 
 	public int getSiteInfoId() {
 		return siteInfoId;
@@ -68,6 +69,12 @@ public class SiteInfo implements Serializable {
 	}
 	public void setToken(String token) {
 		this.token = token;
+	}
+	public int getCommonSite() {
+		return commonSite;
+	}
+	public void setCommonSite(int commonSite) {
+		this.commonSite = commonSite;
 	}
 
 }
