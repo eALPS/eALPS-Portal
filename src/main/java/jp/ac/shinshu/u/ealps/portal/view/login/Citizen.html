@@ -1,33 +1,38 @@
 <!DOCTYPE html>
-<html xmlns:wicket="http://wicket.apache.org/" lang="ja">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd" lang="ja">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	</head>
 	<body>
 	<wicket:extend>
 
+		<div wicket:id="informationPanel"></div>
+
 		<div class="panel panel-success">
 			<div class="panel-heading lead">
-				eALPSにログインする
+				市民開放講座用サイトにログインする
 			</div>
 			<div class="panel-body">
-				<button class="btn btn-primary" wicket:id="citizenSchedule">
-					<span wicket:id="citizenScheduleLabel"></span>
+				<button class="btn btn-primary" wicket:id="citizenScheduleLink">
+					<span wicket:id="buttonLabel"></span>
 				</button>
+				<hr />
+				<div class="alert alert-warning hidden-xs" role="alert">
+					<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+					&nbsp;信州大学の教職員及び学生は&nbsp;
+					<span class="glyphicon glyphicon-hand-right"></span>
+					<a href="https://acsu.shinshu-u.ac.jp/" target="_blank">ACSU</a>
+					<span class="glyphicon glyphicon-hand-left"></span>
+					&nbsp;からログインしてください．
+				</div>
 			</div>
 			<div class="panel-footer">
 				<span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span>&nbsp;このページをブックマークすると，より簡単にアクセスできます．
 			</div>
 		</div>
 
-		<!--<div wicket:id="attentionPanel"></div>-->
+		<div wicket:id="attentionPanel"></div>
 
-		<script type="text/javascript" charset="utf-8">
-			$(document).ready(function() {
-				// ToolTips
-				$('[data-toggle="tooltip"]').tooltip({container: 'body'});
-			});
-		</script>
 	</wicket:extend>
 	</body>
 </html>

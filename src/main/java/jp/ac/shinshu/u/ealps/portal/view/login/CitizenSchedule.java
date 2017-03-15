@@ -65,17 +65,14 @@ public class CitizenSchedule extends EALPSPortalWebPage {
 //		String userId = getRequest().getRequestParameters().getParameterValue("userId").toString();
 
 		// ヘッダー確認用
-		this.add(new Label("headerNames", Model.of(headerNames.toString())));
+		add(new Label("headerNames", Model.of(headerNames.toString())));
 
-		this.add(new Label("uid", uidModel));
-		this.add(new Label("j_username", jUserNameModel));
-		this.add(new Label("userId", userIdModel));
-
-		add(new InformationPanel("informationPanel"));
+		add(new Label("uid", uidModel));
+		add(new Label("j_username", jUserNameModel));
+		add(new Label("userId", userIdModel));
 
 		add(new SchedulePanel("schedulePanel", UtilityService.getScheduleInitYear(), uidModel));
 
-		add(new AttentionPanel("attentionPanel"));
 	}
 
 }

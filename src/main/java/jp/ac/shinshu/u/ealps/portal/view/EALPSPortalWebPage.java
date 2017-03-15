@@ -13,6 +13,7 @@ import org.apache.wicket.markup.html.IHeaderContributor;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.model.Model;
+import org.apache.wicket.request.mapper.parameter.PageParameters;
 
 /**
  * @author osamu
@@ -29,13 +30,20 @@ public class EALPSPortalWebPage extends WebPage implements IHeaderContributor {
 //	private Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	public EALPSPortalWebPage() {
+		draw();
+	}
 
+	public EALPSPortalWebPage(PageParameters parameters) {
+		super(parameters);
+		draw();
+	}
+
+	private void draw() {
 		titleModel.setObject("eALPSポータル");
 		this.add(new Label("title", titleModel));
 
 		Calendar calendar = new GregorianCalendar();
 		this.add(new Label("currentYear", new Model<Integer>(calendar.get(Calendar.YEAR))));
-
 	}
 
 	@Override
