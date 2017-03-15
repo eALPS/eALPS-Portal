@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd" lang="ja">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	</head>
+	<body>
+	<wicket:extend>
+
+		<div class="panel panel-success">
+			<div class="panel-heading lead">
+				<span wicket:id="caption">ログインフォーム</span>
+			</div>
+			<div class="panel-body">
+				<button class="btn btn-primary" wicket:id="moodleLink"></button>
+				<hr />
+				<div class="alert alert-warning hidden-xs" role="alert">
+					<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+					&nbsp;信州大学の教職員及び学生は&nbsp;
+					<span class="glyphicon glyphicon-hand-right"></span>
+					<a href="https://acsu.shinshu-u.ac.jp/" target="_blank">ACSU</a>
+					<span class="glyphicon glyphicon-hand-left"></span>
+					&nbsp;からログインしてください．
+				</div>
+			</div>
+			<div class="panel-footer">
+				<span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span>&nbsp;このページをブックマークすると，より簡単にアクセスできます．
+			</div>
+		</div>
+
+		<div wicket:id="attentionPanel"></div>
+
+	</wicket:extend>
+	</body>
+</html>

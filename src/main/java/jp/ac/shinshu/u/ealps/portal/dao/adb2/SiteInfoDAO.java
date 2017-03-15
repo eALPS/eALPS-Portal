@@ -71,6 +71,39 @@ public class SiteInfoDAO extends ADB2AbstractDAO {
 		return siteInfoList;
 	}
 
+	public SiteInfo selectSiteInfo(String siteUid) {
+		SiteInfo siteInfo = null;
+
+		StringBuilder sql = new StringBuilder();
+		sql.append("SELECT a.siteInfoId, a.siteUid, a.opYear, a.dispOrder, a.visible, a.caption, a.domainName, a.token, a.commonSite ");
+		sql.append("FROM siteInfo a ");
+		sql.append("WHERE a.siteUid = ? ");
+
+		ResultSet resultSet = find(sql.toString(), siteUid);
+
+		try {
+			if (resultSet.next()) {
+				siteInfo = new SiteInfo();
+				siteInfo.setSiteInfoId(resultSet.getInt("siteInfoId"));
+				siteInfo.setSiteUId(resultSet.getString("siteUid"));
+				siteInfo.setOpYear(resultSet.getInt("opYear"));
+				siteInfo.setDispOrder(resultSet.getInt("dispOrder"));
+				siteInfo.setVisible(resultSet.getInt("visible"));
+				siteInfo.setCaption(resultSet.getString("caption"));
+				siteInfo.setDomainName(resultSet.getString("domainName"));
+				siteInfo.setToken(resultSet.getString("token"));
+				siteInfo.setCommonSite(resultSet.getInt("commonSite"));
+			}
+		} catch (SQLException e) {
+			logger.error("SQLException", e);
+			throw new RuntimeException(e);
+		} finally {
+			JDBCUtility.close(statement, resultSet);
+		}
+
+		return siteInfo;
+	}
+
 	public List<SiteInfo> selectCommonSiteInfoList() {
 		List<SiteInfo> siteInfoList = new ArrayList<SiteInfo>();
 

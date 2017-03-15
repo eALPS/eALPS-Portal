@@ -22,6 +22,12 @@ public class EALPSListService implements IEALPSListService {
 	}
 
 	@Override
+	public SiteInfo getEALPSSiteInfo(String siteUid) {
+		SiteInfoDAO siteInfoDAO = new SiteInfoDAO();
+		return siteInfoDAO.selectSiteInfo(siteUid);
+	}
+
+	@Override
 	public List<SiteInfo> getEALPSCommonSiteInfoList() {
 		SiteInfoDAO siteInfoDAO = new SiteInfoDAO();
 		List<SiteInfo> siteInfoList = siteInfoDAO.selectCommonSiteInfoList();

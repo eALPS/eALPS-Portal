@@ -27,6 +27,10 @@ header h1 {
 	margin-bottom: 0px;
 }
 
+.form-group:last-child {
+	margin-bottom: 0px;
+}
+
 dl.last {
 	margin-bottom: 0;
 }

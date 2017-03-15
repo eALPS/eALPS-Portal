@@ -24,6 +24,12 @@ public interface IEALPSListService {
 	public List<SiteInfo> getEALPSSiteInfoList(int year);
 
 	/**
+	 *
+	 * @return
+	 */
+	public SiteInfo getEALPSSiteInfo(String siteUid);
+
+	/**
 	 * <p>年度共通サイトリスト取得</p>
 	 * @return List<SiteInfo>
 	 */
