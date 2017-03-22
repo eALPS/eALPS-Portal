@@ -22,7 +22,7 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
  */
 public class Shibboleth extends EALPSPortalWebPage {
 
-	private static final long serialVersionUID = -4250861683283721227L;
+	private static final long serialVersionUID = -642505590133110511L;
 
 	@Inject
 	private IEALPSListService eALPSListService;

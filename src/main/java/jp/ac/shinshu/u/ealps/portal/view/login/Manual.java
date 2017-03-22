@@ -22,7 +22,7 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
  */
 public class Manual extends EALPSPortalWebPage {
 
-	private static final long serialVersionUID = -4250861683283721227L;
+	private static final long serialVersionUID = -2834762442932097285L;
 
 	@Inject
 	private IEALPSListService eALPSListService;
