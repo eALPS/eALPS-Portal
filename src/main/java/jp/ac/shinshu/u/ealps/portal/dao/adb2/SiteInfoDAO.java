@@ -40,6 +40,7 @@ public class SiteInfoDAO extends ADB2AbstractDAO {
 		sql.append("FROM siteInfo a ");
 		sql.append("WHERE a.opYear = ? ");
 		sql.append("AND a.dispOrder IS NOT NULL ");
+		sql.append("AND a.commonSite != 1 ");
 		sql.append("ORDER BY a.dispOrder");
 //		sql.append("AND CURRENT_TIMESTAMP BETWEEN a.open AND a.close ");
 

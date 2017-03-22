@@ -28,7 +28,7 @@ public class UtilityService implements IUtilityService {
 		int day = gcal.get(GregorianCalendar.DAY_OF_MONTH);
 
 		if (month <= 2) {
-			if (month == 2 && day > 22) {
+			if (month == 2 && day >= 22) {
 				return year;
 			} else {
 				return year-1;
