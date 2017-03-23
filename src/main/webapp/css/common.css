@@ -9,6 +9,17 @@ header h1 {
 	overflow: hidden;
 }
 
+header h1.eches {
+	background-image: url(../image/logo/eChes_logo.png);
+	background-repeat: no-repeat;
+	background-position: left center;
+	width: 100%;
+	height: 55px;
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
 #information-list h1 {
 	font-size: 14px;
 	margin: 0;
@@ -28,6 +39,10 @@ header h1 {
 }
 
 .form-group:last-child {
+	margin-bottom: 0px;
+}
+
+.alert:last-child {
 	margin-bottom: 0px;
 }
 

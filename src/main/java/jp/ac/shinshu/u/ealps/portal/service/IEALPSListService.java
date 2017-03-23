@@ -24,8 +24,9 @@ public interface IEALPSListService {
 	public List<SiteInfo> getEALPSSiteInfoList(int year);
 
 	/**
-	 *
-	 * @return
+	 * <p>siteUidからSiteInfoのエンティティを取得</p>
+	 * @param siteUid
+	 * @return SiteInfo
 	 */
 	public SiteInfo getEALPSSiteInfo(String siteUid);
 
@@ -35,4 +36,10 @@ public interface IEALPSListService {
 	 */
 	public List<SiteInfo> getEALPSCommonSiteInfoList();
 
+	/**
+	 * <p>引数で指定した年度のechesのSiteInfoを取得</p>
+	 * @param year
+	 * @return SiteInfo
+	 */
+	public SiteInfo getEChesSiteInfo(int year);
 }

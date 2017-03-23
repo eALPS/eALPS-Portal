@@ -34,5 +34,11 @@ public class EALPSListService implements IEALPSListService {
 		return siteInfoList;
 	}
 
+	@Override
+	public SiteInfo getEChesSiteInfo(int year) {
+		SiteInfoDAO siteInfoDAO = new SiteInfoDAO();
+		return siteInfoDAO.selectEChesSiteInfo(year);
+	}
+
 
 }

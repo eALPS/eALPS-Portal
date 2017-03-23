@@ -3,10 +3,7 @@ package jp.ac.shinshu.u.ealps.portal;
 import jp.ac.shinshu.u.common.definition.SystemDefinition;
 import jp.ac.shinshu.u.ealps.portal.view.EALPSPortalExpiredErrorPage;
 import jp.ac.shinshu.u.ealps.portal.view.PersonalSchedulePage;
-import jp.ac.shinshu.u.ealps.portal.view.login.Citizen;
-import jp.ac.shinshu.u.ealps.portal.view.login.CitizenSchedule;
-import jp.ac.shinshu.u.ealps.portal.view.login.Manual;
-import jp.ac.shinshu.u.ealps.portal.view.login.Shibboleth;
+import jp.ac.shinshu.u.ealps.portal.view.login.*;
 import jp.ac.shinshu.u.ealps.portal.view.logout.GlobalLogout;
 
 import org.apache.wicket.authroles.authentication.AbstractAuthenticatedWebSession;
@@ -80,6 +77,8 @@ public class EALPSPortalApplication extends AuthenticatedWebApplication
 //		mountPages();
 		mountPage("/login/citizen", Citizen.class);
 		mountPage("/login/citizen-schedule", CitizenSchedule.class);
+		mountPage("/login/eChes", EChes.class);
+		mountPage("/login/eChes/${year}", EChes.class);
 		mountPage("/login/manual/${siteUid}", Manual.class);
 		mountPage("/login/shibboleth/${siteUid}", Shibboleth.class);
 		mountPage("/logout/ealps", GlobalLogout.class);
