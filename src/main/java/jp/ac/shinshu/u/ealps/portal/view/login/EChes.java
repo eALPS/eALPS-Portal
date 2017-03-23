@@ -47,7 +47,8 @@ public class EChes extends EChesPortalWebPage {
 
 		titleModel.setObject("ログインページ｜eChesポータル");
 
-		add(new Label("caption", siteInfo.getCaption() + " ログインフォーム"));
+		add(new Label("caption", siteInfo.getCaption()));
+		add(new Label("year", yearModel));
 		add(new Form<Void>("postForm") {
 			@Override
 			protected String getActionUrl() {
