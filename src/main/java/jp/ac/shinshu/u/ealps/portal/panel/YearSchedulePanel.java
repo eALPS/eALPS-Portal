@@ -136,7 +136,7 @@ public class YearSchedulePanel extends Panel {
 //										listItem.add(new Label("teacherName", listItem.getModelObject().getTeacherList().isEmpty() ? "" : listItem.getModelObject().getTeacherList().get(0).getFirstName() + " " + listItem.getModelObject().getTeacherList().get(0).getLastName()));
 //										listItem.add(new Label("subTeacherName", listItem.getModelObject().getSubTeacherList().size() == 1 ? listItem.getModelObject().getSubTeacherList().get(0).getFirstName() + " " + listItem.getModelObject().getSubTeacherList().get(0).getLastName() : "...").add(new AttributeAppender("title", Model.of(listItem.getModelObject().getSubTeacherList().size() == 1 ? "副担当教員" : "副担当教員：" + listItem.getModelObject().getSubTeacherNameList()))));
 
-										ExternalLink fileURL = new ExternalLink("courseData.fileUrl", listItem.getModelObject().getCourseData().getFileUrl(), "関連ファイル");
+										ExternalLink fileURL = new ExternalLink("courseData.fileUrl", listItem.getModelObject().getCourseData().getFileUrl(), StringUtils.isBlank(listItem.getModelObject().getCourseData().getFileLinkName()) ? "関連外部リンク" : listItem.getModelObject().getCourseData().getFileLinkName());
 										if(StringUtils.isBlank(listItem.getModelObject().getCourseData().getFileUrl())) {
 											fileURL.setVisible(false);
 										}
@@ -178,11 +178,16 @@ public class YearSchedulePanel extends Panel {
 					protected void populateItem(final ListItem<RelationCourseBean> listItem) {
 						listItem.add(new AttributeAppender("class", Model.of(listItem.getModelObject().getLecClass())," "));
 						listItem.add(new ExternalLink("courseData.url", StringUtils.isBlank(listItem.getModelObject().getCourseData().getOptUrl()) ? listItem.getModelObject().getCourseData().getUrl() : listItem.getModelObject().getCourseData().getOptUrl(), listItem.getModelObject().getCourseData().getTitleName()));
-						listItem.add(new Label("courseData.titleCode"));
+//						listItem.add(new Label("courseData.titleCode"));
 //						listItem.add(new Label("teacherName", listItem.getModelObject().getTeacherList().isEmpty() ? "" : listItem.getModelObject().getTeacherList().get(0).getFirstName() + " " + listItem.getModelObject().getTeacherList().get(0).getLastName()));
 //						listItem.add(new Label("subTeacherName", listItem.getModelObject().getSubTeacherList().size() == 1 ? listItem.getModelObject().getSubTeacherList().get(0).getFirstName() + " " + listItem.getModelObject().getSubTeacherList().get(0).getLastName() : "...").add(new AttributeAppender("title", Model.of(listItem.getModelObject().getSubTeacherList().size() == 1 ? "副担当教員" : "副担当教員：" + listItem.getModelObject().getSubTeacherNameList()))));
 //						listItem.add(new Label("courseData.opYear", listItem.getModelObject().getCourseData().getOpYear() == 9999 ? "年度共通" : listItem.getModelObject().getCourseData().getOpYear()));
 //						listItem.add(new Label("opInfoValue"));
+						ExternalLink fileURL = new ExternalLink("courseData.fileUrl", listItem.getModelObject().getCourseData().getFileUrl(), StringUtils.isBlank(listItem.getModelObject().getCourseData().getFileLinkName()) ? "関連外部リンク" : listItem.getModelObject().getCourseData().getFileLinkName());
+						if(StringUtils.isBlank(listItem.getModelObject().getCourseData().getFileUrl())) {
+							fileURL.setVisible(false);
+						}
+						listItem.add(fileURL);
 						listItem.add(new Label("courseInformation","コース情報").add(new AttributeAppender("data-content",listItem.getModelObject().getCourseInformationHTMLCode())));
 						listItem.setVisible(!listItem.getModelObject().isScheduleCourse() && checkCourseRepitition.add(listItem.getModelObject().getCourseData().getUid()));
 					}
@@ -224,6 +229,11 @@ public class YearSchedulePanel extends Panel {
 //						listItem.add(new Label("subTeacherName", listItem.getModelObject().getSubTeacherList().size() == 1 ? listItem.getModelObject().getSubTeacherList().get(0).getFirstName() + " " + listItem.getModelObject().getSubTeacherList().get(0).getLastName() : "...").add(new AttributeAppender("title", Model.of(listItem.getModelObject().getSubTeacherList().size() == 1 ? "副担当教員" : "副担当教員：" + listItem.getModelObject().getSubTeacherNameList()))));
 //						listItem.add(new Label("courseData.opYear", listItem.getModelObject().getCourseData().getOpYear() == 9999 ? "年度共通" : listItem.getModelObject().getCourseData().getOpYear()));
 //						listItem.add(new Label("opInfoValue"));
+						ExternalLink fileURL = new ExternalLink("courseData.fileUrl", listItem.getModelObject().getCourseData().getFileUrl(), StringUtils.isBlank(listItem.getModelObject().getCourseData().getFileLinkName()) ? "関連外部リンク" : listItem.getModelObject().getCourseData().getFileLinkName());
+						if(StringUtils.isBlank(listItem.getModelObject().getCourseData().getFileUrl())) {
+							fileURL.setVisible(false);
+						}
+						listItem.add(fileURL);
 						listItem.add(new Label("courseInformation","コース情報").add(new AttributeAppender("data-content",listItem.getModelObject().getCourseInformationHTMLCode())));
 					}
 					@Override

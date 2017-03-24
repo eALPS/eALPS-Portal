@@ -33,8 +33,8 @@
 								<!--<dt><i class="glyphicon glyphicon-user"></i>&nbsp;</dt>-->
 								<!--<dd><span class="toolTip" wicket:id="subTeacherName" data-toggle="tooltip" data-container="body">副担当教員</span></dd>-->
 								<wicket:enclosure child="courseData.fileUrl">
-								<dt><i class="glyphicon glyphicon-paperclip"></i>&nbsp;</dt>
-								<dd><a href="#" wicket:id="courseData.fileUrl" target="_blank">関連ファイル</a></dd>
+								<dt><span class="glyphicon glyphicon-paperclip"></span>&nbsp;</dt>
+								<dd><a href="#" wicket:id="courseData.fileUrl" target="_blank">関連外部リンク</a></dd>
 								</wicket:enclosure>
 								<dt><i class="glyphicon glyphicon-info-sign"></i>&nbsp;</dt>
 								<dd><a wicket:id="courseInformation" data-toggle="popover" data-container="body" data-trigger="click" data-placement="bottom" data-html="true" title="コース情報">コース情報</a></dd>
@@ -49,11 +49,14 @@
 		<div class="panel-body courseSchedule" wicket:id="nonScheduleCourseList">
 			<ul class="list-unstyled">
 				<li wicket:id="nonScheduleCourseListView">
-					<span class="glyphicon glyphicon-book"></span>&nbsp;<a href="#" wicket:id="courseData.url" target="_blank">Moodleリンク&nbsp;&nbsp;</a>
+					<span class="glyphicon glyphicon-book"></span>&nbsp;<a href="#" wicket:id="courseData.url" target="_blank">Moodleリンク</a>&nbsp;&nbsp;
 					<!--（<span wicket:id="courseData.titleCode"></span>）&nbsp;&nbsp;-->
 					<!--<span class="glyphicon glyphicon-user"></span>&nbsp;<span class="toolTip" wicket:id="teacherName" data-toggle="tooltip" data-container="body" title="主担当教員">主担当教員</span>&nbsp;&nbsp;-->
 					<!--<span class="glyphicon glyphicon-user"></span>&nbsp;<span class="toolTip" wicket:id="subTeacherName" data-toggle="tooltip" data-container="body">副担当教員</span>&nbsp;&nbsp;-->
 					<!--<span class="glyphicon glyphicon-time"></span>&nbsp;<span wicket:id="courseData.opYear">開講年度</span>&nbsp;<span wicket:id="opInfoValue">開講時期</span>-->
+					<wicket:enclosure child="courseData.fileUrl">
+						<span class="glyphicon glyphicon-paperclip"></span>&nbsp;<a href="#" wicket:id="courseData.fileUrl" target="_blank">関連外部リンク</a>&nbsp;&nbsp;
+					</wicket:enclosure>
 					<span class="glyphicon glyphicon-info-sign"></span>&nbsp;<a wicket:id="courseInformation" data-toggle="popover" data-container="body" data-trigger="click" data-placement="right" data-html="true" title="コース情報">コース情報</a>
 				</li>
 			</ul>
@@ -63,11 +66,14 @@
 		<div class="panel-body courseList" wicket:id="courseList">
 			<ul class="list-unstyled">
 				<li wicket:id="courseListView">
-					<span class="glyphicon glyphicon-book"></span>&nbsp;<a href="#" wicket:id="courseData.url" target="_blank">Moodleリンク&nbsp;&nbsp;</a>
+					<span class="glyphicon glyphicon-book"></span>&nbsp;<a href="#" wicket:id="courseData.url" target="_blank">Moodleリンク</a>&nbsp;&nbsp;
 					<!--（<span wicket:id="courseData.titleCode"></span>）&nbsp;&nbsp;-->
 					<!--<span class="glyphicon glyphicon-user"></span>&nbsp;<span class="toolTip" wicket:id="teacherName" data-toggle="tooltip" data-container="body" title="主担当教員">主担当教員</span>&nbsp;&nbsp;-->
 					<!--<span class="glyphicon glyphicon-user"></span>&nbsp;<span class="toolTip" wicket:id="subTeacherName" data-toggle="tooltip" data-container="body">副担当教員</span>&nbsp;&nbsp;-->
 					<!--<span class="glyphicon glyphicon-time"></span>&nbsp;<span wicket:id="courseData.opYear">開講年度</span>&nbsp;<span wicket:id="opInfoValue">開講時期</span>-->
+					<wicket:enclosure child="courseData.fileUrl">
+						<span class="glyphicon glyphicon-paperclip"></span>&nbsp;<a href="#" wicket:id="courseData.fileUrl" target="_blank">関連外部リンク</a>&nbsp;&nbsp;
+					</wicket:enclosure>
 					<span class="glyphicon glyphicon-info-sign"></span>&nbsp;<a wicket:id="courseInformation" data-toggle="popover" data-container="body" data-trigger="click" data-placement="right" data-html="true" title="コース情報">コース情報</a>
 				</li>
 			</ul>
