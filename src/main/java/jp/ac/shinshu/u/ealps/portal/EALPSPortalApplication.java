@@ -81,6 +81,7 @@ public class EALPSPortalApplication extends AuthenticatedWebApplication
 		mountPage("/login/eChes/${year}", EChes.class);
 		mountPage("/login/manual/${siteUid}", Manual.class);
 		mountPage("/login/shibboleth/${siteUid}", Shibboleth.class);
+		mountPage("/logout/eALPS", GlobalLogout.class);
 		mountPage("/logout/ealps", GlobalLogout.class);
 	}
 
