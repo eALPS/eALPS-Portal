@@ -43,7 +43,7 @@ public List<RelationCourseBean> selectRelationCourseBeanList(String uid, int yea
 		StringBuilder sql = new StringBuilder();
 		sql.append("SELECT ");
 		sql.append("a.relId, a.listId, a.chain, a.uid, a.roleId, a.enable, a.updateAt, ");
-		sql.append("b.rowId, b.uid, b.titleCode, b.titleName, b.regCode, b.depCode, b.siteUid, b.opFlag, b.opYear, b.opLec, b.toLMS, b.listId, b.delFlag, b.mdlId, b.mdlCatId, b.memo, b.originalDate, b.updateDate, b.catId, b.url, b.optUrl, b.dataFrom, b.fileUrl, b.fileLinkName ");
+		sql.append("b.rowId, b.uid, b.titleCode, b.titleName, b.regCode, b.depCode, b.siteUid, b.opFlag, b.opYear, b.opLec, b.toLMS, b.listId, b.delFlag, b.mdlId, b.mdlCatId, b.memo, b.originalDate, b.updateDate, b.catId, b.url, b.optUrl, b.dataFrom, b.fileUrl, b.fileLinkName, b.teacherExtUrl, b.teacherExtUrlName ");
 		//sql.append("c.opinfoId, c.courseId, c.opLec, c.opWday, c.opHour, c.campus ");
 		sql.append("FROM ");
 		sql.append("relation a, courseData b ");
@@ -119,6 +119,9 @@ public List<RelationCourseBean> selectRelationCourseBeanList(String uid, int yea
 				courseData.setOptUrl(resultSet.getString("b.optUrl"));
 				courseData.setFileUrl(resultSet.getString("b.fileUrl"));
 				courseData.setFileLinkName(resultSet.getString("b.fileLinkName"));
+				courseData.setTeacherExtUrl(resultSet.getString("b.teacherExtUrl"));
+				courseData.setTeacherExtUrlName(resultSet.getString("b.teacherExtUrlName"));
+
 				relationCourseBean.setCourseData(courseData);
 
 				// 主担当取得

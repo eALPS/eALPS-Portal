@@ -8,6 +8,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import jp.ac.shinshu.u.ealps.portal.EALPSPortalWebSession;
 import jp.ac.shinshu.u.ealps.portal.bean.RelationCourseBean;
 import jp.ac.shinshu.u.ealps.portal.entity.SiteInfo;
 import jp.ac.shinshu.u.ealps.portal.service.IEALPSListService;
@@ -141,6 +142,13 @@ public class YearSchedulePanel extends Panel {
 											fileURL.setVisible(false);
 										}
 										listItem.add(fileURL);
+
+										ExternalLink teacherExtUrl = new ExternalLink("courseData.teacherExtUrl", listItem.getModelObject().getCourseData().getTeacherExtUrl(), StringUtils.isBlank(listItem.getModelObject().getCourseData().getTeacherExtUrlName()) ? "授業アンケート" : listItem.getModelObject().getCourseData().getTeacherExtUrlName());
+										if(StringUtils.isBlank(listItem.getModelObject().getCourseData().getTeacherExtUrl()) || !StringUtils.equals("faculty",EALPSPortalWebSession.get().getAccountData().getAffili())) {
+											teacherExtUrl.setVisible(false);
+										}
+										listItem.add(teacherExtUrl);
+
 										listItem.add(new Label("courseInformation","コース情報").add(new AttributeAppender("data-content",listItem.getModelObject().getCourseInformationHTMLCode())));
 									}
 								};
@@ -188,6 +196,11 @@ public class YearSchedulePanel extends Panel {
 							fileURL.setVisible(false);
 						}
 						listItem.add(fileURL);
+						ExternalLink teacherExtUrl = new ExternalLink("courseData.teacherExtUrl", listItem.getModelObject().getCourseData().getTeacherExtUrl(), StringUtils.isBlank(listItem.getModelObject().getCourseData().getTeacherExtUrlName()) ? "授業アンケート" : listItem.getModelObject().getCourseData().getTeacherExtUrlName());
+						if(StringUtils.isBlank(listItem.getModelObject().getCourseData().getTeacherExtUrl()) || !StringUtils.equals("faculty",EALPSPortalWebSession.get().getAccountData().getAffili())) {
+							teacherExtUrl.setVisible(false);
+						}
+						listItem.add(teacherExtUrl);
 						listItem.add(new Label("courseInformation","コース情報").add(new AttributeAppender("data-content",listItem.getModelObject().getCourseInformationHTMLCode())));
 						listItem.setVisible(!listItem.getModelObject().isScheduleCourse() && checkCourseRepitition.add(listItem.getModelObject().getCourseData().getUid()));
 					}
@@ -234,6 +247,11 @@ public class YearSchedulePanel extends Panel {
 							fileURL.setVisible(false);
 						}
 						listItem.add(fileURL);
+						ExternalLink teacherExtUrl = new ExternalLink("courseData.teacherExtUrl", listItem.getModelObject().getCourseData().getTeacherExtUrl(), StringUtils.isBlank(listItem.getModelObject().getCourseData().getTeacherExtUrlName()) ? "授業アンケート" : listItem.getModelObject().getCourseData().getTeacherExtUrlName());
+						if(StringUtils.isBlank(listItem.getModelObject().getCourseData().getTeacherExtUrl()) || !StringUtils.equals("faculty",EALPSPortalWebSession.get().getAccountData().getAffili())) {
+							teacherExtUrl.setVisible(false);
+						}
+						listItem.add(teacherExtUrl);
 						listItem.add(new Label("courseInformation","コース情報").add(new AttributeAppender("data-content",listItem.getModelObject().getCourseInformationHTMLCode())));
 					}
 					@Override

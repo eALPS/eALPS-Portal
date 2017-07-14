@@ -38,6 +38,8 @@ public class CourseData implements Serializable {
 	private int dataFrom;
 	private String fileUrl;
 	private String fileLinkName;
+	private String teacherExtUrl;
+	private String teacherExtUrlName;
 
 	public int getRowId() {
 		return rowId;
@@ -177,13 +179,23 @@ public class CourseData implements Serializable {
 	public void setFileUrl(String fileUrl) {
 		this.fileUrl = fileUrl;
 	}
-
-
 	public String getFileLinkName() {
 		return fileLinkName;
 	}
-
 	public void setFileLinkName(String fileLinkName) {
 		this.fileLinkName = fileLinkName;
 	}
+	public String getTeacherExtUrl() {
+		return teacherExtUrl;
+	}
+	public void setTeacherExtUrl(String teacherExtUrl) {
+		this.teacherExtUrl = teacherExtUrl;
+	}
+	public String getTeacherExtUrlName() {
+		return teacherExtUrlName;
+	}
+	public void setTeacherExtUrlName(String teacherExtUrlName) {
+		this.teacherExtUrlName = teacherExtUrlName;
+	}
+
 }

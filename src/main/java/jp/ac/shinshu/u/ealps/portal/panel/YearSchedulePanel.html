@@ -26,17 +26,21 @@
 						</td>
 						<td wicket:id="courseScheduleWeekDayListView">
 							<dl class="dl-horizontal" wicket:id="courseScheduleListView">
-								<dt><i class="glyphicon glyphicon-book"></i>&nbsp;</dt>
+								<dt><span class="glyphicon glyphicon-book"></span></dt>
 								<dd><a href="#" wicket:id="courseData.url" target="_blank">Moodleリンク</a></dd>
 								<!--<dt><i class="glyphicon glyphicon-user"></i>&nbsp;</dt>-->
 								<!--<dd><span class="toolTip" wicket:id="teacherName" data-toggle="tooltip" data-container="body" title="主担当教員">主担当教員</span></dd>-->
 								<!--<dt><i class="glyphicon glyphicon-user"></i>&nbsp;</dt>-->
 								<!--<dd><span class="toolTip" wicket:id="subTeacherName" data-toggle="tooltip" data-container="body">副担当教員</span></dd>-->
 								<wicket:enclosure child="courseData.fileUrl">
-								<dt><span class="glyphicon glyphicon-paperclip"></span>&nbsp;</dt>
+								<dt><span class="glyphicon glyphicon-paperclip"></span></dt>
 								<dd><a href="#" wicket:id="courseData.fileUrl" target="_blank">関連外部リンク</a></dd>
 								</wicket:enclosure>
-								<dt><i class="glyphicon glyphicon-info-sign"></i>&nbsp;</dt>
+								<wicket:enclosure child="courseData.teacherExtUrl">
+									<dt><span class="glyphicon glyphicon-paperclip"></span></dt>
+									<dd><a href="#" wicket:id="courseData.teacherExtUrl" target="_blank">授業アンケート</a></dd>
+								</wicket:enclosure>
+								<dt><span class="glyphicon glyphicon-info-sign"></span></dt>
 								<dd><a wicket:id="courseInformation" data-toggle="popover" data-container="body" data-trigger="click" data-placement="bottom" data-html="true" title="コース情報">コース情報</a></dd>
 							</dl>
 						</td>
@@ -57,6 +61,9 @@
 					<wicket:enclosure child="courseData.fileUrl">
 						<span class="glyphicon glyphicon-paperclip"></span>&nbsp;<a href="#" wicket:id="courseData.fileUrl" target="_blank">関連外部リンク</a>&nbsp;&nbsp;
 					</wicket:enclosure>
+					<wicket:enclosure child="courseData.teacherExtUrl">
+						<span class="glyphicon glyphicon-paperclip"></span>&nbsp;<a href="#" wicket:id="courseData.teacherExtUrl" target="_blank">授業アンケート</a>&nbsp;&nbsp;
+					</wicket:enclosure>
 					<span class="glyphicon glyphicon-info-sign"></span>&nbsp;<a wicket:id="courseInformation" data-toggle="popover" data-container="body" data-trigger="click" data-placement="right" data-html="true" title="コース情報">コース情報</a>
 				</li>
 			</ul>
@@ -73,6 +80,9 @@
 					<!--<span class="glyphicon glyphicon-time"></span>&nbsp;<span wicket:id="courseData.opYear">開講年度</span>&nbsp;<span wicket:id="opInfoValue">開講時期</span>-->
 					<wicket:enclosure child="courseData.fileUrl">
 						<span class="glyphicon glyphicon-paperclip"></span>&nbsp;<a href="#" wicket:id="courseData.fileUrl" target="_blank">関連外部リンク</a>&nbsp;&nbsp;
+					</wicket:enclosure>
+					<wicket:enclosure child="courseData.teacherExtUrl">
+						<span class="glyphicon glyphicon-paperclip"></span>&nbsp;<a href="#" wicket:id="courseData.teacherExtUrl" target="_blank">授業アンケート</a>&nbsp;&nbsp;
 					</wicket:enclosure>
 					<span class="glyphicon glyphicon-info-sign"></span>&nbsp;<a wicket:id="courseInformation" data-toggle="popover" data-container="body" data-trigger="click" data-placement="right" data-html="true" title="コース情報">コース情報</a>
 				</li>

@@ -5,7 +5,7 @@ import jp.ac.shinshu.u.ealps.portal.view.EALPSPortalExpiredErrorPage;
 import jp.ac.shinshu.u.ealps.portal.view.PersonalSchedulePage;
 import jp.ac.shinshu.u.ealps.portal.view.login.*;
 import jp.ac.shinshu.u.ealps.portal.view.logout.GlobalLogout;
-
+import org.apache.wicket.Session;
 import org.apache.wicket.authroles.authentication.AbstractAuthenticatedWebSession;
 import org.apache.wicket.authroles.authentication.AuthenticatedWebApplication;
 import org.apache.wicket.core.request.handler.PageProvider;
@@ -14,6 +14,8 @@ import org.apache.wicket.guice.GuiceComponentInjector;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.protocol.http.PageExpiredException;
 import org.apache.wicket.request.IRequestHandler;
+import org.apache.wicket.request.Request;
+import org.apache.wicket.request.Response;
 import org.apache.wicket.request.cycle.AbstractRequestCycleListener;
 import org.apache.wicket.request.cycle.RequestCycle;
 import org.apache.wicket.settings.IExceptionSettings;
@@ -89,6 +91,11 @@ public class EALPSPortalApplication extends AuthenticatedWebApplication
 	protected Class<? extends WebPage> getSignInPageClass() {
 		// TODO 自動生成されたメソッド・スタブ
 		return null;
+	}
+
+	@Override
+	public Session newSession(Request request, Response response) {
+		return new EALPSPortalWebSession(request);
 	}
 
 	@Override
