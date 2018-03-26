@@ -80,6 +80,7 @@ public class EALPSPortalApplication extends AuthenticatedWebApplication
 		mountPage("/login/citizen", Citizen.class);
 		mountPage("/login/citizen-schedule", CitizenSchedule.class);
 		mountPage("/login/eChes", EChes.class);
+		mountPage("/login/public", Publicsite.class);
 		mountPage("/login/eChes/${year}", EChes.class);
 		mountPage("/login/manual/${siteUid}", Manual.class);
 		mountPage("/login/shibboleth/${siteUid}", Shibboleth.class);

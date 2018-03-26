@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd" lang="ja">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	</head>
+	<body>
+	<wicket:extend>
+
+		<!--
+		<div wicket:id="informationPanel"></div>
+		-->
+
+		<div class="panel panel-success">
+			<div class="panel-heading lead">
+                信州大学一般公開用サイトにログインする
+			</div>
+			<div class="panel-body">
+				<form wicket:id="postForm" class="form-horizontal" method="post" target="_blank">
+					<div class="form-group">
+						<label for="userId" class="col-sm-2 control-label">ユーザID</label>
+						<div class="col-sm-4">
+							<div class="input-group">
+								<span class="input-group-addon"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></span>
+								<input type="text" name="username" class="form-control" id="userId" placeholder="UserId">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="password" class="col-sm-2 control-label">パスワード</label>
+						<div class="col-sm-4">
+							<div class="input-group">
+								<span class="input-group-addon"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span></span>
+								<input type="password" name="password" class="form-control" id="password" placeholder="Password">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-offset-2 col-sm-8">
+							<button type="submit" class="btn btn-primary">ログイン</button>
+							<!--<span class="glyphicon glyphicon-option-vertical" aria-hidden="true"></span>-->
+						</div>
+					</div>
+				</form>
+				<hr />
+				<div class="alert alert-danger hidden-xs" role="alert">
+					<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+					&nbsp;信州大学の教職員及び学生は&nbsp;
+					<span class="glyphicon glyphicon-hand-right"></span>
+					<a href="https://acsu.shinshu-u.ac.jp/" target="_blank">ACSU</a>
+					<span class="glyphicon glyphicon-hand-left"></span>
+					&nbsp;からログインしてください．
+				</div>
+			</div>
+			<div class="panel-footer">
+				<span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span>&nbsp;このページをブックマークすると，より簡単にアクセスできます．
+			</div>
+		</div>
+
+		<div class="panel panel-success">
+			<div class="panel-heading lead">
+				<span>ゲストとしてログインする</span>
+			</div>
+			<div class="panel-body">
+				<form wicket:id="postGuestForm" id="postGuestForm" class="form-horizontal" method="post" target="_blank">
+					<div class="form-group">
+						<div class="col-sm-offset-2 col-sm-8">
+							<input form="postGuestForm" type="hidden" name="username" class="input-large" value="guest" alt="UserID" />
+							<input form="postGuestForm" type="hidden" name="password" class="input-large" value="guest" alt="Password" />
+							<button form="postGuestForm" type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-education" aria-hidden="true"></span>&nbsp;ゲストログイン</button>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="panel-footer">
+			</div>
+		</div>
+
+		<!--
+		<div wicket:id="attentionPanel"></div>
+		-->
+
+	</wicket:extend>
+	</body>
+</html>
