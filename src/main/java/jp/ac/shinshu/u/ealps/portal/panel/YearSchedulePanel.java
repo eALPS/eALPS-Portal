@@ -143,10 +143,30 @@ public class YearSchedulePanel extends Panel {
 										}
 										listItem.add(fileURL);
 
-										ExternalLink teacherExtUrl = new ExternalLink("courseData.teacherExtUrl", listItem.getModelObject().getCourseData().getTeacherExtUrl(), StringUtils.isBlank(listItem.getModelObject().getCourseData().getTeacherExtUrlName()) ? "授業アンケート" : listItem.getModelObject().getCourseData().getTeacherExtUrlName());
-										if(StringUtils.isBlank(listItem.getModelObject().getCourseData().getTeacherExtUrl()) || !StringUtils.equals("faculty",EALPSPortalWebSession.get().getAccountData().getAffili())) {
-											teacherExtUrl.setVisible(false);
+										// 外部リンク（授業アンケート等）
+										String extUrlName = StringUtils.isBlank(listItem.getModelObject().getCourseData().getTeacherExtUrlName()) ? "授業アンケート" : listItem.getModelObject().getCourseData().getTeacherExtUrlName();
+										// 外部リンク名が std: で始まっているときは，学生用リンク
+										boolean forStudent = extUrlName.matches("^std:.*");
+										if (forStudent) {
+											extUrlName = extUrlName.substring(4);
 										}
+										// リンク URL
+										ExternalLink teacherExtUrl = new ExternalLink("courseData.teacherExtUrl", listItem.getModelObject().getCourseData().getTeacherExtUrl(), extUrlName);
+										// リンクを表示するか？
+										boolean isShowExtLink = false;
+										//
+										if( !(StringUtils.isBlank(listItem.getModelObject().getCourseData().getTeacherExtUrl())) ) {
+											String affiliStr = EALPSPortalWebSession.get().getAccountData().getAffili() ;
+											//
+											if ( (StringUtils.equals("faculty", affiliStr)) && !(forStudent) ) {
+												isShowExtLink = true;
+											};
+											if ( (StringUtils.equals("student", affiliStr)) && (forStudent) ) {
+												isShowExtLink = true;
+											};
+										}
+										//
+										teacherExtUrl.setVisible(isShowExtLink);
 										listItem.add(teacherExtUrl);
 
 										listItem.add(new Label("courseInformation","コース情報").add(new AttributeAppender("data-content",listItem.getModelObject().getCourseInformationHTMLCode())));
@@ -196,11 +216,33 @@ public class YearSchedulePanel extends Panel {
 							fileURL.setVisible(false);
 						}
 						listItem.add(fileURL);
-						ExternalLink teacherExtUrl = new ExternalLink("courseData.teacherExtUrl", listItem.getModelObject().getCourseData().getTeacherExtUrl(), StringUtils.isBlank(listItem.getModelObject().getCourseData().getTeacherExtUrlName()) ? "授業アンケート" : listItem.getModelObject().getCourseData().getTeacherExtUrlName());
-						if(StringUtils.isBlank(listItem.getModelObject().getCourseData().getTeacherExtUrl()) || !StringUtils.equals("faculty",EALPSPortalWebSession.get().getAccountData().getAffili())) {
-							teacherExtUrl.setVisible(false);
+
+						// 外部リンク（授業アンケート等）
+						String extUrlName = StringUtils.isBlank(listItem.getModelObject().getCourseData().getTeacherExtUrlName()) ? "授業アンケート" : listItem.getModelObject().getCourseData().getTeacherExtUrlName();
+						// 外部リンク名が std: で始まっているときは，学生用リンク
+						boolean forStudent = extUrlName.matches("^std:.*");
+						if (forStudent) {
+							extUrlName = extUrlName.substring(4);
 						}
+						// リンク URL
+						ExternalLink teacherExtUrl = new ExternalLink("courseData.teacherExtUrl", listItem.getModelObject().getCourseData().getTeacherExtUrl(), extUrlName);
+						// リンクを表示するか？
+						boolean isShowExtLink = false;
+						//
+						if( !(StringUtils.isBlank(listItem.getModelObject().getCourseData().getTeacherExtUrl())) ) {
+							String affiliStr = EALPSPortalWebSession.get().getAccountData().getAffili() ;
+							//
+							if ( (StringUtils.equals("faculty", affiliStr)) && !(forStudent) ) {
+								isShowExtLink = true;
+							};
+							if ( (StringUtils.equals("student", affiliStr)) && (forStudent) ) {
+								isShowExtLink = true;
+							};
+						}
+						//
+						teacherExtUrl.setVisible(isShowExtLink);
 						listItem.add(teacherExtUrl);
+
 						listItem.add(new Label("courseInformation","コース情報").add(new AttributeAppender("data-content",listItem.getModelObject().getCourseInformationHTMLCode())));
 						listItem.setVisible(!listItem.getModelObject().isScheduleCourse() && checkCourseRepitition.add(listItem.getModelObject().getCourseData().getUid()));
 					}
@@ -247,10 +289,14 @@ public class YearSchedulePanel extends Panel {
 							fileURL.setVisible(false);
 						}
 						listItem.add(fileURL);
+
 						// 外部リンク（授業アンケート等）
 						String extUrlName = StringUtils.isBlank(listItem.getModelObject().getCourseData().getTeacherExtUrlName()) ? "授業アンケート" : listItem.getModelObject().getCourseData().getTeacherExtUrlName();
 						// 外部リンク名が std: で始まっているときは，学生用リンク
 						boolean forStudent = extUrlName.matches("^std:.*");
+						if (forStudent) {
+							extUrlName = extUrlName.substring(4);
+						}
 						// リンク URL
 						ExternalLink teacherExtUrl = new ExternalLink("courseData.teacherExtUrl", listItem.getModelObject().getCourseData().getTeacherExtUrl(), extUrlName);
 						// リンクを表示するか？
@@ -268,8 +314,9 @@ public class YearSchedulePanel extends Panel {
 						}
 						//
 						teacherExtUrl.setVisible(isShowExtLink);
-						//
 						listItem.add(teacherExtUrl);
+
+						//
 						listItem.add(new Label("courseInformation","コース情報").add(new AttributeAppender("data-content",listItem.getModelObject().getCourseInformationHTMLCode())));
 					}
 					@Override
